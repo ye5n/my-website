@@ -42,23 +42,17 @@
             padding: 30px 0 10px 0;
         }
         
-        /* 로고 스타일 제어 */
         .main-logo {
             height: 100px; 
             width: auto;  
             margin-bottom: 5px;
-            transition: opacity 0.3s ease;
-        }
-        .main-logo:hover {
-            opacity: 0.8;
         }
 
-        /* 네비게이션: 정중앙 정렬 핵심 */
+        /* 네비게이션: 정중앙 정렬 */
         nav { 
             flex-shrink: 0;
             border-bottom: 1px solid var(--border-color); 
             padding: 15px 0;
-            margin-bottom: 0;
             display: flex;
             justify-content: center; 
             align-items: center;
@@ -69,12 +63,10 @@
             color: black; 
             font-weight: 500;
             white-space: nowrap;
-            /* 각 메뉴의 너비를 동일하게 맞추어 '옹즈'를 정중앙에 배치 */
             width: 120px; 
             text-align: center;
             margin: 0 10px;
         }
-
         nav a:hover { 
             text-decoration: underline; 
             text-underline-offset: 5px;
@@ -90,7 +82,7 @@
             width: 100%;
         }
 
-        /* 왼쪽 뉴스 & 오른쪽 옹즈 공통 스크롤 설정 */
+        /* 스크롤 영역 설정 */
         .journal, .ongs {
             height: 100%;
             overflow-y: auto; 
@@ -100,57 +92,45 @@
 
         .journal { 
             flex: 2; 
+            /* 해결책: 선이 스크롤바와 겹치지 않도록 안쪽 여백 조절 */
             border-right: 1px solid #eee; 
-            padding-right: 30px; 
+            padding-right: 25px; 
         }
         .ongs { 
             flex: 1.2; 
             padding-left: 30px;
         }
 
-        /* 스크롤바 디자인 */
+        /* 스크롤바 디자인 통일 (최대한 얇게) */
         .journal::-webkit-scrollbar, .ongs::-webkit-scrollbar {
-            width: 4px;
+            width: 3px; /* 3px로 고정 */
         }
-        .journal::-webkit-scrollbar-thumb, 
-        .ongs::-webkit-scrollbar-thumb {
-            background: #eee; /* 연한 회색으로 설정하여 시각적 부담을 줄임 */
-            border-radius: 10px; /* 막대 끝을 둥글게 처리 */
+        .journal::-webkit-scrollbar-thumb, .ongs::-webkit-scrollbar-thumb {
+            background: #e5e5e5;
+            border-radius: 10px;
         }
-        /* 스크롤바 배경(트랙) 설정 - 투명하게 하여 더 깔끔하게 보이게 함 */
-        .journal::-webkit-scrollbar-track, 
-        .ongs::-webkit-scrollbar-track {
+        .journal::-webkit-scrollbar-track, .ongs::-webkit-scrollbar-track {
             background: transparent;
         }
-        
-        /* 텍스트 요소 스타일 */
+
+        /* 텍스트 요소 */
         h2 { font-size: 16px; font-weight: 700; margin-bottom: 20px; text-transform: uppercase; }
         h3 { font-size: 14px; font-weight: 700; margin-top: 10px; margin-bottom: 4px; }
         .item p { margin-top: 0; margin-bottom: 0px; line-height: 1.8; }
         .item { margin-bottom: 40px; border-bottom: 1px dashed #ddd; padding-bottom: 20px; }
         
-        /* 이미지 호버 효과 */
-        .img-hover-wrap {
-            position: relative;
+        /* 이미지 설정 (호버 기능 제거) */
+        .img-wrap {
             width: 100%;
             border: 1px solid #000;
             margin-bottom: 10px;
             overflow: hidden;
             line-height: 0;
         }
-        .img-hover-wrap img {
+        .img-wrap img {
             width: 100%;
             height: auto;
-            transition: opacity 0.4s ease;
-        }
-        .img-hover-wrap img.hover-img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            opacity: 0;
-        }
-        .img-hover-wrap:hover img.hover-img {
-            opacity: 1;
+            display: block;
         }
 
         /* 테이블 스타일 */
@@ -192,7 +172,7 @@
              <h3>&lt;지팡이통신&gt;의 창간</h3>
             <p>안녕하세요. 옹즈타운의 신문 &lt;지팡이통신&gt;이 2026년 1월 1일, 첫발을 내딛습니다. (박수갈채)
                 이곳에 앞으로 등장할 ‘뉴페이스 옹즈’의 소식과 함께, 얼핏 조용해 보이지만 알고 보면 하루도 조용할 날 없는 옹즈타운의 왁자지껄한 일상을 담아보려 합니다.
-                부디 적은 관심과 많은 응원 부탁드리겠습니다. 얍. </p>
+                부디 적은 관심과 많은 응원 부탁드겠습니다. 얍. </p>
             <small>2026.01.01</small>
         </div>
     </div>
@@ -201,9 +181,8 @@
         <h2>Ongs</h2> 
         
         <div class="item">
-            <div class="img-hover-wrap">
-                <img src="images/seongju_1.webp" alt="성주옹 기본 사진">
-                <img src="images/seongju_1_hover.webp" alt="성주옹 호버 사진" class="hover-img">
+            <div class="img-wrap">
+                <img src="images/seongju_1.webp" alt="성주옹">
             </div>
             <table>
                 <tr><td>Name</td><td>Seongju Ong (성주옹)</td></tr>
@@ -213,9 +192,8 @@
         </div>
 
         <div class="item">
-            <div class="img-hover-wrap">
-                <img src="images/buttumak_1.webp" alt="부뚜막옹 기본 사진">
-                <img src="images/buttumak_1_hover.webp" alt="부뚜막옹 호버 사진" class="hover-img">
+            <div class="img-wrap">
+                <img src="images/buttumak_1.webp" alt="부뚜막옹">
             </div>
             <table>
                 <tr><td>Name</td><td>Buttumak Ong (부뚜막옹)</td></tr>
