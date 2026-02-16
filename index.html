@@ -43,11 +43,34 @@
             padding: 30px 0 10px 0;
         }
         
+        /* [추가] 로고 Hover 효과를 위한 스타일 */
+        .logo-wrapper {
+            position: relative;
+            display: inline-block;
+            height: 100px;
+            margin-bottom: 5px;
+            vertical-align: middle;
+        }
+
         .main-logo {
             height: 100px; 
             width: auto;  
-            margin-bottom: 5px;
+            display: block;
+            transition: opacity 0.3s ease;
         }
+
+        /* Hover 시 나타날 이미지 */
+        .main-logo.hover-img {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0; /* 평소에는 숨김 */
+        }
+
+        /* 마우스를 올렸을 때 이미지 교체 */
+        .logo-wrapper:hover .default-img { opacity: 0; }
+        .logo-wrapper:hover .hover-img { opacity: 1; }
 
         /* 네비게이션 */
         nav { 
@@ -83,7 +106,7 @@
             width: 100%;
         }
 
-        /* 스크롤 영역: 대칭 여백 설정 */
+        /* 스크롤 영역 */
         .journal, .ongs {
             height: 100%;
             overflow-y: auto; 
@@ -94,20 +117,12 @@
             -ms-overflow-style: none; 
         }
 
-        /* 스크롤바 숨김 (Chrome, Safari) - 마우스 오버 시에만 등장 */
         .journal::-webkit-scrollbar, 
-        .ongs::-webkit-scrollbar {
-            width: 4px;
-        }
+        .ongs::-webkit-scrollbar { width: 4px; }
         .journal::-webkit-scrollbar-thumb, 
-        .ongs::-webkit-scrollbar-thumb {
-            background: rgba(0, 0, 0, 0); 
-            border-radius: 10px;
-        }
+        .ongs::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0); border-radius: 10px; }
         .journal:hover::-webkit-scrollbar-thumb, 
-        .ongs:hover::-webkit-scrollbar-thumb {
-            background: rgba(0, 0, 0, 0.1); 
-        }
+        .ongs:hover::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.1); }
 
         .journal { 
             flex: 1.8; 
@@ -127,93 +142,57 @@
         .item { margin-bottom: 50px; border-bottom: 1px dashed #ddd; padding-bottom: 30px; }
         small { color: #000; }
         
-        /* [중요] 이미지와 테이블 너비를 완벽하게 일치시키는 설정 */
+        /* 이미지와 테이블 스타일 */
         .img-wrap {
             width: 100%;
             border: 1px solid #000;
-            box-sizing: border-box; /* 테두리를 너비에 포함 */
+            box-sizing: border-box;
             overflow: hidden;
             line-height: 0;
-            margin-bottom: 0; /* 테이블과 밀착시키기 위해 0으로 변경 */
+            margin-bottom: 0;
         }
-        .img-wrap img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
+        .img-wrap img { width: 100%; height: auto; display: block; }
 
-        /* 테이블 스타일 */
         table { 
             width: 100%; 
             border-collapse: collapse; 
-            margin-top: -1px; /* 이미지 테두리와 겹쳐서 일직선으로 보임 */
+            margin-top: -1px; 
             box-sizing: border-box;
         }
         table td { 
-            border: 1px solid #000; /* 이미지 테두리와 동일한 색상/두께 */
+            border: 1px solid #000; 
             padding: 8px; 
             font-size: 13px; 
         }
 
-        /* 모바일 대응 (화면 너비 768px 이하) */
+        /* 모바일 대응 */
         @media screen and (max-width: 768px) {
-            html, body {
-                height: auto !important;
-                overflow-y: auto !important;
-            }
-            body {
-                padding: 0 20px !important;
-            }
-            header {
-                padding: 20px 0 10px 0 !important;
-            }
-            .main-logo {
-                height: 60px !important; 
-            }
-            nav {
-                padding: 10px 0 !important;
-                flex-wrap: wrap;
-            }
-            nav a {
-                width: auto !important;
-                margin: 5px 10px !important;
-                font-size: 13px !important;
-            }
-            .container {
-                display: block !important; 
-                height: auto !important;
-            }
-            .journal, .ongs {
-                width: 100% !important;
-                height: auto !important;
-                padding: 30px 0 !important;
-                overflow: visible !important;
-                border-right: none !important;
-            }
-            .journal {
-                border-bottom: 1px solid #eee !important;
-            }
-            .ongs {
-                padding-left: 0 !important;
-            }
-            .journal::-webkit-scrollbar, 
-            .ongs::-webkit-scrollbar {
-                display: none;
-            }
+            html, body { height: auto !important; overflow-y: auto !important; }
+            body { padding: 0 20px !important; }
+            header { padding: 20px 0 10px 0 !important; }
+            .logo-wrapper { height: 60px !important; }
+            .main-logo { height: 60px !important; }
+            nav { padding: 10px 0 !important; flex-wrap: wrap; }
+            nav a { width: auto !important; margin: 5px 10px !important; font-size: 13px !important; }
+            .container { display: block !important; height: auto !important; }
+            .journal, .ongs { width: 100% !important; height: auto !important; padding: 30px 0 !important; overflow: visible !important; border-right: none !important; }
+            .journal { border-bottom: 1px solid #eee !important; }
+            .ongs { padding-left: 0 !important; }
         }
     </style>
 </head>
 <body>
 
 <header>
-    <a href="https://ongs.online">
-        <img src="images/logo.webp?v=1" alt="ongs logo" class="main-logo">
+    <a href="index.html" class="logo-wrapper">
+        <img src="images/logo.webp?v=1" alt="ongs logo" class="main-logo default-img">
+        <img src="images/logo_hover.webp?v=1" alt="ongs logo hover" class="main-logo hover-img">
     </a>
 </header>
 
 <nav>
     <a href="about.html">소개</a>
-    <a href="ongs.html">옹즈</a>
+    <a href="index.html">옹즈</a>
     <a href="news.html">지팡이통신</a>
 </nav>
 
