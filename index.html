@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Onze Gazette</title>
+    <style>
+        /* 핸드메이드 웹 느낌을 주는 최소한의 CSS */
+        body { 
+            background-color: #fdfaf6; /* 종이 질감 색상 */
+            color: #222; 
+            font-family: "Times New Roman", "Batang", serif; 
+            line-height: 1.6; 
+            margin: 0; padding: 40px;
+            max-width: 900px; margin: auto;
+        }
+        header { border-bottom: 2px solid #000; margin-bottom: 20px; text-align: center; }
+        h1 { font-size: 3rem; margin-bottom: 5px; letter-spacing: -1px; }
+        nav { border-bottom: 1px solid #000; padding-bottom: 10px; margin-bottom: 30px; text-align: center; }
+        nav a { margin: 0 15px; text-decoration: underline; color: blue; }
+
+        /* 신문 느낌의 레이아웃 */
+        .container { display: flex; gap: 40px; }
+        .journal { flex: 2; border-right: 1px solid #ccc; padding-right: 20px; }
+        .dolls { flex: 1; }
+
+        .item { margin-bottom: 30px; border-bottom: 1px dashed #999; padding-bottom: 10px; }
+        img { max-width: 100%; filter: grayscale(20%); border: 1px solid #000; }
+        table { width: 100%; font-size: 0.9rem; border-collapse: collapse; margin-top: 10px; }
+        table td { border: 1px solid #ddd; padding: 5px; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>ONZE GAZETTE</h1>
+    <p><i>Established 2026. 실과 바늘로 엮는 작은 세계.</i></p>
+</header>
+
+<nav>
+    <a href="#">Journal</a>
+    <a href="#">Dolls Archive</a>
+    <a href="#">About Onze</a>
+</nav>
+
+<div class="container">
+    <div class="journal">
+        <h2>Latest News</h2>
+        <div class="item">
+            <small>2026.02.16</small>
+            <h3>새로운 집지킴이 ’성주옹’의 탄생</h3>
+            <p>오늘 아침, 옹즈의 작업실에서 세 번째 성주옹이 태어났습니다. </p>
+        </div>
+    </div>
+
+    <div class="dolls">
+        <h2>Dolls</h2>
+        <div class="item">
+            <img src="doll_sample.jpg" alt="인형 사진">
+            <table>
+                <tr><td>Name</td><td>Seongju Ong (성주옹)</td></tr>
+                <tr><td>Material</td><td>Linen, Cotton</td></tr>
+                <tr><td>Date</td><td>2026.02</td></tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
