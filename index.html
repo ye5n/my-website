@@ -92,27 +92,27 @@
 
         .journal { 
             flex: 2; 
-            border-right: 1px solid #eee; /* 구분선은 그대로 */
-            padding-right: 10px; /* 글자와 스크롤바 사이 여백 */
+            border-right: 1px solid #eee; 
+            padding-right: 10px; 
         }
-        /* 2. 오른쪽 영역 (ongs) */
+        
         .ongs { 
             flex: 1.2; 
-            padding-left: 20px; /* 오른쪽도 대칭을 위해 여백 조절 */
+            padding-left: 20px; 
         }
 
-        /* 3. 스크롤바 공통 설정 */
+        /* 스크롤바 디자인: 라인에서 3px 띄우기 */
         .journal::-webkit-scrollbar, 
         .ongs::-webkit-scrollbar {
-            width: 5px; /* 전체 통로 너비를 살짝 줄임 */
+            width: 8px; /* 통로를 넉넉히 잡아야 막대가 보입니다 */
         }
 
         .journal::-webkit-scrollbar-thumb, 
         .ongs::-webkit-scrollbar-thumb {
             background: #eee;
             border-radius: 10px;
-            /* [핵심] 간격을 5px로 정밀 조정 */
-            border-right: 5px solid white; 
+            /* 오른쪽 3px를 투명하게 비워서 라인과 간격 형성 */
+            border-right: 3px solid white; 
             background-clip: padding-box; 
         }
 
@@ -127,7 +127,7 @@
         .item p { margin-top: 0; margin-bottom: 0px; line-height: 1.8; }
         .item { margin-bottom: 40px; border-bottom: 1px dashed #ddd; padding-bottom: 20px; }
         
-        /* 이미지 설정 (호버 기능 제거) */
+        /* 이미지 설정 */
         .img-wrap {
             width: 100%;
             border: 1px solid #000;
