@@ -48,7 +48,7 @@
             margin-bottom: 5px;
         }
 
-        /* 네비게이션: 정중앙 정렬 */
+        /* 네비게이션 */
         nav { 
             flex-shrink: 0;
             border-bottom: 1px solid var(--border-color); 
@@ -82,21 +82,22 @@
             width: 100%;
         }
 
-        /* 스크롤 영역 설정 */
+        /* 스크롤 영역: 대칭 여백 설정 */
         .journal, .ongs {
             height: 100%;
             overflow-y: auto; 
             padding-top: 40px;
             padding-bottom: 40px;
             box-sizing: border-box;
-            -ms-overflow-style: none; 
+            /* 스크롤바 숨김 (Firefox, IE) */
             scrollbar-width: none; 
+            -ms-overflow-style: none; 
         }
 
-        /* 스크롤바 투명 설정 (마우스 올릴 때만 살짝 등장) */
+        /* 스크롤바 숨김 (Chrome, Safari) - 마우스 오버 시에만 등장 */
         .journal::-webkit-scrollbar, 
         .ongs::-webkit-scrollbar {
-            width: 4px; /* 매우 얇게 */
+            width: 4px;
         }
         .journal::-webkit-scrollbar-thumb, 
         .ongs::-webkit-scrollbar-thumb {
@@ -108,18 +109,15 @@
             background: rgba(0, 0, 0, 0.1); 
         }
 
-        /* [핵심] 여백 대칭 조정 */
         .journal { 
             flex: 1.8; 
             border-right: 1px solid #eee; 
-            padding-left: 0;   /* 컨테이너 내부 왼쪽 여백 제거 (중앙 정렬 위해) */
             padding-right: 50px; /* 중앙 라인 기준 왼쪽 여백 */
         }
         
         .ongs { 
             flex: 1.2; 
-            padding-left: 50px;  /* 중앙 라인 기준 오른쪽 여백 (journal과 대칭) */
-            padding-right: 0;    /* 오른쪽 끝 여백 제거 */
+            padding-left: 50px; /* 중앙 라인 기준 오른쪽 여백 */
         }
 
         /* 텍스트 요소 */
@@ -127,6 +125,7 @@
         h3 { font-size: 14px; font-weight: 700; margin-top: 10px; margin-bottom: 6px; }
         .item p { margin-top: 0; margin-bottom: 0px; line-height: 1.8; text-align: justify; } 
         .item { margin-bottom: 50px; border-bottom: 1px dashed #ddd; padding-bottom: 30px; }
+        small { color: #888; }
         
         /* 이미지 설정 */
         .img-wrap {
@@ -176,6 +175,13 @@
             <h3>작업실의 기록</h3>
             <p>새로운 실이 도착했습니다. 성주옹의 친구를 곧 만들 예정입니다.</p>
             <small>2026.02.15</small>
+        </div>
+        <div class="item">
+             <h3>&lt;지팡이통신&gt;의 창간</h3>
+            <p>안녕하세요. 옹즈타운의 신문 &lt;지팡이통신&gt;이 2026년 1월 1일, 첫발을 내딛습니다. (박수갈채)
+                이곳에 앞으로 등장할 ‘뉴페이스 옹즈’의 소식과 함께, 얼핏 조용해 보이지만 알고 보면 하루도 조용할 날 없는 옹즈타운의 왁자지껄한 일상을 담아보려 합니다.
+                부디 적은 관심과 많은 응원 부탁드립니다. 얍. </p>
+            <small>2026.01.01</small>
         </div>
     </div>
 
