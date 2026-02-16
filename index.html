@@ -29,23 +29,38 @@
             padding: 0 40px; 
         }
 
+        /* 어바웃 헤더 스타일 적용 + 밀착 효과 */
         header { 
             flex-shrink: 0;
             border-bottom: var(--border-style); 
             text-align: center;
-            padding: 30px 0 0 0; /* 하단 여백 0 유지 */
+            padding: 30px 0 0 0; /* 하단 패딩 0으로 밀착 */
         }
         
         .logo-wrapper {
             position: relative;
             display: inline-block;
-            overflow: hidden;
-            height: 130px; /* PC 로고 크기 확대 (기존 100px) */
+            height: 130px; /* 로고 크기 유지 */
             margin-bottom: 0; 
-            vertical-align: bottom; 
+            vertical-align: bottom; /* 공백 제거 */
         }
-        .main-logo { height: 130px; width: auto; display: block; transition: opacity 0.3s ease; }
-        .logo-wrapper .hover-img { position: absolute; top: 0; left: 50%; transform: translateX(-50%); opacity: 0; transition: opacity 0.3s ease; }
+        
+        .main-logo {
+            height: 130px; 
+            width: auto !important;
+            display: block;
+            transition: opacity 0.3s ease;
+        }
+
+        .hover-img {
+            position: absolute;
+            top: 0; left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            width: auto !important;
+        }
+
         .logo-wrapper:hover .default-img { opacity: 0; }
         .logo-wrapper:hover .hover-img { opacity: 1; }
 
@@ -55,7 +70,7 @@
             padding: 15px 0;
             display: flex; justify-content: center; align-items: center;
         }
-        nav a { text-decoration: none; color: black; font-weight: 500; width: 120px; text-align: center; margin: 0 10px; }
+        nav a { text-decoration: none; color: black; font-weight: 500; width: 120px; text-align: center; margin: 0 10px; white-space: nowrap; }
         nav a:hover { text-decoration: underline; text-underline-offset: 5px; }
 
         .container { display: flex; flex: 1; overflow: hidden; max-width: 1100px; margin: 0 auto; width: 100%; }
@@ -93,9 +108,9 @@
         }
 
         .ongs-img { width: 100%; height: auto; display: block; transition: opacity 0.3s ease; }
-        .img-wrap .hover-img { position: absolute; top: 0; left: 0; opacity: 0; }
-        .img-wrap:hover .default-img { opacity: 0; }
-        .img-wrap:hover .hover-img { opacity: 1; }
+        .img-wrap .hover-img-ong { position: absolute; top: 0; left: 0; opacity: 0; transition: opacity 0.3s ease; width: 100%; }
+        .img-wrap:hover .default-img-ong { opacity: 0; }
+        .img-wrap:hover .hover-img-ong { opacity: 1; }
 
         table { width: 100%; border-collapse: collapse; margin: 0; }
         table td { 
@@ -113,9 +128,18 @@
         @media screen and (max-width: 768px) {
             html, body { height: auto !important; overflow-y: auto !important; }
             body { padding: 0 20px !important; }
-            header { padding: 20px 0 0 0 !important; } 
-            .logo-wrapper { height: 80px !important; } /* 모바일 로고 크기 확대 (기존 60px) */
-            .main-logo { height: 80px !important; }
+            
+            /* 어바웃 모바일 헤더 스타일 기반 수정 */
+            header { 
+                padding: 20px 0 0 0 !important; 
+                height: 101px !important; /* 로고 80px + 패딩 20px + 보더 1px */
+                box-sizing: border-box !important;
+            }
+            .logo-wrapper { height: 80px !important; min-height: 80px !important; }
+            .main-logo { height: 80px !important; width: auto !important; }
+            
+            nav { padding: 10px 0 !important; flex-wrap: wrap; }
+            nav a { width: auto !important; margin: 5px 10px !important; font-size: 13px !important; }
             .container { display: block !important; height: auto !important; }
             .journal, .ongs { width: 100% !important; padding: 30px 0 !important; border-right: none !important; }
             .journal { border-bottom: var(--border-style) !important; }
@@ -128,13 +152,13 @@
 <header>
     <a href="index.html" class="logo-wrapper">
         <img src="images/logo.webp?v=1" alt="ongs logo" class="main-logo default-img">
-        <img src="images/logo_hover.webp?v=1" alt="ongs logo hover" class="main-logo hover-img">
+        <img src="images/logo_hover.webp?v=1" alt="ongs logo hover" class="hover-img">
     </a>
 </header>
 
 <nav>
     <a href="about.html">소개</a>
-    <a href="index.html">옹즈</a>
+    <a href="index.html" style="text-decoration: underline; text-underline-offset: 5px;">옹즈</a>
     <a href="news.html">지팡이통신</a>
 </nav>
 
@@ -156,7 +180,7 @@
         </div>
         <div class="item">
              <h3>&lt;지팡이통신&gt;의 창간</h3>
-            <p>안녕하세요. 옹즈타운의 신문 &lt;지팡이통신&gt;이 2026년 1월 1, 첫발을 내딛습니다. (박수갈채)
+            <p>안녕하세요. 옹즈타운의 신문 &lt;지팡이통신&gt;이 2026년 1월 1일, 첫발을 내딛습니다. (박수갈채)
                 이곳에 앞으로 등장할 ‘뉴페이스 옹즈’의 소식과 함께, 얼핏 조용해 보이지만 알고 보면 하루도 조용할 날 없는 옹즈타운의 왁자지껄한 일상을 담아보려 합니다.
                 부디 적은 관심과 많은 응원 부탁드립니다. 얍. </p>
             <small>2026.01.01</small>
@@ -169,8 +193,8 @@
         <div class="item">
             <div class="item-content-box">
                 <div class="img-wrap">
-                    <img src="images/seongju_1.webp" alt="성주옹" class="ongs-img default-img">
-                    <img src="images/seongju_1_hover.webp" alt="성주옹 호버" class="ongs-img hover-img">
+                    <img src="images/seongju_1.webp" alt="성주옹" class="ongs-img default-img-ong">
+                    <img src="images/seongju_1_hover.webp" alt="성주옹 호버" class="hover-img-ong">
                 </div>
                 <table>
                     <tr><td>Name</td><td>Seongju Ong (성주옹)</td></tr>
@@ -183,8 +207,8 @@
         <div class="item">
             <div class="item-content-box">
                 <div class="img-wrap">
-                    <img src="images/buttumak_1.webp" alt="부뚜막옹" class="ongs-img default-img">
-                    <img src="images/buttumak_1_hover.webp" alt="부뚜막옹 호버" class="ongs-img hover-img">
+                    <img src="images/buttumak_1.webp" alt="부뚜막옹" class="ongs-img default-img-ong">
+                    <img src="images/buttumak_1_hover.webp" alt="부뚜막옹 호버" class="hover-img-ong">
                 </div>
                 <table>
                     <tr><td>Name</td><td>Buttumak Ong (부뚜막옹)</td></tr>
