@@ -7,99 +7,34 @@
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
 
     <style>
-        /* 1. 변수 설정 (마을의 공통 규칙) */
+        /* 1. 변수 설정: 민구홍 스타일의 작은 폰트 크기(13.5px)와 단정한 색상 */
         :root {
             --font-family: "Pretendard Variable", Pretendard, -apple-system, sans-serif;
-            --text-color: black;
-            --background-color: white;
-            --border-color: black;
-            --link-color: black;
+            --text-color: #000;
+            --background-color: #fff;
+            --border-color: #000;
+            --link-color: #000;
+
+            /* 폰트 사이즈 단계 통일 */
+            --base-font-size: 13.5px; 
+            --header-font-size: 24px;  /* 대문 제목 */
+            --title-font-size: 16px;   /* 중제목 */
         }
 
-        /* 2. 전체 스타일 */
+        /* 2. 전체 스타일 정리 */
         body { 
             background-color: var(--background-color);
             color: var(--text-color); 
             font-family: var(--font-family);
-            line-height: 1.8; 
+            font-size: var(--base-font-size); /* 전체 폰트 크기 통일 */
+            line-height: 1.6; 
             margin: 0 auto; 
             padding: 40px;
-            max-width: 900px;
-            word-break: keep-all; /* 한글 줄바꿈 예쁘게 */
+            max-width: 850px; /* 민구홍 스타일의 정갈한 너비 */
+            word-break: keep-all; 
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* 3. 헤더와 네비게이션 (민구홍 스타일처럼 얇은 선) */
+        /* 3. 헤더: 얇은 선과 왼쪽 정렬 */
         header { 
-            border-bottom: 1px solid var(--border-color); 
-            margin-bottom: 20px; 
-            text-align: center; 
-        }
-        h1 { font-size: 3rem; margin-bottom: 5px; letter-spacing: -1px; }
-
-        nav { 
-            border-bottom: 1px solid var(--border-color); 
-            padding-bottom: 10px; 
-            margin-bottom: 30px; 
-            text-align: center; 
-        }
-        nav a { 
-            margin: 0 15px; 
-            text-decoration: none; /* 밑줄 해제 */
-            color: var(--link-color); 
-            font-weight: 500;
-            transition: 0.2s;
-        }
-        nav a:hover { 
-            text-decoration: underline; /* 호버할 때만 밑줄 */
-            font-style: normal; /* 절대 눕지 마! */
-        }
-
-        /* 4. 신문 느낌의 레이아웃 */
-        .container { display: flex; gap: 40px; }
-        .journal { flex: 2; border-right: 1px solid #ccc; padding-right: 20px; }
-        .dolls { flex: 1; }
-
-        .item { margin-bottom: 30px; border-bottom: 1px dashed #999; padding-bottom: 10px; }
-        img { max-width: 100%; filter: grayscale(20%); border: 1px solid #000; }
-        table { width: 100%; font-size: 0.9rem; border-collapse: collapse; margin-top: 10px; }
-        table td { border: 1px solid #ddd; padding: 5px; }
-    </style>
-</head>
-<body>
-
-<header>
-    <h1>ongs town</h1>
-    <p>Established 2026. 실과 바늘로 엮는 작은 세계.</p>
-</header>
-
-<nav>
-    <a href="#">지팡이통신</a>
-    <a href="#">옹카이브</a>
-    <a href="#">어바웃 옹</a>
-</nav>
-
-<div class="container">
-    <div class="journal">
-        <h2>지팡이통신 최신 소식</h2>
-        <div class="item">
-            <small>2026.02.16</small>
-            <h3>옹즈 소식지 &lt;지팡이통신&gt;의 창간</h3>
-            <p>옹즈 신문 &lt;지팡이통신&gt;이 첫 발행되었습니다. </p>
-        </div>
-    </div>
-
-    <div class="dolls">
-        <h2>Dolls</h2>
-        <div class="item">
-            <img src="doll_sample.jpg" alt="인형 사진">
-            <table>
-                <tr><td>Name</td><td>Seongju Ong (성주옹)</td></tr>
-                <tr><td>Material</td><td>Linen, Cotton</td></tr>
-                <tr><td>Date</td><td>2026.02</td></tr>
-            </table>
-        </div>
-    </div>
-</div>
-
-</body>
-</html>
+            border-bottom: 1px solid var(--border-
