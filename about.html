@@ -6,7 +6,7 @@
     <title>About - ongs</title>
     <link rel="icon" href="images/favicon.png?v=1" type="image/png">
     
-    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
 
     <style>
         :root {
@@ -47,24 +47,21 @@
             height: 100px; 
             margin-bottom: 5px; 
             vertical-align: middle;
-            /* overflow: hidden; 삭제 - 이미지가 잘리는 것 방지 */
         }
         
         .main-logo {
             height: 100px; 
-            width: auto !important; /* 가로 너비 자동 유지 */
+            width: auto !important; 
             display: block;
             transition: opacity 0.3s ease;
         }
 
         .hover-img {
             position: absolute;
-            top: 0; 
-            left: 50%;
+            top: 0; left: 50%;
             transform: translateX(-50%);
             opacity: 0;
             transition: opacity 0.3s ease;
-            width: auto !important; /* 호버 이미지도 너비 자동 */
         }
 
         .logo-wrapper:hover .default-img { opacity: 0; }
@@ -93,8 +90,9 @@
             text-underline-offset: 5px;
         }
 
+        /* [수정] 소개 페이지는 텍스트가 중앙에 오도록 레이아웃 변경 */
         .container { 
-            display: flex; 
+            display: block; /* flex 해제 */
             flex: 1; 
             overflow: hidden; 
             max-width: 1100px; 
@@ -116,43 +114,40 @@
         .about-content:hover::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.1); }
 
         h2 { 
-            font-size: 16px; 
+            font-size: 18px; /* 헤드라인 크기 살짝 키움 */
             font-weight: 700; 
-            margin-bottom: 25px; 
+            margin-bottom: 30px; 
             text-transform: uppercase; 
             letter-spacing: 0.05em; 
         }
 
         .about-text {
-            max-width: 600px; 
+            max-width: 700px; /* 본문 폭 조절 */
+            margin: 0 auto; /* 중앙 정렬 */
         }
 
         .about-text p { 
             margin-top: 0; 
             margin-bottom: 30px; 
             line-height: 1.8; 
-            text-align: justify; 
+            text-align: left; /* 캡처와 동일하게 왼쪽 정렬 */
             word-break: keep-all;
         }
 
-        /* 모바일 대응 - index.html과 1px의 오차도 없이 일치 */
         @media screen and (max-width: 768px) {
             html, body { height: auto !important; overflow-y: auto !important; }
             body { padding: 0 20px !important; }
             header { padding: 20px 0 10px 0 !important; }
             
-            .logo-wrapper { 
-                height: 60px !important; /* 모바일 로고 높이 */
-            }
-            .main-logo { 
-                height: 60px !important; 
-                width: auto !important; /* 모바일에서도 비율 유지 */
-            }
+            .logo-wrapper { height: 60px !important; }
+            .main-logo { height: 60px !important; width: auto !important; }
             
             nav { padding: 10px 0 !important; flex-wrap: wrap; }
             nav a { width: auto !important; margin: 5px 10px !important; font-size: 13px !important; }
-            .container { display: block !important; height: auto !important; }
+            
+            .container { padding: 0 5px; } /* 모바일 여백 */
             .about-content { padding: 30px 0 !important; overflow: visible !important; }
+            h2 { font-size: 16px; margin-bottom: 20px; }
         }
     </style>
 </head>
