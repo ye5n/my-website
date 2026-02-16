@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ongs - ongs</title>
     <link rel="icon" href="images/favicon.png?v=1" type="image/png">
+    
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
 
     <style>
@@ -28,13 +29,14 @@
             padding: 0 40px; 
         }
 
-        /* 공통 헤더 스타일 (110px / 20px) */
+        /* 헤더 스타일: 로고 110px / 상하 20px */
         header { 
             flex-shrink: 0;
             border-bottom: var(--border-style); 
             text-align: center;
             padding: 20px 0; 
         }
+        
         .logo-wrapper {
             position: relative;
             display: inline-block;
@@ -42,8 +44,20 @@
             vertical-align: middle;
             text-decoration: none;
         }
-        .main-logo, .logo-wrapper .hover-img { height: 110px; width: auto !important; display: block; transition: opacity 0.3s ease; }
-        .logo-wrapper .hover-img { position: absolute; top: 0; left: 50%; transform: translateX(-50%); opacity: 0; }
+        
+        .main-logo, .logo-wrapper .hover-img {
+            height: 110px; 
+            width: auto !important;
+            display: block;
+            transition: opacity 0.3s ease;
+        }
+
+        .logo-wrapper .hover-img {
+            position: absolute;
+            top: 0; left: 50%; transform: translateX(-50%);
+            opacity: 0;
+        }
+
         .logo-wrapper:hover .default-img { opacity: 0; }
         .logo-wrapper:hover .hover-img { opacity: 1; }
 
@@ -56,34 +70,33 @@
         nav a { text-decoration: none; color: black; font-weight: 500; width: 120px; text-align: center; margin: 0 10px; white-space: nowrap; }
         nav a:hover { text-decoration: underline; text-underline-offset: 5px; }
 
-        /* 격자형 컨테이너 */
+        /* 격자 컨테이너: 맨 왼쪽 세로선 제거 */
         .ongs-container {
             flex: 1;
             overflow-y: auto; 
             scrollbar-width: none; 
             -ms-overflow-style: none;
-            /* 컨테이너 왼쪽 끝 선 */
-            border-left: var(--border-style);
         }
         .ongs-container::-webkit-scrollbar { width: 4px; }
         .ongs-container::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.1); border-radius: 10px; }
 
         .ongs-grid {
             display: grid;
-            grid-template-columns: repeat(5, 1fr); /* 정확히 5등분 */
             width: 100%;
+            grid-template-columns: repeat(4, 1fr); /* 기본 맥북 4단 */
         }
 
-        /* 각 아이템 카드 */
+        /* 아이템 카드 공통: 오른쪽과 아래쪽에만 선을 긋습니다 */
         .ong-card {
             border-right: var(--border-style);
             border-bottom: var(--border-style);
-            padding: 30px 20px;
+            padding: 35px 25px;
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
         }
 
+        /* 사진 및 테이블 스타일 유지 */
         .item-content-box {
             width: 100%;
             border: var(--border-style);
@@ -114,18 +127,36 @@
 
         .ong-desc { font-size: 14px; line-height: 1.6; word-break: keep-all; margin-top: 10px; }
 
-        /* 반응형 대응 */
-        @media screen and (max-width: 1200px) {
+        /* --- 해상도별 칸 조절 및 맨 오른쪽 선 제거 --- */
+
+        /* 1. 아주 넓은 모니터: 5단 */
+        @media screen and (min-width: 1600px) {
+            .ongs-grid { grid-template-columns: repeat(5, 1fr); }
+            .ong-card { border-right: var(--border-style); } /* 기본 선 복구 */
+            .ong-card:nth-child(5n) { border-right: none; } /* 5번째마다 선 제거 */
+        }
+
+        /* 2. 일반 PC/맥북: 4단 */
+        @media screen and (max-width: 1599px) and (min-width: 1100px) {
             .ongs-grid { grid-template-columns: repeat(4, 1fr); }
+            .ong-card { border-right: var(--border-style); }
+            .ong-card:nth-child(4n) { border-right: none; } /* 4번째마다 선 제거 */
         }
-        @media screen and (max-width: 900px) {
+
+        /* 3. 작은 창/태블릿: 2단 */
+        @media screen and (max-width: 1099px) and (min-width: 769px) {
             .ongs-grid { grid-template-columns: repeat(2, 1fr); }
+            .ong-card { border-right: var(--border-style); }
+            .ong-card:nth-child(2n) { border-right: none; } /* 2번째마다 선 제거 */
         }
+
+        /* 4. 모바일: 1단 */
         @media screen and (max-width: 768px) {
             body { padding: 0 20px !important; }
-            .ongs-container { border-left: none; }
+            header { padding: 15px 0 !important; }
+            .logo-wrapper, .main-logo, .logo-wrapper .hover-img { height: 70px !important; }
             .ongs-grid { grid-template-columns: 1fr; }
-            .ong-card { padding: 40px 0; border-right: none; }
+            .ong-card { padding: 40px 0; border-right: none; } /* 모든 오른쪽 선 제거 */
         }
     </style>
 </head>
@@ -168,7 +199,7 @@
                 </div>
                 <table>
                     <tr><td>Name</td><td>Buttumak Ong</td></tr>
-                    <tr><td>Material</td><td>Leather</td></tr>
+                    <tr><td>Material</td><td>Leather, Cotton</td></tr>
                 </table>
             </div>
             <p class="ong-desc">따뜻한 온기를 찾아다니는 부뚜막옹입니다.</p>
