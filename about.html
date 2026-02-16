@@ -35,7 +35,7 @@
         }
 
         header { 
-            flex-shrink: 0;
+            flex-shrink: 0; /* 모바일에서 헤더가 압축되는 것을 방지 */
             border-bottom: var(--border-style); 
             text-align: center;
             padding: 30px 0 10px 0;
@@ -51,7 +51,7 @@
         
         .main-logo {
             height: 100px; 
-            width: auto !important; 
+            width: auto !important;
             display: block;
             transition: opacity 0.3s ease;
         }
@@ -62,6 +62,7 @@
             transform: translateX(-50%);
             opacity: 0;
             transition: opacity 0.3s ease;
+            width: auto !important;
         }
 
         .logo-wrapper:hover .default-img { opacity: 0; }
@@ -90,9 +91,8 @@
             text-underline-offset: 5px;
         }
 
-        /* [수정] 소개 페이지는 텍스트가 중앙에 오도록 레이아웃 변경 */
         .container { 
-            display: block; /* flex 해제 */
+            display: flex; 
             flex: 1; 
             overflow: hidden; 
             max-width: 1100px; 
@@ -114,40 +114,50 @@
         .about-content:hover::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.1); }
 
         h2 { 
-            font-size: 18px; /* 헤드라인 크기 살짝 키움 */
+            font-size: 16px; 
             font-weight: 700; 
-            margin-bottom: 30px; 
+            margin-bottom: 25px; 
             text-transform: uppercase; 
             letter-spacing: 0.05em; 
         }
 
         .about-text {
-            max-width: 700px; /* 본문 폭 조절 */
-            margin: 0 auto; /* 중앙 정렬 */
+            max-width: 600px; 
         }
 
         .about-text p { 
             margin-top: 0; 
             margin-bottom: 30px; 
             line-height: 1.8; 
-            text-align: left; /* 캡처와 동일하게 왼쪽 정렬 */
+            text-align: justify; 
             word-break: keep-all;
         }
 
+        /* 모바일 대응 */
         @media screen and (max-width: 768px) {
             html, body { height: auto !important; overflow-y: auto !important; }
             body { padding: 0 20px !important; }
-            header { padding: 20px 0 10px 0 !important; }
             
-            .logo-wrapper { height: 60px !important; }
-            .main-logo { height: 60px !important; width: auto !important; }
+            /* 모바일 헤더 높이 사수 */
+            header { 
+                padding: 20px 0 10px 0 !important; 
+                height: 91px !important; /* 로고 60px + 위 패딩 20px + 아래 패딩 10px + 테두리 1px */
+                box-sizing: border-box !important;
+            }
+            
+            .logo-wrapper { 
+                height: 60px !important; 
+                min-height: 60px !important;
+            }
+            .main-logo { 
+                height: 60px !important; 
+                width: auto !important; 
+            }
             
             nav { padding: 10px 0 !important; flex-wrap: wrap; }
             nav a { width: auto !important; margin: 5px 10px !important; font-size: 13px !important; }
-            
-            .container { padding: 0 5px; } /* 모바일 여백 */
+            .container { display: block !important; height: auto !important; }
             .about-content { padding: 30px 0 !important; overflow: visible !important; }
-            h2 { font-size: 16px; margin-bottom: 20px; }
         }
     </style>
 </head>
