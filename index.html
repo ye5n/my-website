@@ -40,35 +40,40 @@
             text-align: center;
             padding: 30px 0 10px 0;
         }
+        
         /* 로고 스타일 제어 */
         .main-logo {
-            height: 100px; /* 원하는 로고 높이로 조절하세요 */
-            width: auto;  /* 가로 세로 비율 유지 */
+            height: 100px; 
+            width: auto;  
             margin-bottom: 5px;
+            transition: opacity 0.3s ease;
+        }
+        .main-logo:hover {
+            opacity: 0.8;
         }
 
-        .tagline { margin-top: 0px; color: #000; }
-
-        /* 네비게이션 */
+        /* 네비게이션: 정중앙 정렬 핵심 */
         nav { 
             flex-shrink: 0;
             border-bottom: 1px solid var(--border-color); 
             padding: 20px 0;
             margin-bottom: 0;
-    
-        /* 추가된 부분: 메뉴를 정중앙으로 정렬 */
             display: flex;
             justify-content: center; 
             align-items: center;
-            gap: 40px; /* 메뉴 사이의 간격을 조절하세요 (기존 margin 대신 사용) */
         }
+
         nav a { 
             text-decoration: none; 
             color: black; 
             font-weight: 500;
-            margin: 0; /* 기존 마진은 0으로 초기화 */
-            white-space: nowrap; /* 글자가 줄바꿈되지 않도록 고정 */
+            white-space: nowrap;
+            /* 각 메뉴의 너비를 동일하게 맞추어 '옹즈'를 정중앙에 배치 */
+            width: 120px; 
+            text-align: center;
+            margin: 0 10px;
         }
+
         nav a:hover { 
             text-decoration: underline; 
             text-underline-offset: 5px;
@@ -148,7 +153,7 @@
 <body>
 
 <header>
-        <a href="https://ongs.online">
+    <a href="https://ongs.online">
         <img src="images/logo.webp" alt="ongs logo" class="main-logo">
     </a>
 </header>
@@ -184,7 +189,7 @@
         </div>
     </div>
 
-<div class="ongs">
+    <div class="ongs">
         <h2>Ongs</h2> 
         
         <div class="item">
@@ -211,6 +216,7 @@
             </table>
         </div>
     </div>
+</div>
 
 </body>
 </html>
