@@ -29,7 +29,6 @@
             padding: 0 40px; 
         }
 
-        /* 헤더 상하 여백 20px로 조절 */
         header { 
             flex-shrink: 0;
             border-bottom: var(--border-style); 
@@ -40,14 +39,13 @@
         .logo-wrapper {
             position: relative;
             display: inline-block;
-            height: 110px; /* 로고 사이즈 축소 적용 */
-            margin-bottom: 0; 
+            height: 110px;
             vertical-align: middle;
             text-decoration: none;
         }
         
         .main-logo {
-            height: 110px; /* 로고 높이 축소 */
+            height: 110px; 
             width: auto !important;
             display: block;
             transition: opacity 0.3s ease;
@@ -131,10 +129,20 @@
         @media screen and (max-width: 768px) {
             html, body { height: auto !important; overflow-y: auto !important; }
             body { padding: 0 20px !important; }
-            header { padding: 15px 0 15px 0 !important; height: auto !important; }
-            .logo-wrapper { height: 70px !important; min-height: 70px !important; }
-            .main-logo { height: 70px !important; width: auto !important; }
-            .logo-wrapper .hover-img { height: 70px !important; }
+            header { 
+                padding: 15px 0 !important; 
+                height: auto !important; 
+                box-sizing: border-box !important;
+            }
+            .logo-wrapper { 
+                height: 70px !important; 
+                min-height: 70px !important; 
+                display: inline-block !important;
+            }
+            .main-logo, .logo-wrapper .hover-img { 
+                height: 70px !important; 
+                width: auto !important; 
+            }
             nav { padding: 10px 0 !important; flex-wrap: wrap; }
             nav a { width: auto !important; margin: 5px 10px !important; font-size: 14px !important; }
             .container { display: block !important; height: auto !important; }
