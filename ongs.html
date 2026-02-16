@@ -28,7 +28,7 @@
             padding: 0 40px; 
         }
 
-        /* 헤더 스타일 (110px / 20px 여백) */
+        /* 공통 헤더 스타일 (110px / 20px) */
         header { 
             flex-shrink: 0;
             border-bottom: var(--border-style); 
@@ -56,33 +56,32 @@
         nav a { text-decoration: none; color: black; font-weight: 500; width: 120px; text-align: center; margin: 0 10px; white-space: nowrap; }
         nav a:hover { text-decoration: underline; text-underline-offset: 5px; }
 
-        /* 5단 가로 분할 래퍼 */
-        .ongs-wrapper {
-            display: flex;
+        /* 격자형 컨테이너 */
+        .ongs-container {
             flex: 1;
-            overflow: hidden; 
+            overflow-y: auto; 
+            scrollbar-width: none; 
+            -ms-overflow-style: none;
+            /* 컨테이너 왼쪽 끝 선 */
+            border-left: var(--border-style);
+        }
+        .ongs-container::-webkit-scrollbar { width: 4px; }
+        .ongs-container::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.1); border-radius: 10px; }
+
+        .ongs-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr); /* 정확히 5등분 */
             width: 100%;
         }
 
-        /* 각 컬럼 스타일 */
-        .ong-column {
-            flex: 1; 
+        /* 각 아이템 카드 */
+        .ong-card {
             border-right: var(--border-style);
-            height: 100%;
-            overflow-y: auto; /* 개별 스크롤 활성화 */
-            padding: 40px 20px; /* 위아래 여백을 줘서 스크롤 시 답답하지 않게 함 */
+            border-bottom: var(--border-style);
+            padding: 30px 20px;
             box-sizing: border-box;
-            scrollbar-width: none; 
-            -ms-overflow-style: none;
-        }
-        .ong-column:last-child { border-right: none; }
-        .ong-column::-webkit-scrollbar { width: 4px; }
-        .ong-column::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0); border-radius: 10px; }
-        .ong-column:hover::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.1); }
-
-        /* 아이템 단위 (아래로 계속 추가되는 요소) */
-        .ong-item {
-            margin-bottom: 60px; /* 아이템 간 간격 */
+            display: flex;
+            flex-direction: column;
         }
 
         .item-content-box {
@@ -113,19 +112,20 @@
         table tr:last-child td { border-bottom: none; }
         table td:last-child { border-right: none; }
 
-        .ong-desc { font-size: 14px; line-height: 1.6; word-break: keep-all; }
+        .ong-desc { font-size: 14px; line-height: 1.6; word-break: keep-all; margin-top: 10px; }
 
-        /* 반응형 */
-        @media screen and (max-width: 1024px) {
-            .ongs-wrapper { flex-wrap: wrap; overflow-y: auto; }
-            .ong-column { flex: none; width: 50%; height: auto; border-bottom: var(--border-style); }
-            .ong-column:nth-child(even) { border-right: none; }
+        /* 반응형 대응 */
+        @media screen and (max-width: 1200px) {
+            .ongs-grid { grid-template-columns: repeat(4, 1fr); }
+        }
+        @media screen and (max-width: 900px) {
+            .ongs-grid { grid-template-columns: repeat(2, 1fr); }
         }
         @media screen and (max-width: 768px) {
             body { padding: 0 20px !important; }
-            header { padding: 15px 0 !important; }
-            .logo-wrapper, .main-logo, .logo-wrapper .hover-img { height: 70px !important; }
-            .ong-column { width: 100%; border-right: none; padding: 30px 0; }
+            .ongs-container { border-left: none; }
+            .ongs-grid { grid-template-columns: 1fr; }
+            .ong-card { padding: 40px 0; border-right: none; }
         }
     </style>
 </head>
@@ -144,9 +144,9 @@
     <a href="journal.html">지팡이통신</a>
 </nav>
 
-<div class="ongs-wrapper">
-    <div class="ong-column">
-        <div class="ong-item">
+<div class="ongs-container">
+    <div class="ongs-grid">
+        <div class="ong-card">
             <div class="item-content-box">
                 <div class="img-wrap">
                     <img src="images/seongju_1.webp" alt="성주옹" class="ongs-img default-img-ong">
@@ -159,24 +159,8 @@
             </div>
             <p class="ong-desc">집의 중심을 지키는 듬직한 성주옹입니다.</p>
         </div>
-        
-        <div class="ong-item">
-            <div class="item-content-box">
-                <div class="img-wrap">
-                    <img src="images/seongju_2.webp" alt="성주옹 친구" class="ongs-img default-img-ong">
-                    <img src="images/seongju_2_hover.webp" alt="성주옹 친구 호버" class="hover-img-ong">
-                </div>
-                <table>
-                    <tr><td>Name</td><td>Seongju Friend</td></tr>
-                    <tr><td>Material</td><td>Cotton</td></tr>
-                </table>
-            </div>
-            <p class="ong-desc">성주옹의 새로운 친구입니다.</p>
-        </div>
-    </div>
 
-    <div class="ong-column">
-        <div class="ong-item">
+        <div class="ong-card">
             <div class="item-content-box">
                 <div class="img-wrap">
                     <img src="images/buttumak_1.webp" alt="부뚜막옹" class="ongs-img default-img-ong">
@@ -189,13 +173,8 @@
             </div>
             <p class="ong-desc">따뜻한 온기를 찾아다니는 부뚜막옹입니다.</p>
         </div>
-    </div>
 
-    <div class="ong-column"></div>
-
-    <div class="ong-column"></div>
-
-    <div class="ong-column"></div>
+        </div>
 </div>
 
 </body>
