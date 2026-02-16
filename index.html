@@ -1,223 +1,197 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ongs</title>
-    <link rel="icon" href="images/favicon.png?v=1" type="image/png">
-    
-    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ongs</title>
+    <link rel="icon" href="images/favicon.png?v=1" type="image/png">
+    
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
 
-    <style>
-        :root {
-            --font-family: "Pretendard Variable", Pretendard, sans-serif;
-            --text-color: black;
-            --background-color: white;
-            --border-style: 1px solid #000;
-            --base-font-size: 14px;
-        }
+    <style>
+        :root {
+            --font-family: "Pretendard Variable", Pretendard, sans-serif;
+            --text-color: black;
+            --background-color: white;
+            --border-style: 1px solid #000;
+            --base-font-size: 14px;
+        }
 
-        html, body { height: 100%; margin: 0; overflow: hidden; }
-        body { 
-            background-color: var(--background-color);
-            color: var(--text-color); 
-            font-family: var(--font-family);
-            font-size: var(--base-font-size);
-            line-height: 1.8; 
-            display: flex;
-            flex-direction: column; 
-            padding: 0 40px; 
-        }
+        html, body { height: 100%; margin: 0; overflow: hidden; }
+        body { 
+            background-color: var(--background-color);
+            color: var(--text-color); 
+            font-family: var(--font-family);
+            font-size: var(--base-font-size);
+            line-height: 1.8; 
+            display: flex;
+            flex-direction: column; 
+            padding: 0 40px; 
+        }
 
-        /* 어바웃 헤더 스타일 적용 + 밀착 효과 */
-        header { 
-            flex-shrink: 0;
-            border-bottom: var(--border-style); 
-            text-align: center;
-            padding: 30px 0 0 0; /* 하단 패딩 0으로 밀착 */
-        }
-        
-        .logo-wrapper {
-            position: relative;
-            display: inline-block;
-            height: 130px; /* 로고 크기 유지 */
-            margin-bottom: 0; 
-            vertical-align: bottom; /* 공백 제거 */
-        }
-        
-        .main-logo {
-            height: 130px; 
-            width: auto !important;
-            display: block;
-            transition: opacity 0.3s ease;
-        }
+        header { 
+            flex-shrink: 0;
+            border-bottom: var(--border-style); 
+            text-align: center;
+            padding: 30px 0 10px 0;
+        }
+        
+        .logo-wrapper {
+            position: relative;
+            display: inline-block;
+            overflow: hidden;
+            height: 100px; 
+            margin-bottom: 5px; 
+            vertical-align: middle;
+        }
+        .main-logo { height: 100px; width: auto; display: block; transition: opacity 0.3s ease; }
+        .logo-wrapper .hover-img { position: absolute; top: 0; left: 50%; transform: translateX(-50%); opacity: 0; transition: opacity 0.3s ease; }
+        .logo-wrapper:hover .default-img { opacity: 0; }
+        .logo-wrapper:hover .hover-img { opacity: 1; }
 
-        .hover-img {
-            position: absolute;
-            top: 0; left: 50%;
-            transform: translateX(-50%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            width: auto !important;
-        }
+        nav { 
+            flex-shrink: 0;
+            border-bottom: var(--border-style); 
+            padding: 15px 0;
+            display: flex; justify-content: center; align-items: center;
+        }
+        nav a { text-decoration: none; color: black; font-weight: 500; width: 120px; text-align: center; margin: 0 10px; }
+        nav a:hover { text-decoration: underline; text-underline-offset: 5px; }
 
-        .logo-wrapper:hover .default-img { opacity: 0; }
-        .logo-wrapper:hover .hover-img { opacity: 1; }
+        .container { display: flex; flex: 1; overflow: hidden; max-width: 1100px; margin: 0 auto; width: 100%; }
 
-        nav { 
-            flex-shrink: 0;
-            border-bottom: var(--border-style); 
-            padding: 15px 0;
-            display: flex; justify-content: center; align-items: center;
-        }
-        nav a { text-decoration: none; color: black; font-weight: 500; width: 120px; text-align: center; margin: 0 10px; white-space: nowrap; }
-        nav a:hover { text-decoration: underline; text-underline-offset: 5px; }
+        .journal, .ongs {
+            height: 100%; overflow-y: auto; 
+            padding-top: 40px; padding-bottom: 40px; box-sizing: border-box;
+            scrollbar-width: none; -ms-overflow-style: none; 
+        }
+        .journal::-webkit-scrollbar, .ongs::-webkit-scrollbar { width: 4px; }
+        .journal::-webkit-scrollbar-thumb, .ongs::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0); border-radius: 10px; }
+        .journal:hover::-webkit-scrollbar-thumb, .ongs:hover::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.1); }
 
-        .container { display: flex; flex: 1; overflow: hidden; max-width: 1100px; margin: 0 auto; width: 100%; }
+        .journal { flex: 1.8; border-right: var(--border-style); padding-right: 50px; }
+        .ongs { flex: 1.2; padding-left: 50px; }
 
-        .journal, .ongs {
-            height: 100%; overflow-y: auto; 
-            padding-top: 40px; padding-bottom: 40px; box-sizing: border-box;
-            scrollbar-width: none; -ms-overflow-style: none; 
-        }
-        .journal::-webkit-scrollbar, .ongs::-webkit-scrollbar { width: 4px; }
-        .journal::-webkit-scrollbar-thumb, .ongs::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0); border-radius: 10px; }
-        .journal:hover::-webkit-scrollbar-thumb, .ongs:hover::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.1); }
+        h2 { font-size: 16px; font-weight: 700; margin-bottom: 25px; text-transform: uppercase; letter-spacing: 0.05em; }
+        h3 { font-size: 14px; font-weight: 700; margin-top: 10px; margin-bottom: 6px; }
+        .item { margin-bottom: 50px; border-bottom: var(--border-style); padding-bottom: 30px; }
+        .journal a { color: #000; text-decoration: underline; text-underline-offset: 3px; }
 
-        .journal { flex: 1.8; border-right: var(--border-style); padding-right: 50px; }
-        .ongs { flex: 1.2; padding-left: 50px; }
+        /* 옹즈 이미지+테이블 밀착 상자 스타일 */
+        .item-content-box {
+            width: 100%;
+            border: var(--border-style);
+            box-sizing: border-box;
+            line-height: 0;
+            overflow: hidden;
+        }
 
-        h2 { font-size: 16px; font-weight: 700; margin-bottom: 25px; text-transform: uppercase; letter-spacing: 0.05em; }
-        h3 { font-size: 14px; font-weight: 700; margin-top: 10px; margin-bottom: 6px; }
-        .item { margin-bottom: 50px; border-bottom: var(--border-style); padding-bottom: 30px; }
-        .journal a { color: #000; text-decoration: underline; text-underline-offset: 3px; }
+        .img-wrap {
+            position: relative;
+            width: 100%;
+            border-bottom: var(--border-style);
+            cursor: pointer;
+        }
 
-        .item-content-box {
-            width: 100%;
-            border: var(--border-style);
-            box-sizing: border-box;
-            line-height: 0;
-            overflow: hidden;
-        }
+        .ongs-img { width: 100%; height: auto; display: block; transition: opacity 0.3s ease; }
+        .img-wrap .hover-img { position: absolute; top: 0; left: 0; opacity: 0; }
+        .img-wrap:hover .default-img { opacity: 0; }
+        .img-wrap:hover .hover-img { opacity: 1; }
 
-        .img-wrap {
-            position: relative;
-            width: 100%;
-            border-bottom: var(--border-style);
-            cursor: pointer;
-        }
+        table { width: 100%; border-collapse: collapse; margin: 0; }
+        table td { 
+            border: none; 
+            border-bottom: var(--border-style); 
+            border-right: var(--border-style);
+            padding: 8px; 
+            font-size: 13px; 
+            line-height: 1.5; 
+            color: black;
+        }
+        table tr:last-child td { border-bottom: none; }
+        table td:last-child { border-right: none; }
 
-        .ongs-img { width: 100%; height: auto; display: block; transition: opacity 0.3s ease; }
-        .img-wrap .hover-img-ong { position: absolute; top: 0; left: 0; opacity: 0; transition: opacity 0.3s ease; width: 100%; }
-        .img-wrap:hover .default-img-ong { opacity: 0; }
-        .img-wrap:hover .hover-img-ong { opacity: 1; }
-
-        table { width: 100%; border-collapse: collapse; margin: 0; }
-        table td { 
-            border: none; 
-            border-bottom: var(--border-style); 
-            border-right: var(--border-style);
-            padding: 8px; 
-            font-size: 13px; 
-            line-height: 1.5; 
-            color: black;
-        }
-        table tr:last-child td { border-bottom: none; }
-        table td:last-child { border-right: none; }
-
-        @media screen and (max-width: 768px) {
-            html, body { height: auto !important; overflow-y: auto !important; }
-            body { padding: 0 20px !important; }
-            
-            /* 어바웃 모바일 헤더 스타일 기반 수정 */
-            header { 
-                padding: 20px 0 0 0 !important; 
-                height: 101px !important; /* 로고 80px + 패딩 20px + 보더 1px */
-                box-sizing: border-box !important;
-            }
-            .logo-wrapper { height: 80px !important; min-height: 80px !important; }
-            .main-logo { height: 80px !important; width: auto !important; }
-            
-            nav { padding: 10px 0 !important; flex-wrap: wrap; }
-            nav a { width: auto !important; margin: 5px 10px !important; font-size: 13px !important; }
-            .container { display: block !important; height: auto !important; }
-            .journal, .ongs { width: 100% !important; padding: 30px 0 !important; border-right: none !important; }
-            .journal { border-bottom: var(--border-style) !important; }
-            .ongs { padding-left: 0 !important; }
-        }
-    </style>
+        @media screen and (max-width: 768px) {
+            html, body { height: auto !important; overflow-y: auto !important; }
+            body { padding: 0 20px !important; }
+            .container { display: block !important; height: auto !important; }
+            .journal, .ongs { width: 100% !important; padding: 30px 0 !important; border-right: none !important; }
+            .journal { border-bottom: var(--border-style) !important; }
+            .ongs { padding-left: 0 !important; }
+        }
+    </style>
 </head>
 <body>
 
 <header>
-    <a href="index.html" class="logo-wrapper">
-        <img src="images/logo.webp?v=1" alt="ongs logo" class="main-logo default-img">
-        <img src="images/logo_hover.webp?v=1" alt="ongs logo hover" class="hover-img">
-    </a>
+    <a href="index.html" class="logo-wrapper">
+        <img src="images/logo.webp?v=1" alt="ongs logo" class="main-logo default-img">
+        <img src="images/logo_hover.webp?v=1" alt="ongs logo hover" class="main-logo hover-img">
+    </a>
 </header>
 
 <nav>
-    <a href="about.html">소개</a>
-    <a href="index.html" style="text-decoration: underline; text-underline-offset: 5px;">옹즈</a>
-    <a href="news.html">지팡이통신</a>
+    <a href="about.html">소개</a>
+    <a href="index.html">옹즈</a>
+    <a href="news.html">지팡이통신</a>
 </nav>
 
 <div class="container">
-    <div class="journal">
-        <h2>Latest News</h2>
-        <div class="item">
-             <h3>집지킴이 옹즈의 '구해줘 홈즈'</h3>
-            <p>성주옹, 부뚜막옹, 삼신할미옹은 아주 오래전부터 사람들의 집과 마음 한구석을 묵묵히 지켜온 집지킴이 옹들이다.
-                <i>“집을 지키는 일은 곧 마음을 지키는 일.”</i> 오랜 세월을 건너 대대로 이어져온 그 믿음을 고스란히 품은 26년생 집지킴이 옹즈 삼인방이 이제 새로운 터를 찾아 나섰다. 지금 이들은 서울숲 앞 <a href="https://www.instagram.com/narrative.object/" target="_blank">네러티브 오브젝트</a>에 머물며 자신들이 새롭게 지키게 될 보금자리를 기다리고 있다.
-                앞으로 이들이 어떤 집을 만나게 될지, 그곳에 또 어떤 이야기가 깃들게 될지 아직은 알 수 없다. 그러나 집을 지킨다는 것이 곧 마음을 지키는 일이라는 믿음만은 예전과 다르지 않다.
-                이들의 여정 속에서 따뜻한 인연과 오래도록 머물 이야기가 피어나기를 바라며, 독자 여러분의 많은 관심과 응원을 부탁드린다.</p>
-             <small>2026.02.17</small>
-        </div>
-        <div class="item">
-            <h3>작업실의 기록</h3>
-            <p>새로운 실이 도착했습니다. 성주옹의 친구를 곧 만들 예정입니다.</p>
-            <small>2026.02.15</small>
-        </div>
-        <div class="item">
-             <h3>&lt;지팡이통신&gt;의 창간</h3>
-            <p>안녕하세요. 옹즈타운의 신문 &lt;지팡이통신&gt;이 2026년 1월 1일, 첫발을 내딛습니다. (박수갈채)
-                이곳에 앞으로 등장할 ‘뉴페이스 옹즈’의 소식과 함께, 얼핏 조용해 보이지만 알고 보면 하루도 조용할 날 없는 옹즈타운의 왁자지껄한 일상을 담아보려 합니다.
-                부디 적은 관심과 많은 응원 부탁드립니다. 얍. </p>
-            <small>2026.01.01</small>
-        </div>
-    </div>
+    <div class="journal">
+        <h2>Latest News</h2>
+        <div class="item">
+             <h3>집지킴이 옹즈의 '구해줘 홈즈'</h3>
+            <p>성주옹, 부뚜막옹, 삼신할미옹은 아주 오래전부터 사람들의 집과 마음 한구석을 묵묵히 지켜온 집지킴이 옹들이다.
+                <i>“집을 지키는 일은 곧 마음을 지키는 일.”</i> 오랜 세월을 건너 대대로 이어져온 그 믿음을 고스란히 품은 26년생 집지킴이 옹즈 삼인방이 이제 새로운 터를 찾아 나섰다. 지금 이들은 서울숲 앞 <a href="https://www.instagram.com/narrative.object/" target="_blank">네러티브 오브젝트</a>에 머물며 자신들이 새롭게 지키게 될 보금자리를 기다리고 있다.
+                앞으로 이들이 어떤 집을 만나게 될지, 그곳에 또 어떤 이야기가 깃들게 될지 아직은 알 수 없다. 그러나 집을 지킨다는 것이 곧 마음을 지키는 일이라는 믿음만은 예전과 다르지 않다.
+                이들의 여정 속에서 따뜻한 인연과 오래도록 머물 이야기가 피어나기를 바라며, 독자 여러분의 많은 관심과 응원을 부탁드린다.</p>
+             <small>2026.02.17</small>
+        </div>
+        <div class="item">
+            <h3>작업실의 기록</h3>
+            <p>새로운 실이 도착했습니다. 성주옹의 친구를 곧 만들 예정입니다.</p>
+            <small>2026.02.15</small>
+        </div>
+        <div class="item">
+             <h3>&lt;지팡이통신&gt;의 창간</h3>
+            <p>안녕하세요. 옹즈타운의 신문 &lt;지팡이통신&gt;이 2026년 1월 1일, 첫발을 내딛습니다. (박수갈채)
+                이곳에 앞으로 등장할 ‘뉴페이스 옹즈’의 소식과 함께, 얼핏 조용해 보이지만 알고 보면 하루도 조용할 날 없는 옹즈타운의 왁자지껄한 일상을 담아보려 합니다.
+                부디 적은 관심과 많은 응원 부탁드립니다. 얍. </p>
+            <small>2026.01.01</small>
+        </div>
+    </div>
 
-    <div class="ongs">
-        <h2>Ongs</h2> 
-        
-        <div class="item">
-            <div class="item-content-box">
-                <div class="img-wrap">
-                    <img src="images/seongju_1.webp" alt="성주옹" class="ongs-img default-img-ong">
-                    <img src="images/seongju_1_hover.webp" alt="성주옹 호버" class="hover-img-ong">
-                </div>
-                <table>
-                    <tr><td>Name</td><td>Seongju Ong (성주옹)</td></tr>
-                    <tr><td>Material</td><td>Linen, Cotton, Straw</td></tr>
-                    <tr><td>Date</td><td>2026.02</td></tr>
-                </table>
-            </div>
-        </div>
+    <div class="ongs">
+        <h2>Ongs</h2> 
+        
+        <div class="item">
+            <div class="item-content-box">
+                <div class="img-wrap">
+                    <img src="images/seongju_1.webp" alt="성주옹" class="ongs-img default-img">
+                    <img src="images/seongju_1_hover.webp" alt="성주옹 호버" class="ongs-img hover-img">
+                </div>
+                <table>
+                    <tr><td>Name</td><td>Seongju Ong (성주옹)</td></tr>
+                    <tr><td>Material</td><td>Linen, Cotton, Straw</td></tr>
+                    <tr><td>Date</td><td>2026.02</td></tr>
+                </table>
+            </div>
+        </div>
 
-        <div class="item">
-            <div class="item-content-box">
-                <div class="img-wrap">
-                    <img src="images/buttumak_1.webp" alt="부뚜막옹" class="ongs-img default-img-ong">
-                    <img src="images/buttumak_1_hover.webp" alt="부뚜막옹 호버" class="hover-img-ong">
-                </div>
-                <table>
-                    <tr><td>Name</td><td>Buttumak Ong (부뚜막옹)</td></tr>
-                    <tr><td>Material</td><td>Cotton, Leather</td></tr>
-                    <tr><td>Date</td><td>2026.02</td></tr>
-                </table>
-            </div>
-        </div>
-    </div>
+        <div class="item">
+            <div class="item-content-box">
+                <div class="img-wrap">
+                    <img src="images/buttumak_1.webp" alt="부뚜막옹" class="ongs-img default-img">
+                    <img src="images/buttumak_1_hover.webp" alt="부뚜막옹 호버" class="ongs-img hover-img">
+                </div>
+                <table>
+                    <tr><td>Name</td><td>Buttumak Ong (부뚜막옹)</td></tr>
+                    <tr><td>Material</td><td>Cotton, Leather</td></tr>
+                    <tr><td>Date</td><td>2026.02</td></tr>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
 
 </body>
