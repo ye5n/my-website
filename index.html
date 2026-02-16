@@ -144,6 +144,53 @@
         /* 테이블 스타일 */
         table { width: 100%; border-collapse: collapse; margin-top: 5px; }
         table td { border: 1px solid #eee; padding: 8px; font-size: 13px; }
+
+        /* 모바일 대응 (화면 너비 768px 이하) */
+        @media (max-width: 768px) {
+            html, body {
+                height: auto;
+                overflow: visible;
+            }
+            body {
+                padding: 0 20px;
+            }
+            header {
+                padding: 20px 0 10px 0;
+            }
+            .main-logo {
+                height: 60px; /* 로고 크기 최적화 */
+            }
+            nav {
+                padding: 10px 0;
+            }
+            nav a {
+                width: auto;
+                margin: 0 10px;
+                font-size: 13px;
+            }
+            .container {
+                flex-direction: column;
+                height: auto;
+            }
+            .journal, .ongs {
+                width: 100%;
+                height: auto;
+                padding: 30px 0;
+                overflow: visible;
+            }
+            .journal {
+                border-right: none;
+                border-bottom: 1px solid #eee; /* 세로선 대신 가로 구분선 */
+                padding-right: 0;
+            }
+            .ongs {
+                padding-left: 0;
+            }
+            .journal::-webkit-scrollbar, 
+            .ongs::-webkit-scrollbar {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
