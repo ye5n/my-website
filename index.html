@@ -33,18 +33,18 @@
             flex-shrink: 0;
             border-bottom: var(--border-style); 
             text-align: center;
-            padding: 30px 0 0 0; /* 하단 여백 0 */
+            padding: 30px 0 0 0; /* 하단 여백 0 유지 */
         }
         
         .logo-wrapper {
             position: relative;
             display: inline-block;
             overflow: hidden;
-            height: 100px; 
-            margin-bottom: 0; /* 로고 하단 마진 제거 */
-            vertical-align: bottom; /* 텍스트 베이스라인 공백 제거 */
+            height: 130px; /* PC 로고 크기 확대 (기존 100px) */
+            margin-bottom: 0; 
+            vertical-align: bottom; 
         }
-        .main-logo { height: 100px; width: auto; display: block; transition: opacity 0.3s ease; }
+        .main-logo { height: 130px; width: auto; display: block; transition: opacity 0.3s ease; }
         .logo-wrapper .hover-img { position: absolute; top: 0; left: 50%; transform: translateX(-50%); opacity: 0; transition: opacity 0.3s ease; }
         .logo-wrapper:hover .default-img { opacity: 0; }
         .logo-wrapper:hover .hover-img { opacity: 1; }
@@ -113,9 +113,9 @@
         @media screen and (max-width: 768px) {
             html, body { height: auto !important; overflow-y: auto !important; }
             body { padding: 0 20px !important; }
-            header { padding: 20px 0 0 0 !important; } /* 모바일에서도 하단 여백 0 */
-            .logo-wrapper { height: 60px !important; }
-            .main-logo { height: 60px !important; }
+            header { padding: 20px 0 0 0 !important; } 
+            .logo-wrapper { height: 80px !important; } /* 모바일 로고 크기 확대 (기존 60px) */
+            .main-logo { height: 80px !important; }
             .container { display: block !important; height: auto !important; }
             .journal, .ongs { width: 100% !important; padding: 30px 0 !important; border-right: none !important; }
             .journal { border-bottom: var(--border-style) !important; }
