@@ -145,51 +145,6 @@
         table { width: 100%; border-collapse: collapse; margin-top: 5px; }
         table td { border: 1px solid #eee; padding: 8px; font-size: 13px; }
 
-        /* 모바일 대응 (화면 너비 768px 이하) */
-        /* 모바일 대응 (강제 적용 버전) */
-        @media screen and (max-width: 768px) {
-            html, body {
-                height: auto !important;
-                overflow-y: auto !important; /* 모바일 전체 스크롤 강제 허용 */
-                overflow-x: hidden;
-            }
-            body {
-                padding: 0 20px !important;
-            }
-            header {
-                padding: 20px 0 10px 0 !important;
-            }
-            .main-logo {
-                height: 60px !important; /* 로고 크기 강제 축소 */
-            }
-            nav {
-                padding: 10px 0 !important;
-                flex-wrap: wrap;
-            }
-            nav a {
-                width: auto !important;
-                margin: 5px 10px !important;
-                font-size: 13px !important;
-            }
-            .container {
-                display: block !important; /* flex 해제하고 블록으로 쌓기 */
-                height: auto !important;
-                max-width: 100% !important;
-            }
-            .journal, .ongs {
-                width: 100% !important;
-                height: auto !important;
-                padding: 30px 0 !important;
-                overflow: visible !important; /* 내부 스크롤 끄기 */
-                border-right: none !important;
-            }
-            .journal {
-                border-bottom: 1px solid #eee !important; /* 가로 구분선 */
-            }
-            .ongs {
-                padding-left: 0 !important;
-            }
-        }
     </style>
 </head>
 <body>
