@@ -13,7 +13,7 @@
             --font-family: "Pretendard Variable", Pretendard, sans-serif;
             --text-color: black;
             --background-color: white;
-            --border-color: black;
+            --border-style: 1px solid #000; /* 1px 검정색 선으로 통일 */
             --base-font-size: 14px;
         }
 
@@ -38,12 +38,11 @@
         /* 상단 헤더 */
         header { 
             flex-shrink: 0;
-            border-bottom: 1px solid var(--border-color); 
+            border-bottom: var(--border-style); 
             text-align: center;
             padding: 30px 0 10px 0;
         }
         
-        /* [추가] 로고 Hover 효과를 위한 스타일 */
         .logo-wrapper {
             position: relative;
             display: inline-block;
@@ -59,23 +58,21 @@
             transition: opacity 0.1s ease;
         }
 
-        /* Hover 시 나타날 이미지 */
         .main-logo.hover-img {
             position: absolute;
             top: 0;
             left: 50%;
             transform: translateX(-50%);
-            opacity: 0; /* 평소에는 숨김 */
+            opacity: 0;
         }
 
-        /* 마우스를 올렸을 때 이미지 교체 */
         .logo-wrapper:hover .default-img { opacity: 0; }
         .logo-wrapper:hover .hover-img { opacity: 1; }
 
         /* 네비게이션 */
         nav { 
             flex-shrink: 0;
-            border-bottom: 1px solid var(--border-color); 
+            border-bottom: var(--border-style); 
             padding: 15px 0;
             display: flex;
             justify-content: center; 
@@ -126,7 +123,7 @@
 
         .journal { 
             flex: 1.8; 
-            border-right: 1px solid #eee; 
+            border-right: var(--border-style); /* 중앙 경계선 검정 1px */
             padding-right: 50px; 
         }
         
@@ -138,14 +135,28 @@
         /* 텍스트 요소 */
         h2 { font-size: 16px; font-weight: 700; margin-bottom: 25px; text-transform: uppercase; letter-spacing: 0.05em; }
         h3 { font-size: 14px; font-weight: 700; margin-top: 10px; margin-bottom: 6px; }
+        
+        /* [수정] 본문 내 링크 스타일: 검정색 유지 및 밑줄 */
+        .journal a {
+            color: #000;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
         .item p { margin-top: 0; margin-bottom: 0px; line-height: 1.8; text-align: justify; } 
-        .item { margin-bottom: 50px; border-bottom: 1px dashed #000; padding-bottom: 30px; }
+        
+        /* [수정] 아이템 하단 구분선: 점선에서 실선 검정으로 변경 */
+        .item { 
+            margin-bottom: 50px; 
+            border-bottom: var(--border-style); 
+            padding-bottom: 30px; 
+        }
         small { color: #000; }
         
         /* 이미지와 테이블 스타일 */
         .img-wrap {
             width: 100%;
-            border: 1px solid #000;
+            border: var(--border-style);
             box-sizing: border-box;
             overflow: hidden;
             line-height: 0;
@@ -160,7 +171,7 @@
             box-sizing: border-box;
         }
         table td { 
-            border: 1px solid #000; 
+            border: var(--border-style); 
             padding: 8px; 
             font-size: 13px; 
         }
@@ -176,7 +187,8 @@
             nav a { width: auto !important; margin: 5px 10px !important; font-size: 13px !important; }
             .container { display: block !important; height: auto !important; }
             .journal, .ongs { width: 100% !important; height: auto !important; padding: 30px 0 !important; overflow: visible !important; border-right: none !important; }
-            .journal { border-bottom: 1px solid #000 !important; }
+            /* [수정] 모바일 하단 경계선 검정 1px */
+            .journal { border-bottom: var(--border-style) !important; }
             .ongs { padding-left: 0 !important; }
         }
     </style>
@@ -202,7 +214,7 @@
         <div class="item">
              <h3>집지킴이 옹즈의 '구해줘 홈즈'</h3>
             <p>성주옹, 부뚜막옹, 삼신할미옹은 아주 오래전부터 사람들의 집과 마음 한구석을 묵묵히 지켜온 집지킴이 옹들이다.
-                <i>“집을 지키는 일은 곧 마음을 지키는 일.”</i> 오랜 세월을 건너 대대로 이어져온 그 믿음을 고스란히 품은 26년생 집지킴이 옹즈 삼인방이 이제 새로운 터를 찾아 나섰다. 지금 이들은 서울숲 앞 <a href="<a href="https://www.instagram.com/narrative.object/">네러티브 오브젝트</a>에 머물며 자신들이 새롭게 지키게 될 보금자리를 기다리고 있다.
+                <i>“집을 지키는 일은 곧 마음을 지키는 일.”</i> 오랜 세월을 건너 대대로 이어져온 그 믿음을 고스란히 품은 26년생 집지킴이 옹즈 삼인방이 이제 새로운 터를 찾아 나섰다. 지금 이들은 서울숲 앞 <a href="https://www.instagram.com/narrative.object/" target="_blank">네러티브 오브젝트</a>에 머물며 자신들이 새롭게 지키게 될 보금자리를 기다리고 있다.
                 앞으로 이들이 어떤 집을 만나게 될지, 그곳에 또 어떤 이야기가 깃들게 될지 아직은 알 수 없다. 그러나 집을 지킨다는 것이 곧 마음을 지키는 일이라는 믿음만은 예전과 다르지 않다.
                 이들의 여정 속에서 따뜻한 인연과 오래도록 머물 이야기가 피어나기를 바라며, 독자 여러분의 많은 관심과 응원을 부탁드린다.</p>
              <small>2026.02.17</small>
