@@ -13,11 +13,11 @@
             --font-family: "Pretendard Variable", Pretendard, sans-serif;
             --text-color: black;
             --background-color: white;
-            --border-color: black;
+            --border-style: 1px solid #000; /* index와 통일 */
             --base-font-size: 14px;
         }
 
-        /* 메인 페이지와 100% 동일한 기본 레이아웃 */
+        /* 화면 전체 고정 레이아웃 */
         html, body {
             height: 100%;
             margin: 0;
@@ -35,36 +35,36 @@
             padding: 0 40px; 
         }
 
-        /* 상단 헤더 */
+        /* 상단 헤더 (index와 100% 일치) */
         header { 
             flex-shrink: 0;
-            border-bottom: 1px solid var(--border-color); 
+            border-bottom: var(--border-style); 
             text-align: center;
             padding: 30px 0 10px 0;
         }
-
-        /* 로고 Hover 효과 스타일 */
+        
+        /* 로고 & 이미지 호버 컨테이너 */
         .logo-wrapper {
             position: relative;
             display: inline-block;
-            height: 100px;
-            margin-bottom: 5px;
+            overflow: hidden;
+            height: 100px; 
+            margin-bottom: 5px; 
             vertical-align: middle;
         }
-
+        
         .main-logo {
-            height: 100px; 
-            width: auto;  
-            display: block;
+            height: 100px; width: auto; display: block;
             transition: opacity 0.3s ease;
         }
 
-        .main-logo.hover-img {
+        /* 호버 이미지 */
+        .hover-img {
             position: absolute;
-            top: 0;
-            left: 50%;
+            top: 0; left: 50%;
             transform: translateX(-50%);
             opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
         .logo-wrapper:hover .default-img { opacity: 0; }
@@ -73,16 +73,18 @@
         /* 네비게이션 */
         nav { 
             flex-shrink: 0;
-            border-bottom: 1px solid var(--border-color); 
+            border-bottom: var(--border-style); 
             padding: 15px 0;
             display: flex;
             justify-content: center; 
             align-items: center;
         }
+
         nav a { 
             text-decoration: none; 
             color: black; 
             font-weight: 500;
+            white-space: nowrap;
             width: 120px; 
             text-align: center;
             margin: 0 10px;
@@ -92,7 +94,7 @@
             text-underline-offset: 5px;
         }
 
-        /* 메인 컨테이너 스타일 복제 */
+        /* 메인 컨테이너 */
         .container { 
             display: flex; 
             flex: 1; 
@@ -102,7 +104,7 @@
             width: 100%;
         }
 
-        /* 소개 본문 영역: 메인의 journal 스타일 적용 */
+        /* 소개 본문 영역: journal 스크롤 스타일 복제 */
         .about-content {
             height: 100%;
             overflow-y: auto; 
@@ -112,7 +114,9 @@
             -ms-overflow-style: none;
             width: 100%;
         }
-        .about-content::-webkit-scrollbar { display: none; }
+        .about-content::-webkit-scrollbar { width: 4px; }
+        .about-content::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0); border-radius: 10px; }
+        .about-content:hover::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.1); }
 
         h2 { 
             font-size: 16px; 
@@ -123,7 +127,7 @@
         }
 
         .about-text {
-            max-width: 600px;
+            max-width: 600px; /* 가독성을 위해 너비 제한 */
         }
 
         .about-text p { 
@@ -132,12 +136,6 @@
             line-height: 1.8; 
             text-align: justify; 
             word-break: keep-all;
-        }
-
-        .footer-note {
-            margin-top: 50px;
-            font-style: italic;
-            color: #888;
         }
 
         /* 모바일 대응 */
@@ -149,8 +147,8 @@
             .main-logo { height: 60px !important; }
             nav { padding: 10px 0 !important; flex-wrap: wrap; }
             nav a { width: auto !important; margin: 5px 10px !important; font-size: 13px !important; }
-            .container { display: block !important; }
-            .about-content { padding: 30px 0 !important; }
+            .container { display: block !important; height: auto !important; }
+            .about-content { padding: 30px 0 !important; overflow: visible !important; }
         }
     </style>
 </head>
@@ -172,6 +170,7 @@
 <div class="container">
     <div class="about-content">        
         <div class="about-text">
+            <h2>About Ongs</h2>
             <p>우리는 옹이에요.<br>
             아주 오래전부터 있었고, 지금도 여전히 있어요.<br>
             사람들의 눈엔 잘 띄지 않지만, 틀림없이 곁에 있답니다.</p>
