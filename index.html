@@ -2,8 +2,9 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ongs</title>
-    <link rel="icon" href="images/favicon.png" type="image/png">
+    <link rel="icon" href="images/favicon.png?v=1" type="image/png">
     
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
 
@@ -89,7 +90,6 @@
             padding-top: 40px;
             padding-bottom: 40px;
             box-sizing: border-box;
-            /* 스크롤바 숨김 (Firefox, IE) */
             scrollbar-width: none; 
             -ms-overflow-style: none; 
         }
@@ -112,12 +112,12 @@
         .journal { 
             flex: 1.8; 
             border-right: 1px solid #eee; 
-            padding-right: 50px; /* 중앙 라인 기준 왼쪽 여백 */
+            padding-right: 50px; 
         }
         
         .ongs { 
             flex: 1.2; 
-            padding-left: 50px; /* 중앙 라인 기준 오른쪽 여백 */
+            padding-left: 50px; 
         }
 
         /* 텍스트 요소 */
@@ -127,13 +127,14 @@
         .item { margin-bottom: 50px; border-bottom: 1px dashed #ddd; padding-bottom: 30px; }
         small { color: #888; }
         
-        /* 이미지 설정 */
+        /* [중요] 이미지와 테이블 너비를 완벽하게 일치시키는 설정 */
         .img-wrap {
             width: 100%;
             border: 1px solid #000;
-            margin-bottom: 15px;
+            box-sizing: border-box; /* 테두리를 너비에 포함 */
             overflow: hidden;
             line-height: 0;
+            margin-bottom: 0; /* 테이블과 밀착시키기 위해 0으로 변경 */
         }
         .img-wrap img {
             width: 100%;
@@ -142,16 +143,71 @@
         }
 
         /* 테이블 스타일 */
-        table { width: 100%; border-collapse: collapse; margin-top: 5px; }
-        table td { border: 1px solid #eee; padding: 8px; font-size: 13px; }
+        table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            margin-top: -1px; /* 이미지 테두리와 겹쳐서 일직선으로 보임 */
+            box-sizing: border-box;
+        }
+        table td { 
+            border: 1px solid #000; /* 이미지 테두리와 동일한 색상/두께 */
+            padding: 8px; 
+            font-size: 13px; 
+        }
 
+        /* 모바일 대응 (화면 너비 768px 이하) */
+        @media screen and (max-width: 768px) {
+            html, body {
+                height: auto !important;
+                overflow-y: auto !important;
+            }
+            body {
+                padding: 0 20px !important;
+            }
+            header {
+                padding: 20px 0 10px 0 !important;
+            }
+            .main-logo {
+                height: 60px !important; 
+            }
+            nav {
+                padding: 10px 0 !important;
+                flex-wrap: wrap;
+            }
+            nav a {
+                width: auto !important;
+                margin: 5px 10px !important;
+                font-size: 13px !important;
+            }
+            .container {
+                display: block !important; 
+                height: auto !important;
+            }
+            .journal, .ongs {
+                width: 100% !important;
+                height: auto !important;
+                padding: 30px 0 !important;
+                overflow: visible !important;
+                border-right: none !important;
+            }
+            .journal {
+                border-bottom: 1px solid #eee !important;
+            }
+            .ongs {
+                padding-left: 0 !important;
+            }
+            .journal::-webkit-scrollbar, 
+            .ongs::-webkit-scrollbar {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
 
 <header>
     <a href="https://ongs.online">
-        <img src="images/logo.webp" alt="ongs logo" class="main-logo">
+        <img src="images/logo.webp?v=1" alt="ongs logo" class="main-logo">
     </a>
 </header>
 
