@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - ongs</title>
+    <link rel="icon" href="images/favicon.png?v=2" type="image/png">
+    
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+
+    <style>
+        :root {
+            --font-family: "Pretendard Variable", Pretendard, sans-serif;
+            --text-color: black;
+            --background-color: white;
+            --border-color: black;
+            --base-font-size: 14px;
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        body { 
+            background-color: var(--background-color);
+            color: var(--text-color); 
+            font-family: var(--font-family);
+            font-size: var(--base-font-size);
+            line-height: 2; /* 글 간격을 조금 더 여유롭게 */
+            display: flex;
+            flex-direction: column; 
+            padding: 0 40px; 
+        }
+
+        /* 헤더 & 네비게이션 (메인과 동일 유지) */
+        header { 
+            flex-shrink: 0;
+            border-bottom: 1px solid var(--border-color); 
+            text-align: center;
+            padding: 30px 0 10px 0;
+        }
+        .main-logo { height: 100px; width: auto; margin-bottom: 5px; }
+
+        nav { 
+            flex-shrink: 0;
+            border-bottom: 1px solid var(--border-color); 
+            padding: 15px 0;
+            display: flex;
+            justify-content: center; 
+            align-items: center;
+        }
+        nav a { 
+            text-decoration: none; 
+            color: black; 
+            font-weight: 500;
+            width: 120px; 
+            text-align: center;
+            margin: 0 10px;
+        }
+        nav a:hover { text-decoration: underline; text-underline-offset: 5px; }
+
+        /* 소개 페이지 본문 레이아웃 */
+        .content-wrap {
+            max-width: 700px; /* 글이 한눈에 들어오도록 폭을 좁힘 */
+            margin: 0 auto;
+            width: 100%;
+            padding: 100px 0; /* 위아래 여백을 넉넉히 주어 깊이감 형성 */
+        }
+
+        .about-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 60px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .main-img-wrap {
+            width: 100%;
+            border: 1px solid #000;
+            margin-bottom: 80px;
+            box-sizing: border-box;
+            line-height: 0;
+        }
+        .main-img-wrap img { width: 100%; height: auto; }
+
+        .about-text {
+            text-align: center; /* 옹즈의 신비로운 느낌을 위해 중앙 정렬 */
+            word-break: keep-all;
+            font-size: 15px; /* 본문보다 살짝 크게 */
+        }
+
+        .about-text p {
+            margin-bottom: 40px;
+        }
+
+        .highlight-text {
+            font-weight: 600;
+            display: block;
+            margin-bottom: 40px;
+            font-size: 16px;
+        }
+
+        .footer-note {
+            margin-top: 100px;
+            font-style: italic;
+            color: #777;
+            font-size: 13px;
+        }
+
+        /* 모바일 대응 */
+        @media screen and (max-width: 768px) {
+            body { padding: 0 20px; }
+            .main-logo { height: 60px; }
+            nav a { width: auto; margin: 0 10px; font-size: 13px; }
+            .content-wrap { padding: 60px 0; }
+            .about-text { font-size: 14px; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="index.html">
+        <img src="images/logo.webp?v=1" alt="ongs logo" class="main-logo">
+    </a>
+</header>
+
+<nav>
+    <a href="about.html" style="text-decoration: underline; text-underline-offset: 5px;">소개</a>
+    <a href="index.html">옹즈</a>
+    <a href="#">지팡이통신</a>
+</nav>
+
+<div class="content-wrap">
+    <h2 class="about-title">WHO WE ARE</h2>
+    
+    <div class="main-img-wrap">
+        <img src="images/about_main.webp" alt="ongs town scenery">
+    </div>
+
+    <div class="about-text">
+        <p>우리는 옹이에요.<br>
+        아주 오래전부터 있었고, 지금도 여전히 있어요.<br>
+        사람들의 눈엔 잘 띄지 않지만, 틀림없이 곁에 있답니다.</p>
+
+        <p>옹들은 숲속, 바람 속, 돌 틈, 방 안, 마음의 구석에 살아요.<br>
+        때로는 인형의 모습으로 세상에 나와 조용히 옆을 지켜주죠.</p>
+
+        <p><span class="highlight-text">ongs.town은 옹들이 모여 사는 작은 마을이에요.</span>
+        이곳에는 졸린 눈을 한 옹, 나뭇가지를 들고 있는 옹,<br>
+        물속에서 노래 부르는 옹, 별을 세는 옹도 있어요.<br>
+        모두가 제각기 다르지만, 따뜻한 마음을 가지고 있답니다.</p>
+
+        <p>옹들은 사람의 손에 닿을 수 있게 되면, 인형이 돼요.<br>
+        하지만 인형은 단지 껍데기일 뿐, 진짜 옹은 당신이<br>
+        그 존재를 믿고, 이야기를 듣고, 함께 있어줄 때 깨어나요.</p>
+
+        <p class="footer-note">어쩌면 당신 곁에도 조용히 머물고 있는 옹이 있을지도 몰라요.<br>
+        혹시 모르니까, 마음 한켠을 살짝 열어두어요.<br>
+        그럼 옹이 슬며시 다가올 거예요.<br>
+        아주 작고, 귀엽고, 어딘가 기묘한 얼굴로요.</p>
+    </div>
+</div>
+
+</body>
+</html>
