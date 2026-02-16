@@ -92,24 +92,32 @@
 
         .journal { 
             flex: 2; 
-            /* 해결책: 선이 스크롤바와 겹치지 않도록 안쪽 여백 조절 */
-            border-right: 1px solid #eee; 
-            padding-right: 25px; 
+            border-right: 1px solid #eee; /* 구분선은 그대로 */
+            padding-right: 10px; /* 글자와 스크롤바 사이 여백 */
         }
+        /* 2. 오른쪽 영역 (ongs) */
         .ongs { 
             flex: 1.2; 
-            padding-left: 30px;
+            padding-left: 20px; /* 오른쪽도 대칭을 위해 여백 조절 */
         }
 
-        /* 스크롤바 디자인 통일 (최대한 얇게) */
-        .journal::-webkit-scrollbar, .ongs::-webkit-scrollbar {
-            width: 3px; /* 3px로 고정 */
+        /* 3. 스크롤바 공통 설정 */
+        .journal::-webkit-scrollbar, 
+        .ongs::-webkit-scrollbar {
+            width: 5px; /* 전체 통로 너비를 살짝 줄임 */
         }
-        .journal::-webkit-scrollbar-thumb, .ongs::-webkit-scrollbar-thumb {
-            background: #e5e5e5;
+
+        .journal::-webkit-scrollbar-thumb, 
+        .ongs::-webkit-scrollbar-thumb {
+            background: #eee;
             border-radius: 10px;
+            /* [핵심] 간격을 5px로 정밀 조정 */
+            border-right: 5px solid white; 
+            background-clip: padding-box; 
         }
-        .journal::-webkit-scrollbar-track, .ongs::-webkit-scrollbar-track {
+
+        .journal::-webkit-scrollbar-track, 
+        .ongs::-webkit-scrollbar-track {
             background: transparent;
         }
 
