@@ -16,7 +16,7 @@
             --base-font-size: 15px;
         }
 
-        /* 데스크탑 기본: 스크롤 봉쇄 */
+        /* [데스크탑] 기본 설정 */
         html, body { height: 100%; margin: 0; overflow: hidden; }
         body { 
             background-color: var(--background-color);
@@ -50,7 +50,7 @@
         nav a { text-decoration: none; color: black; font-weight: 500; width: 120px; text-align: center; margin: 0 10px; white-space: nowrap; }
         nav a:hover { text-decoration: underline; text-underline-offset: 5px; }
 
-        /* 데스크탑: 가로 배치 및 개별 스크롤 */
+        /* [데스크탑] 독립 스크롤 레이아웃 */
         .ongs-wrapper {
             display: flex;
             flex: 1;
@@ -97,33 +97,52 @@
         table td:last-child { border-right: none; }
         .ong-desc { font-size: 14px; line-height: 1.6; word-break: keep-all; margin-top: 10px; }
 
-        /* --- 모바일 최적화 (1단 세로 스크롤) --- */
+        /* --- [모바일] 전체 페이지와 동일하게 업데이트 --- */
         @media screen and (max-width: 768px) {
             html, body { 
                 overflow: auto !important; /* 바디 스크롤 허용 */
                 height: auto !important; 
             }
-            body { padding: 0 20px !important; }
-            header { padding: 15px 0 !important; }
-            .logo-wrapper, .main-logo, .logo-wrapper .hover-img { height: 70px !important; }
+            body { 
+                padding: 0 20px !important; /* index, about과 동일한 여백 */
+            }
+            header { 
+                padding: 15px 0 !important; 
+                height: auto !important;
+                box-sizing: border-box !important;
+            }
+            .logo-wrapper { 
+                height: 70px !important; 
+                min-height: 70px !important;
+            }
+            .main-logo, .logo-wrapper .hover-img { 
+                height: 70px !important; 
+                width: auto !important; 
+            }
             
-            nav { padding: 10px 0 !important; flex-wrap: wrap; }
-            nav a { width: auto !important; margin: 5px 10px !important; font-size: 14px !important; }
+            nav { 
+                padding: 10px 0 !important; 
+                flex-wrap: wrap; 
+            }
+            nav a { 
+                width: auto !important; 
+                margin: 5px 10px !important; 
+                font-size: 14px !important; 
+            }
 
             .ongs-wrapper { 
-                display: block !important; /* 가로 배열 해제 */
+                display: block !important; /* 가로 배치 해제 */
                 overflow: visible !important;
             }
             .ong-column { 
                 width: 100% !important; 
                 height: auto !important; 
-                overflow: visible !important; /* 개별 스크롤 해제 */
+                overflow: visible !important; 
                 border-right: none !important; 
                 border-bottom: var(--border-style); 
                 padding: 40px 0 !important; 
             }
             .ong-column:last-child { border-bottom: none; }
-            .ong-item { margin-bottom: 40px; }
         }
     </style>
 </head>
