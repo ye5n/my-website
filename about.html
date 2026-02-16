@@ -6,18 +6,17 @@
     <title>About - ongs</title>
     <link rel="icon" href="images/favicon.png?v=1" type="image/png">
     
-    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
 
     <style>
         :root {
             --font-family: "Pretendard Variable", Pretendard, sans-serif;
             --text-color: black;
             --background-color: white;
-            --border-style: 1px solid #000; /* index와 통일 */
+            --border-style: 1px solid #000;
             --base-font-size: 14px;
         }
 
-        /* 화면 전체 고정 레이아웃 */
         html, body {
             height: 100%;
             margin: 0;
@@ -35,7 +34,6 @@
             padding: 0 40px; 
         }
 
-        /* 상단 헤더 (index와 100% 일치) */
         header { 
             flex-shrink: 0;
             border-bottom: var(--border-style); 
@@ -43,34 +41,35 @@
             padding: 30px 0 10px 0;
         }
         
-        /* 로고 & 이미지 호버 컨테이너 */
         .logo-wrapper {
             position: relative;
             display: inline-block;
-            overflow: hidden;
             height: 100px; 
             margin-bottom: 5px; 
             vertical-align: middle;
+            /* overflow: hidden; 삭제 - 이미지가 잘리는 것 방지 */
         }
         
         .main-logo {
-            height: 100px; width: auto; display: block;
+            height: 100px; 
+            width: auto !important; /* 가로 너비 자동 유지 */
+            display: block;
             transition: opacity 0.3s ease;
         }
 
-        /* 호버 이미지 */
         .hover-img {
             position: absolute;
-            top: 0; left: 50%;
+            top: 0; 
+            left: 50%;
             transform: translateX(-50%);
             opacity: 0;
             transition: opacity 0.3s ease;
+            width: auto !important; /* 호버 이미지도 너비 자동 */
         }
 
         .logo-wrapper:hover .default-img { opacity: 0; }
         .logo-wrapper:hover .hover-img { opacity: 1; }
 
-        /* 네비게이션 */
         nav { 
             flex-shrink: 0;
             border-bottom: var(--border-style); 
@@ -94,7 +93,6 @@
             text-underline-offset: 5px;
         }
 
-        /* 메인 컨테이너 */
         .container { 
             display: flex; 
             flex: 1; 
@@ -104,7 +102,6 @@
             width: 100%;
         }
 
-        /* 소개 본문 영역: journal 스크롤 스타일 복제 */
         .about-content {
             height: 100%;
             overflow-y: auto; 
@@ -127,7 +124,7 @@
         }
 
         .about-text {
-            max-width: 600px; /* 가독성을 위해 너비 제한 */
+            max-width: 600px; 
         }
 
         .about-text p { 
@@ -138,13 +135,20 @@
             word-break: keep-all;
         }
 
-        /* 모바일 대응 */
+        /* 모바일 대응 - index.html과 1px의 오차도 없이 일치 */
         @media screen and (max-width: 768px) {
             html, body { height: auto !important; overflow-y: auto !important; }
             body { padding: 0 20px !important; }
             header { padding: 20px 0 10px 0 !important; }
-            .logo-wrapper { height: 60px !important; }
-            .main-logo { height: 60px !important; }
+            
+            .logo-wrapper { 
+                height: 60px !important; /* 모바일 로고 높이 */
+            }
+            .main-logo { 
+                height: 60px !important; 
+                width: auto !important; /* 모바일에서도 비율 유지 */
+            }
+            
             nav { padding: 10px 0 !important; flex-wrap: wrap; }
             nav a { width: auto !important; margin: 5px 10px !important; font-size: 13px !important; }
             .container { display: block !important; height: auto !important; }
