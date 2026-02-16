@@ -53,7 +53,7 @@
         .ongs-wrapper {
             display: flex;
             flex: 1;
-            overflow: hidden; /* 전체 스크롤 방지 */
+            overflow: hidden; 
             width: 100%;
         }
 
@@ -61,22 +61,25 @@
         .ong-column {
             flex: 1;
             height: 100%;
-            overflow-y: auto; /* 개별 스크롤 활성화 */
+            overflow-y: auto; 
             border-right: var(--border-style);
-            padding: 40px 25px;
+            
+            /* 핵심 수정: 상단 여백을 좌우 여백(25px)과 동일하게 맞춤 */
+            /* padding: 상 우 하 좌 순서 */
+            padding: 25px 25px 60px 25px; 
+            
             box-sizing: border-box;
             scrollbar-width: none; 
             -ms-overflow-style: none;
         }
         
-        /* 마지막 컬럼의 오른쪽 선 제거 (양옆 트임 효과) */
+        /* 마지막 컬럼의 오른쪽 선 제거 */
         .ong-column:last-child { border-right: none; }
 
         .ong-column::-webkit-scrollbar { width: 4px; }
         .ong-column::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0); border-radius: 10px; }
         .ong-column:hover::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.1); }
 
-        /* 아이템 스타일 (index/about과 동일) */
         .ong-item { margin-bottom: 60px; }
         .item-content-box {
             width: 100%;
@@ -101,17 +104,12 @@
         table td:last-child { border-right: none; }
         .ong-desc { font-size: 14px; line-height: 1.6; word-break: keep-all; margin-top: 10px; }
 
-        /* 해상도별 컬럼 개수 조절 */
-        @media screen and (max-width: 1200px) {
-            /* 맥북보다 작아지면 3단으로 보이고 싶을 경우 등의 조절 */
-        }
-
         @media screen and (max-width: 768px) {
             body { padding: 0 20px !important; }
             header { padding: 15px 0 !important; }
             .logo-wrapper, .main-logo, .logo-wrapper .hover-img { height: 70px !important; }
             .ongs-wrapper { flex-direction: column; overflow-y: auto; }
-            .ong-column { width: 100%; height: auto; border-right: none; border-bottom: var(--border-style); padding: 40px 0; }
+            .ong-column { width: 100%; height: auto; border-right: none; border-bottom: var(--border-style); padding: 30px 0; }
             .ong-column:last-child { border-bottom: none; }
         }
     </style>
@@ -146,7 +144,7 @@
             </div>
             <p class="ong-desc">성주옹은 이 칸 안에서만 따로 스크롤됩니다.</p>
         </div>
-        </div>
+    </div>
 
     <div class="ong-column">
         <div class="ong-item">
@@ -164,11 +162,8 @@
         </div>
     </div>
 
-    <div class="ong-column">
-        </div>
-
-    <div class="ong-column">
-        </div>
+    <div class="ong-column"></div>
+    <div class="ong-column"></div>
 </div>
 
 </body>
