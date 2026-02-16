@@ -102,7 +102,6 @@
         .item p {margin-top: 0; margin-bottom: 0px; line-height: 1.8; }
         .item { margin-bottom: 40px; border-bottom: 1px dashed #ddd; padding-bottom: 20px; }
         
-        /* --- 이미지 호버 스타일 추가 --- */
         .img-hover-wrap {
             position: relative;
             width: 100%;
@@ -114,18 +113,17 @@
         .img-hover-wrap img {
             width: 100%;
             height: auto;
-            transition: opacity 0.4s ease; /* 부드러운 전환 */
+            transition: opacity 0.4s ease;
         }
         .img-hover-wrap img.hover-img {
             position: absolute;
             top: 0;
             left: 0;
-            opacity: 0; /* 평소엔 숨김 */
+            opacity: 0;
         }
         .img-hover-wrap:hover img.hover-img {
-            opacity: 1; /* 호버 시 보여줌 */
+            opacity: 1;
         }
-        /* -------------------------- */
 
         table { width: 100%; border-collapse: collapse; }
         table td { border: 1px solid #eee; padding: 6px; }
@@ -173,8 +171,8 @@
         <h2>Dolls</h2>
         <div class="item">
             <div class="img-hover-wrap">
-                <img src="doll_sample.jpg" alt="성주옹 기본 사진">
-                <img src="doll_hover.jpg" alt="성주옹 호버 사진" class="hover-img">
+                <img src="images/doll_sample.jpg" alt="성주옹 기본 사진">
+                <img src="images/doll_hover.jpg" alt="성주옹 호버 사진" class="hover-img">
             </div>
             
             <table>
