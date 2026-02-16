@@ -15,6 +15,7 @@
             --base-font-size: 14px;
         }
 
+        /* 화면 전체 고정 레이아웃 */
         html, body {
             height: 100%;
             margin: 0;
@@ -32,6 +33,7 @@
             padding: 0 40px; 
         }
 
+        /* 상단 헤더 */
         header { 
             flex-shrink: 0;
             border-bottom: 1px solid var(--border-color); 
@@ -46,6 +48,7 @@
         }
         .tagline { margin-top: 5px; color: #666; }
 
+        /* 네비게이션 */
         nav { 
             flex-shrink: 0;
             border-bottom: 1px solid var(--border-color); 
@@ -64,6 +67,7 @@
             text-underline-offset: 5px;
         }
 
+        /* 메인 컨테이너 */
         .container { 
             display: flex; 
             flex: 1; 
@@ -73,6 +77,7 @@
             width: 100%;
         }
 
+        /* 왼쪽 뉴스 & 오른쪽 옹즈 공통 스크롤 설정 */
         .journal, .ongs {
             height: 100%;
             overflow-y: auto; 
@@ -90,6 +95,7 @@
             padding-left: 30px;
         }
 
+        /* 스크롤바 디자인 */
         .journal::-webkit-scrollbar, .ongs::-webkit-scrollbar {
             width: 3px;
         }
@@ -97,11 +103,13 @@
             background: #eee;
         }
 
+        /* 텍스트 요소 스타일 */
         h2 { font-size: 16px; font-weight: 700; margin-bottom: 20px; text-transform: uppercase; }
         h3 { font-size: 14px; font-weight: 700; margin-top: 10px; margin-bottom: 4px; }
-        .item p {margin-top: 0; margin-bottom: 0px; line-height: 1.8; }
+        .item p { margin-top: 0; margin-bottom: 0px; line-height: 1.8; }
         .item { margin-bottom: 40px; border-bottom: 1px dashed #ddd; padding-bottom: 20px; }
         
+        /* 이미지 호버 효과 */
         .img-hover-wrap {
             position: relative;
             width: 100%;
@@ -125,6 +133,7 @@
             opacity: 1;
         }
 
+        /* 테이블 스타일 */
         table { width: 100%; border-collapse: collapse; }
         table td { border: 1px solid #eee; padding: 6px; }
     </style>
@@ -167,7 +176,7 @@
         </div>
     </div>
 
-    <div class="ONGS">
+    <div class="ongs">
         <h2>Dolls</h2>
         <div class="item">
             <div class="img-hover-wrap">
