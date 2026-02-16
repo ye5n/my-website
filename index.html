@@ -117,7 +117,12 @@
             background: #eee; /* 연한 회색으로 설정하여 시각적 부담을 줄임 */
             border-radius: 10px; /* 막대 끝을 둥글게 처리 */
         }
-
+        /* 스크롤바 배경(트랙) 설정 - 투명하게 하여 더 깔끔하게 보이게 함 */
+        .journal::-webkit-scrollbar-track, 
+        .ongs::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        
         /* 텍스트 요소 스타일 */
         h2 { font-size: 16px; font-weight: 700; margin-bottom: 20px; text-transform: uppercase; }
         h3 { font-size: 14px; font-weight: 700; margin-top: 10px; margin-bottom: 4px; }
