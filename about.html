@@ -34,24 +34,22 @@
             padding: 0 40px; 
         }
 
-        /* index와 동일하게 상하 20px 여백 적용 */
         header { 
             flex-shrink: 0;
             border-bottom: var(--border-style); 
             text-align: center;
-            padding: 20px 0 20px 0; 
+            padding: 20px 0; 
         }
         
         .logo-wrapper {
             position: relative;
             display: inline-block;
-            height: 110px; /* 로고 사이즈 110px 반영 */
-            margin-bottom: 0; 
+            height: 110px;
             vertical-align: middle;
             text-decoration: none;
         }
         
-        .main-logo {
+        .main-logo, .logo-wrapper .hover-img {
             height: 110px; 
             width: auto !important;
             display: block;
@@ -60,13 +58,8 @@
 
         .logo-wrapper .hover-img {
             position: absolute;
-            top: 0; 
-            left: 50%;
-            transform: translateX(-50%);
+            top: 0; left: 50%; transform: translateX(-50%);
             opacity: 0;
-            transition: opacity 0.3s ease;
-            width: auto !important;
-            height: 110px;
         }
 
         .logo-wrapper:hover .default-img { opacity: 0; }
@@ -99,15 +92,15 @@
             display: flex; 
             flex: 1; 
             overflow: hidden; 
-            max-width: 1100px; 
-            margin: 0 auto;
             width: 100%;
+            /* 텍스트가 한쪽으로 쏠리지 않도록 컨테이너 자체를 중앙 정렬 */
+            justify-content: center;
         }
 
         .about-content {
             height: 100%;
             overflow-y: auto; 
-            padding: 60px 0;
+            padding: 80px 0; /* 상단 여백을 좀 더 주어 균형 조정 */
             box-sizing: border-box;
             scrollbar-width: none; 
             -ms-overflow-style: none;
@@ -119,43 +112,26 @@
 
         .about-text {
             max-width: 650px; 
+            margin: 0 auto; /* 좌우 마진을 auto로 설정하여 중앙 배치 */
+            text-align: center; /* 텍스트 자체도 중앙 정렬 */
         }
 
         .about-text p { 
             margin-top: 0; 
-            margin-bottom: 40px; 
-            line-height: 1.9; 
-            text-align: justify; 
+            margin-bottom: 50px; 
+            line-height: 2.2; /* 가독성을 위해 행간을 조금 더 넓힘 */
             word-break: keep-all;
         }
 
-        /* 모바일 대응 (index와 동일하게 조절) */
         @media screen and (max-width: 768px) {
             html, body { height: auto !important; overflow-y: auto !important; }
             body { padding: 0 20px !important; }
-            
-            header { 
-                padding: 15px 0 15px 0 !important; 
-                height: auto !important;
-                box-sizing: border-box !important;
-            }
-            
-            .logo-wrapper { 
-                height: 70px !important; 
-                min-height: 70px !important;
-            }
-            .main-logo { 
-                height: 70px !important; 
-                width: auto !important; 
-            }
-            .logo-wrapper .hover-img {
-                height: 70px !important;
-            }
-            
+            header { padding: 15px 0 !important; }
+            .logo-wrapper, .main-logo, .logo-wrapper .hover-img { height: 70px !important; }
             nav { padding: 10px 0 !important; flex-wrap: wrap; }
             nav a { width: auto !important; margin: 5px 10px !important; font-size: 14px !important; }
-            .container { display: block !important; height: auto !important; }
-            .about-content { padding: 40px 0 !important; overflow: visible !important; }
+            .about-content { padding: 50px 0 !important; }
+            .about-text { padding: 0 10px; }
         }
     </style>
 </head>
