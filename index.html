@@ -156,26 +156,27 @@
         
         /* [수정] 이미지와 테이블 밀착 스타일 */
         .img-wrap {
-            width: 100%;
-            border: var(--border-style);
-            border-bottom: none; /* 하단 선 제거하여 테이블과 결합 */
-            box-sizing: border-box;
-            overflow: hidden;
-            line-height: 0; /* 이미지 하단 미세 공백 제거 */
-            margin-bottom: 0;
-        }
+    width: 100%;
+    border: var(--border-style); /* 전체 1px 검정 실선 */
+    border-bottom: none;        /* [중요] 아래쪽 선을 지워야 테이블 선과 겹칩니다 */
+    box-sizing: border-box;
+    overflow: hidden;
+    line-height: 0;             /* 이미지 하단에 생기는 미세한 틈새 제거 */
+    margin-bottom: 0;           /* 테이블과의 간격 제거 */
+    }
 
-        table { 
-            width: 100%; 
-            border-collapse: collapse; 
-            margin-top: 0; /* 이미지와 빈틈없이 밀착 */
-            box-sizing: border-box;
-        }
-        table td { 
-            border: var(--border-style); 
-            padding: 8px; 
-            font-size: 13px; 
-        }
+    table { 
+        width: 100%; 
+        border-collapse: collapse; 
+        margin-top: 0;              /* 위쪽 이미지 박스와 딱 붙임 */
+        box-sizing: border-box;
+    }
+
+    table td { 
+        border: var(--border-style); 
+        padding: 8px; 
+        font-size: 13px; 
+    }
 
         /* 모바일 대응 */
         @media screen and (max-width: 768px) {
