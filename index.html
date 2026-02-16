@@ -53,15 +53,21 @@
         nav { 
             flex-shrink: 0;
             border-bottom: 1px solid var(--border-color); 
-            padding: 15px 0;
-            text-align: center;
+            padding: 20px 0;
             margin-bottom: 0;
+    
+        /* 추가된 부분: 메뉴를 정중앙으로 정렬 */
+            display: flex;
+            justify-content: center; 
+            align-items: center;
+            gap: 40px; /* 메뉴 사이의 간격을 조절하세요 (기존 margin 대신 사용) */
         }
         nav a { 
-            margin: 0 40px; 
             text-decoration: none; 
             color: black; 
             font-weight: 500;
+            margin: 0; /* 기존 마진은 0으로 초기화 */
+            white-space: nowrap; /* 글자가 줄바꿈되지 않도록 고정 */
         }
         nav a:hover { 
             text-decoration: underline; 
