@@ -135,19 +135,11 @@
                 display: flex;
                 justify-content: center;
             }
-            .logo-wrapper { 
-                height: 70px !important; 
-                max-width: 100% !important; /* 화면 너비를 넘지 않게 고정 */
-                overflow: hidden;
-            }
-            .main-logo, .logo-wrapper .hover-img { 
-                height: 70px !important; 
-                width: auto !important;
-                max-width: 100%; /* 이미지가 부모 너비를 넘지 않게 */
-            }
-            /* 호버 이미지 모바일 위치 재고정 */
-            .logo-wrapper .hover-img { left: 50%; transform: translateX(-50%); }
-
+            /* 로고 영역 수정 */
+            header { padding: 15px 0 !important; display: flex; justify-content: center; border-bottom: var(--border-style); }
+            .logo-wrapper { height: 70px !important; display: inline-block !important; position: relative !important; overflow: visible !important; }
+            .main-logo, .logo-wrapper .hover-img { height: 70px !important; width: auto !important; }
+       
             nav { padding: 10px 0 !important; flex-wrap: wrap; }
             nav a { width: auto !important; margin: 5px 10px !important; font-size: 14px !important; }
             
