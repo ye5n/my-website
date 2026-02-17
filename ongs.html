@@ -81,13 +81,14 @@
         .img-wrap:hover .default-img-ong { opacity: 0; }
         .img-wrap:hover .hover-img-ong { opacity: 1; }
 
-table { width: 100%; border-collapse: collapse; margin: 0; }
+table { width: 100%; border-collapse: collapse; margin: 0; border: none; }
         table td { 
             border: none; border-bottom: var(--border-style); border-right: var(--border-style);
             padding: 6px 8px; /* 위아래 여백을 8px에서 6px로 줄여 더 콤팩트하게 만듭니다 */
             font-size: 11px;  /* 13px에서 11px로 축소 */
             line-height: 1.4; 
             color: black;
+            word-break: keep-all;
         }
         table tr:last-child td { border-bottom: none; }
         table td:last-child { border-right: none; }
