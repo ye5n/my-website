@@ -77,37 +77,74 @@
 
 /* [모바일 대응 스타일] 옹즈 페이지와 100% 일치하도록 수정 */
         @media screen and (max-width: 768px) {
-            html, body { overflow: auto !important; height: auto !important; }
-            body { padding: 0 20px !important; }
-            
-            /* 로고 영역 수정 */
-            header { padding: 15px 0 !important; display: flex; justify-content: center; border-bottom: var(--border-style); }
-            .logo-wrapper { height: 70px !important; display: inline-block !important; position: relative !important; overflow: visible !important; }
-            .main-logo, .logo-wrapper .hover-img { height: 70px !important; width: auto !important; }
-            
-            /* 네비게이션 수정 */
-            nav { padding: 10px 0 !important; flex-wrap: wrap; }
-            nav a { width: auto !important; margin: 5px 10px !important; font-size: 14px !important; }
+    /* 1. 전체 틀 고정: 스크롤 허용 및 바디 여백 제거 */
+    html, body { overflow: auto !important; height: auto !important; }
+    body { padding: 0 !important; } /* 상단 선이 화면 끝까지 닿게 함 */
 
-            /* 컨테이너 세로 배치 */
-            .container { display: block !important; overflow: visible !important; }
-            
-            .journal-list { 
-                border-right: none !important; 
-                border-bottom: var(--border-style); 
-                padding: 20px 0 !important; 
-                overflow: visible !important;
-                height: auto !important;
-            }
-            
-            .journal-detail { 
-                padding: 40px 0 !important; 
-                overflow: visible !important;
-                height: auto !important;
-            }
+    /* 2. 헤더: 중앙 정렬 및 선 꽉 차게 */
+    header { 
+        padding: 15px 0 !important; 
+        display: flex; 
+        justify-content: center; 
+        border-bottom: var(--border-style);
+        width: 100%;
+        box-sizing: border-box;
+    }
 
-            .detail-view h2 { font-size: 20px; }
-        }
+    /* 3. 로고: 70px 높이로 통일 */
+    .logo-wrapper { 
+        height: 70px !important; 
+        display: inline-block !important; 
+        position: relative !important; 
+        overflow: visible !important;
+    }
+    .main-logo, .logo-wrapper .hover-img { 
+        height: 70px !important; 
+        width: auto !important; 
+        opacity: 1 !important; /* 모바일에서 호버 이미지 겹침 방지 */
+    }
+    .logo-wrapper .hover-img { display: none !important; } /* 모바일은 호버가 없으므로 숨김 */
+
+    /* 4. 네비게이션: 꽉 차게 */
+    nav { 
+        padding: 10px 0 !important; 
+        flex-wrap: wrap; 
+        width: 100%;
+        box-sizing: border-box;
+        border-bottom: var(--border-style);
+    }
+    nav a { width: auto !important; margin: 5px 10px !important; font-size: 14px !important; }
+
+    /* 5. 컨텐츠 영역: 여기서부터 좌우 여백 20px 부여 */
+    .container, .ongs-wrapper, .about-content { 
+        display: block !important; 
+        padding: 0 20px !important; 
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* 6. 개별 페이지 레이아웃 조정 */
+    /* 지팡이통신 & 메인 왼쪽 열 */
+    .journal-list, .journal { 
+        border-right: none !important; 
+        border-bottom: var(--border-style); 
+        padding: 40px 0 !important; 
+        height: auto !important;
+        overflow: visible !important;
+    }
+    
+    /* 상세 페이지 & 메인 오른쪽 열 & 옹즈 열 */
+    .journal-detail, .ongs, .ong-column { 
+        padding: 40px 0 !important; 
+        border-right: none !important;
+        height: auto !important;
+        overflow: visible !important;
+    }
+
+    /* 옹즈 페이지 전용: 아이템 간 선 유지 */
+    .ong-item { padding: 40px 0 !important; border-bottom: var(--border-style) !important; }
+    .ong-item:last-child { border-bottom: none !important; }
+}
     </style>
 </head>
 <body>
