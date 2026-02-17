@@ -90,15 +90,18 @@
 
 /* 메인 페이지 구역 타이틀 (지팡이통신, 뉴옹) */
 h2 { 
-    font-size: 28px; /* 기존 22px에서 확대 */
+    font-size: 28px; 
     font-weight: 700; 
     margin-top: 20px; 
     margin-bottom: 35px; 
     text-transform: uppercase; 
     letter-spacing: 0em; 
-    border-bottom: 1px solid #000; /* 하단에 굵은 라인 추가 */
-    padding-bottom: 10px; /* 글자와 라인 사이 간격 */
-    display: block; /* 라인이 가로로 꽉 차게 */
+    border-bottom: 1px solid #000; 
+    padding-bottom: 10px; 
+    display: block; 
+    
+    /* 추가된 부분: 텍스트 중앙 정렬 */
+    text-align: center; 
 }
         h3 { font-size: 18px; font-weight: 700; margin-top: 10px; margin-bottom: 6px; }
         .item { margin-bottom: 50px; border-bottom: var(--border-style); padding-bottom: 30px; }
@@ -214,6 +217,7 @@ table td:last-child { border-right: none; }
         border-bottom-width: 1px !important; 
         padding-bottom: 8px !important;
         letter-spacing: -0.03em !important;
+        text-align: center !important; /* 모바일에서도 중앙 유지 */
     }
 
     /* 기사/아이템 제목 */
