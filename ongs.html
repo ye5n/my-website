@@ -116,12 +116,13 @@ table td:last-child { border-right: none; }
             margin-top: 12px; 
             padding: 0 5px; /* 양옆 여백을 살짝 주면 가독성이 좋아집니다 */
         }
+/* [모바일 대응 스타일: index와 100% 동기화] */
 @media screen and (max-width: 768px) {
     /* 1. 전체 구조 설정 */
     html, body { overflow: auto !important; height: auto !important; }
     body { padding: 0 !important; font-size: 16px !important; } 
 
-    /* 2. 헤더 & 네비 (index와 동일하게 유지) */
+    /* 2. 헤더 영역 (index와 동일하게 패딩/높이 고정) */
     header { 
         padding: 15px 0 !important; 
         display: flex; 
@@ -129,14 +130,19 @@ table td:last-child { border-right: none; }
         border-bottom: var(--border-style);
         width: 100%;
         box-sizing: border-box;
+        height: auto !important;
     }
-    .logo-wrapper { height: 70px !important; width: auto !important; }
-    .main-logo { height: 70px !important; width: auto !important; }
+    .logo-wrapper { height: 70px !important; width: auto !important; display: block !important; }
+    .main-logo { height: 70px !important; width: auto !important; margin: 0 auto !important; }
     .logo-wrapper .hover-img { display: none !important; } 
 
+    /* 3. 네비게이션 영역 (index와 동일하게 패딩/폰트 크기 고정) */
     nav { 
         padding: 12px 0 !important; 
         border-bottom: var(--border-style);
+        display: flex;
+        justify-content: center;
+        height: auto !important;
     }
     nav a { 
         font-size: 16px !important; 
@@ -145,60 +151,30 @@ table td:last-child { border-right: none; }
         width: auto !important;
     }
 
-
-    /* 3. 로고: 70px 높이로 통일 */
-    .logo-wrapper { 
-        height: 70px !important; 
-        display: inline-block !important; 
-        position: relative !important; 
-        overflow: visible !important;
-    }
-    .main-logo, .logo-wrapper .hover-img { 
-        height: 70px !important; 
-        width: auto !important; 
-        opacity: 1 !important; /* 모바일에서 호버 이미지 겹침 방지 */
-    }
-    .logo-wrapper .hover-img { display: none !important; } /* 모바일은 호버가 없으므로 숨김 */
-
-    /* 4. 네비게이션: 꽉 차게 */
-    nav { 
-        padding: 10px 0 !important; 
-        flex-wrap: wrap; 
-        width: 100%;
-        box-sizing: border-box;
-        border-bottom: var(--border-style);
-    }
-    nav a { width: auto !important; margin: 5px 10px !important; font-size: 14px !important; }
-
-    /* 5. 컨텐츠 영역: 여기서부터 좌우 여백 20px 부여 */
-    .container, .ongs-wrapper, .about-content { 
-        display: block !important; 
+    /* 4. 옹즈 레이아웃 조정 */
+    .ongs-wrapper { 
+        display: block !important; /* 4단 칼럼을 세로 1단으로 변경 */
         padding: 0 20px !important; 
         width: 100%;
         box-sizing: border-box;
     }
 
-    /* 6. 개별 페이지 레이아웃 조정 */
-    /* 지팡이통신 & 메인 왼쪽 열 */
-    .journal-list, .journal { 
+    .ong-column { 
+        padding: 0 !important; 
         border-right: none !important; 
-        border-bottom: var(--border-style); 
-        padding: 20px 0 !important; 
-        height: auto !important;
-        overflow: visible !important;
-    }
-    
-    /* 상세 페이지 & 메인 오른쪽 열 & 옹즈 열 */
-    .journal-detail, .ongs, .ong-column { 
-        padding: 20px 0 !important; 
-        border-right: none !important;
         height: auto !important;
         overflow: visible !important;
     }
 
-    /* 옹즈 페이지 전용: 아이템 간 선 유지 */
-    .ong-item { padding: 20px 0 !important; border-bottom: var(--border-style) !important; }
+    .ong-item { 
+        padding: 40px 0 !important; /* index의 섹션 간격과 유사하게 조정 */
+        border-bottom: var(--border-style) !important; 
+    }
     .ong-item:last-child { border-bottom: none !important; }
+
+    /* 테이블 폰트 및 설명글 크기 보정 */
+    table td { font-size: 14px !important; }
+    .ong-desc { font-size: 16px !important; line-height: 1.8 !important; }
 }
     </style>
 </head>
