@@ -116,24 +116,46 @@ table td:last-child { border-right: none; }
             margin-top: 12px; 
             padding: 0 5px; /* 양옆 여백을 살짝 주면 가독성이 좋아집니다 */
         }
-        @media screen and (max-width: 768px) {
-            html, body { overflow: auto !important; height: auto !important; }
-            body { padding: 0 20px !important; }
-            /* 로고 영역 수정 */
-            header { padding: 15px 0 !important; display: flex; justify-content: center; border-bottom: var(--border-style); }
-            .logo-wrapper { height: 70px !important; display: inline-block !important; position: relative !important; overflow: visible !important; }
-            .main-logo, .logo-wrapper .hover-img { height: 70px !important; width: auto !important; }
-       
-            nav { padding: 10px 0 !important; flex-wrap: wrap; }
-            nav a { width: auto !important; margin: 5px 10px !important; font-size: 14px !important; }
+@media screen and (max-width: 768px) {
+    /* 1. 바디의 기본 패딩을 제거하여 헤더가 꽉 차게 함 */
+    body { padding: 0 !important; }
 
-            .ongs-wrapper { display: block !important; overflow: visible !important; }
-            .ong-column { 
-                width: 100% !important; height: auto !important; overflow: visible !important; 
-                border-right: none !important; border-bottom: none; /* 모바일은 아이템 하단 선으로 대체 */
-            }
-            .ong-item { padding: 40px 0 !important; }
-        }
+    /* 2. 헤더 스타일: 양옆 여백 없이 테두리만 유지 */
+    header { 
+        padding: 15px 0 !important; 
+        display: flex; 
+        justify-content: center; 
+        border-bottom: var(--border-style);
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* 3. 로고 크기 및 비율 고정 */
+    .logo-wrapper { 
+        height: 70px !important; 
+        display: inline-block !important; 
+        position: relative !important; 
+    }
+    .main-logo, .logo-wrapper .hover-img { 
+        height: 70px !important; 
+        width: auto !important; 
+    }
+
+    /* 4. 네비게이션: 헤더와 마찬가지로 양옆 여백 없이 */
+    nav { 
+        padding: 10px 0 !important; 
+        flex-wrap: wrap; 
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* 5. 컨텐츠 영역: 텍스트가 벽에 붙지 않도록 여기서 여백을 줌 (중요) */
+    .container, .ongs-wrapper, .about-content { 
+        padding: 0 20px !important; 
+        box-sizing: border-box;
+        display: block !important;
+    }
+}
     </style>
 </head>
 <body>
