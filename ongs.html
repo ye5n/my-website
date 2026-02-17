@@ -146,31 +146,7 @@ table td:last-child { border-right: none; }
     }
 
 
-    /* 3. 로고: 70px 높이로 통일 */
-    .logo-wrapper { 
-        height: 70px !important; 
-        display: inline-block !important; 
-        position: relative !important; 
-        overflow: visible !important;
-    }
-    .main-logo, .logo-wrapper .hover-img { 
-        height: 70px !important; 
-        width: auto !important; 
-        opacity: 1 !important; /* 모바일에서 호버 이미지 겹침 방지 */
-    }
-    .logo-wrapper .hover-img { display: none !important; } /* 모바일은 호버가 없으므로 숨김 */
-
-    /* 4. 네비게이션: 꽉 차게 */
-    nav { 
-        padding: 10px 0 !important; 
-        flex-wrap: wrap; 
-        width: 100%;
-        box-sizing: border-box;
-        border-bottom: var(--border-style);
-    }
-    nav a { width: auto !important; margin: 5px 10px !important; font-size: 14px !important; }
-
-    /* 5. 컨텐츠 영역: 여기서부터 좌우 여백 20px 부여 */
+    /* 3. 컨텐츠 구역 정리 */
     .container, .ongs-wrapper, .about-content { 
         display: block !important; 
         padding: 0 20px !important; 
@@ -178,28 +154,63 @@ table td:last-child { border-right: none; }
         box-sizing: border-box;
     }
 
-    /* 6. 개별 페이지 레이아웃 조정 */
-    /* 지팡이통신 & 메인 왼쪽 열 */
-    .journal-list, .journal { 
+    .journal, .ongs, .journal-list, .journal-detail, .ong-column { 
         border-right: none !important; 
-        border-bottom: var(--border-style); 
-        padding: 20px 0 !important; 
-        height: auto !important;
-        overflow: visible !important;
-    }
-    
-    /* 상세 페이지 & 메인 오른쪽 열 & 옹즈 열 */
-    .journal-detail, .ongs, .ong-column { 
-        padding: 20px 0 !important; 
-        border-right: none !important;
+        padding: 30px 0 !important; /* 상하 여백을 20px -> 30px로 늘려 답답함 해소 */
         height: auto !important;
         overflow: visible !important;
     }
 
-    /* 옹즈 페이지 전용: 아이템 간 선 유지 */
-    .ong-item { padding: 20px 0 !important; border-bottom: var(--border-style) !important; }
-    .ong-item:last-child { border-bottom: none !important; }
+    /* 4. [중요] 텍스트 크기 대폭 상향 */
+    
+    /* 섹션 큰 제목 (지팡이통신, 뉴옹) */
+    h2 { 
+        font-size: 26px !important; /* 24px -> 26px */
+        margin-top: 10px !important;
+        margin-bottom: 25px !important; 
+        border-bottom-width: 1px !important; 
+        padding-bottom: 8px !important;
+        letter-spacing: -0.03em !important;
+        text-align: center !important; /* 모바일에서도 중앙 유지 */
+    }
+
+    /* 기사/아이템 제목 */
+    h3 { 
+        font-size: 20px !important; /* 18px -> 20px */
+        line-height: 1.4 !important;
+        margin-bottom: 12px !important;
+    }
+
+    /* 본문 텍스트 (p태그, 표 내용 등) */
+    .journal p, .item p, .about-text p {
+        font-size: 17px !important; /* 15px -> 17px (가장 체감이 큰 변화) */
+        line-height: 1.8 !important;
+        margin-bottom: 20px !important;
+    }
+
+    /* 뉴옹 표(Table) 내부 텍스트 */
+    table td {
+        font-size: 15px !important; /* 13px -> 15px */
+        padding: 10px 8px !important; /* 터치하기 쉽고 보기 편하게 여백 추가 */
+    }
+    table td:first-child {
+        width: 60px !important; /* 글자 커진 만큼 너비 확보 */
+    }
+
+    /* 5. 라인 정리 */
+    .journal { border-bottom: var(--border-style); }
+    .ongs { border-bottom: none !important; }
+    .list-item:last-child, .item:last-child { border-bottom: none !important; }
+
+    /* 날짜 등 부가정보 */
+    small { font-size: 14px !important; }
 }
+
+h2 { 
+        font-size: 24px; /* 모바일에서는 살짝 조절 */
+        margin-bottom: 20px; 
+        border-bottom-width: 1px; /* 모바일은 라인을 살짝 얇게(선택사항) */
+    }}
     </style>
 </head>
 <body>
