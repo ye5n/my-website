@@ -81,15 +81,27 @@
         .img-wrap:hover .default-img-ong { opacity: 0; }
         .img-wrap:hover .hover-img-ong { opacity: 1; }
 
-        table { width: 100%; border-collapse: collapse; margin: 0; }
+table { width: 100%; border-collapse: collapse; margin: 0; }
         table td { 
             border: none; border-bottom: var(--border-style); border-right: var(--border-style);
-            padding: 8px; font-size: 13px; line-height: 1.4; color: black;
+            padding: 6px 8px; /* 위아래 여백을 8px에서 6px로 줄여 더 콤팩트하게 만듭니다 */
+            font-size: 11px;  /* 13px에서 11px로 축소 */
+            line-height: 1.4; 
+            color: black;
         }
         table tr:last-child td { border-bottom: none; }
         table td:last-child { border-right: none; }
-        .ong-desc { font-size: 13px; line-height: 1.6; word-break: keep-all; margin-top: 10px; }
 
+        /* 테이블 왼쪽 열(Name, Material 등)을 더 구분하고 싶다면 아래 주석을 해제하세요 */
+        /* table td:first-child { color: #666; width: 35%; } */
+
+        .ong-desc { 
+            font-size: 13px; /* 기존 크기 유지 */
+            line-height: 1.6; 
+            word-break: keep-all; 
+            margin-top: 12px; 
+            padding: 0 5px; /* 양옆 여백을 살짝 주면 가독성이 좋아집니다 */
+        }
         @media screen and (max-width: 768px) {
             html, body { overflow: auto !important; height: auto !important; }
             body { padding: 0 20px !important; }
