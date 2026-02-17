@@ -144,10 +144,11 @@ table tr:last-child td { border-bottom: none; }
 table td:last-child { border-right: none; }
 
 @media screen and (max-width: 768px) {
-    /* 1. 바디의 기본 패딩을 제거하여 헤더가 꽉 차게 함 */
+    /* 1. 전체 여백 제거 (헤더/나비 꽉 차게) */
+    html, body { overflow: auto !important; height: auto !important; }
     body { padding: 0 !important; }
 
-    /* 2. 헤더 스타일: 양옆 여백 없이 테두리만 유지 */
+    /* 2. 헤더 & 로고 (중앙 정렬 및 70px 높이) */
     header { 
         padding: 15px 0 !important; 
         display: flex; 
@@ -156,32 +157,45 @@ table td:last-child { border-right: none; }
         width: 100%;
         box-sizing: border-box;
     }
+    .logo-wrapper { height: 70px !important; }
+    .main-logo, .logo-wrapper .hover-img { height: 70px !important; width: auto !important; }
 
-    /* 3. 로고 크기 및 비율 고정 */
-    .logo-wrapper { 
-        height: 70px !important; 
-        display: inline-block !important; 
-        position: relative !important; 
-    }
-    .main-logo, .logo-wrapper .hover-img { 
-        height: 70px !important; 
-        width: auto !important; 
-    }
-
-    /* 4. 네비게이션: 헤더와 마찬가지로 양옆 여백 없이 */
+    /* 3. 네비게이션 (꽉 차게) */
     nav { 
         padding: 10px 0 !important; 
         flex-wrap: wrap; 
         width: 100%;
         box-sizing: border-box;
     }
+    nav a { width: auto !important; margin: 5px 10px !important; font-size: 14px !important; }
 
-    /* 5. 컨텐츠 영역: 텍스트가 벽에 붙지 않도록 여기서 여백을 줌 (중요) */
-    .container, .ongs-wrapper, .about-content { 
-        padding: 0 20px !important; 
+    /* 4. 컨테이너 및 내부 구역 정리 */
+    .container { 
+        display: block !important; 
+        padding: 0 20px !important; /* 글자들은 여백을 가짐 */
+        width: 100%;
         box-sizing: border-box;
-        display: block !important;
     }
+
+    /* 지팡이통신 구역 */
+    .journal { 
+        border-right: none !important; /* 오른쪽 선 제거 */
+        border-bottom: var(--border-style); /* 아래쪽 선 추가로 구획 정리 */
+        padding: 40px 0 !important; 
+        height: auto !important;
+        overflow: visible !important;
+    }
+
+    /* 뉴옹 구역 */
+    .ongs { 
+        padding: 40px 0 !important; 
+        height: auto !important;
+        overflow: visible !important;
+    }
+
+    /* 제목 및 아이템 간격 조정 */
+    h2 { margin-top: 20px; font-size: 20px; }
+    .item { margin-bottom: 40px; }
 }
     </style>
 </head>
