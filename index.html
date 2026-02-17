@@ -116,23 +116,27 @@
         .img-wrap:hover .default-img-ong { opacity: 0; }
         .img-wrap:hover .hover-img-ong { opacity: 1; }
 
-        table { 
-            width: 100%; 
-            border-collapse: collapse; /* 핵심: 셀 사이의 테두리를 하나로 합침 */
-            margin: 0; 
-            border: none;
-        }
+table { 
+    width: 100%; 
+    border-collapse: collapse; 
+    margin: 0;
+    border: none; /* 테이블 외곽선은 아예 제거 */
+}
 
-        table td { 
-            border: var(--border-style); /* 변수로 설정된 1px solid #000 적용 */
-            padding: 8px; 
-            font-size: 11px; 
-            line-height: 1.4; 
-            color: black;
-            word-break: keep-all;
-        }
-        table tr:last-child td { border-bottom: none; }
-        table td:last-child { border-right: none; }
+table td { 
+    /* 아래쪽과 오른쪽만 선을 그어 겹침을 방지합니다 */
+    border-bottom: 1px solid #000;
+    border-right: 1px solid #000;
+    padding: 8px; 
+    font-size: 11px; 
+    line-height: 1.4; 
+    color: black;
+    word-break: keep-all;
+}
+
+/* 마지막 행의 아래쪽 선과 마지막 열의 오른쪽 선을 지워 박스 테두리와의 간섭을 막습니다 */
+table tr:last-child td { border-bottom: none; }
+table td:last-child { border-right: none; }
 
         @media screen and (max-width: 768px) {
             html, body { height: auto !important; overflow-y: auto !important; }
