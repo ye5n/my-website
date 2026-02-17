@@ -125,11 +125,11 @@
 
         /* --- [모바일 대응] --- */
 @media screen and (max-width: 768px) {
-    /* 1. 전체 틀 고정: 스크롤 허용 및 바디 여백 제거 */
+    /* 1. 전체 구조 설정 */
     html, body { overflow: auto !important; height: auto !important; }
-    body { padding: 0 !important; } /* 상단 선이 화면 끝까지 닿게 함 */
+    body { padding: 0 !important; font-size: 16px !important; } 
 
-    /* 2. 헤더: 중앙 정렬 및 선 꽉 차게 */
+    /* 2. 헤더 & 네비 (index와 동일하게 유지) */
     header { 
         padding: 15px 0 !important; 
         display: flex; 
@@ -138,6 +138,21 @@
         width: 100%;
         box-sizing: border-box;
     }
+    .logo-wrapper { height: 70px !important; width: auto !important; }
+    .main-logo { height: 70px !important; width: auto !important; }
+    .logo-wrapper .hover-img { display: none !important; } 
+
+    nav { 
+        padding: 12px 0 !important; 
+        border-bottom: var(--border-style);
+    }
+    nav a { 
+        font-size: 16px !important; 
+        margin: 0 12px !important; 
+        font-weight: 600 !important;
+        width: auto !important;
+    }
+
 
     /* 3. 로고: 70px 높이로 통일 */
     .logo-wrapper { 
