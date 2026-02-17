@@ -88,7 +88,18 @@
         .journal { flex: 1.8; border-right: var(--border-style); padding-right: 50px; }
         .ongs { flex: 1.2; padding-left: 50px; }
 
-        h2 { font-size: 22px; font-weight: 700; margin-top: 10; margin-bottom: 25px; text-transform: uppercase; letter-spacing: 0em; }
+/* 메인 페이지 구역 타이틀 (지팡이통신, 뉴옹) */
+h2 { 
+    font-size: 28px; /* 기존 22px에서 확대 */
+    font-weight: 800; 
+    margin-top: 20px; 
+    margin-bottom: 35px; 
+    text-transform: uppercase; 
+    letter-spacing: -0.02em; 
+    border-bottom: 3px solid #000; /* 하단에 굵은 라인 추가 */
+    padding-bottom: 10px; /* 글자와 라인 사이 간격 */
+    display: block; /* 라인이 가로로 꽉 차게 */
+}
         h3 { font-size: 18px; font-weight: 700; margin-top: 10px; margin-bottom: 6px; }
         .item { margin-bottom: 50px; border-bottom: var(--border-style); padding-bottom: 30px; }
         .journal a { color: #000; text-decoration: underline; text-underline-offset: 3px; }
@@ -201,8 +212,11 @@ table td:last-child { border-right: none; }
         border-bottom: none !important; 
     }
 
-    h2 { font-size: 20px; margin-top: 10px; }
-}
+h2 { 
+        font-size: 24px; /* 모바일에서는 살짝 조절 */
+        margin-bottom: 30px; 
+        border-bottom-width: 2px; /* 모바일은 라인을 살짝 얇게(선택사항) */
+    }}
     </style>
 </head>
 <body>
