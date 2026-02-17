@@ -56,7 +56,6 @@
             border-bottom: var(--border-style); 
             transition: all 0.2s ease;
         }
-        /* 호버 및 활성 상태에서 배경색 없이 밑줄만 */
         .list-item:hover h3, .list-item.active h3 { text-decoration: underline; text-underline-offset: 4px; }
         .list-item h3 { font-size: 17px; font-weight: 700; margin: 0 0 5px 0; line-height: 1.4; }
         .list-item small { font-size: 13px; color: #000; }
@@ -69,21 +68,42 @@
         }
         .detail-view h2 { font-size: 24px; font-weight: 700; margin-top: 0px; margin-bottom: 15px; }
         
-        /* 타이틀 아래 구분선 */
         .title-separator { border-bottom: var(--border-style); margin-bottom: 30px; }
 
-        /* 본문 상단 여백 제거 및 날짜와의 간격 */
         .detail-view .content { font-size: 15px; line-height: 1.9; text-align: justify; margin-bottom: 40px; }
         
-        /* 하단 날짜 및 저자 스타일 */
         .detail-view .date { font-size: 13px; color: #000; display: block; font-weight: 400; }
         .detail-view a { color: #000; text-decoration: underline; }
 
+        /* [모바일 대응 스타일] 옹즈 페이지와 동일하게 설정 */
         @media screen and (max-width: 768px) {
-            html, body { overflow: auto; height: auto; }
-            .container { display: block; }
-            .journal-list { border-right: none; border-bottom: var(--border-style); padding: 20px 0; }
-            .journal-detail { padding: 30px 0; }
+            html, body { overflow: auto !important; height: auto !important; }
+            body { padding: 0 20px !important; }
+            
+            header { padding: 15px 0 !important; display: flex; justify-content: center; }
+            .logo-wrapper { height: 70px !important; overflow: hidden; }
+            .main-logo, .logo-wrapper .hover-img { height: 70px !important; }
+            
+            nav { padding: 10px 0 !important; flex-wrap: wrap; }
+            nav a { width: auto !important; margin: 5px 10px !important; font-size: 14px !important; }
+
+            .container { display: block !important; overflow: visible !important; }
+            
+            .journal-list { 
+                border-right: none !important; 
+                border-bottom: var(--border-style); 
+                padding: 20px 0 !important; 
+                overflow: visible !important;
+                height: auto !important;
+            }
+            
+            .journal-detail { 
+                padding: 40px 0 !important; 
+                overflow: visible !important;
+                height: auto !important;
+            }
+
+            .detail-view h2 { font-size: 20px; }
         }
     </style>
 </head>
@@ -157,7 +177,6 @@
 
     function showDetail(index) {
         document.getElementById('detailTitle').innerHTML = articles[index].title;
-        // 하단 날짜 영역에 저자 정보 포함
         document.getElementById('detailDate').innerText = `By. ${articles[index].author} | ${articles[index].date}`;
         document.getElementById('detailContent').innerHTML = articles[index].content;
 
@@ -165,7 +184,12 @@
         items.forEach(item => item.classList.remove('active'));
         items[index].classList.add('active');
 
-        document.getElementById('journalDetail').scrollTop = 0;
+        // 모바일일 경우 기사를 클릭했을 때 본문 영역으로 부드럽게 스크롤 (사용자 경험 향상)
+        if (window.innerWidth <= 768) {
+            document.getElementById('journalDetail').scrollIntoView({ behavior: 'smooth' });
+        } else {
+            document.getElementById('journalDetail').scrollTop = 0;
+        }
     }
 </script>
 
