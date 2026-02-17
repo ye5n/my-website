@@ -144,11 +144,11 @@ table tr:last-child td { border-bottom: none; }
 table td:last-child { border-right: none; }
 
 @media screen and (max-width: 768px) {
-    /* 1. 전체 여백 제거 (헤더/나비 꽉 차게) */
+    /* 1. 전체 틀 고정: 스크롤 허용 및 바디 여백 제거 */
     html, body { overflow: auto !important; height: auto !important; }
-    body { padding: 0 !important; }
+    body { padding: 0 !important; } /* 상단 선이 화면 끝까지 닿게 함 */
 
-    /* 2. 헤더 & 로고 (중앙 정렬 및 70px 높이) */
+    /* 2. 헤더: 중앙 정렬 및 선 꽉 차게 */
     header { 
         padding: 15px 0 !important; 
         display: flex; 
@@ -157,45 +157,60 @@ table td:last-child { border-right: none; }
         width: 100%;
         box-sizing: border-box;
     }
-    .logo-wrapper { height: 70px !important; }
-    .main-logo, .logo-wrapper .hover-img { height: 70px !important; width: auto !important; }
 
-    /* 3. 네비게이션 (꽉 차게) */
+    /* 3. 로고: 70px 높이로 통일 */
+    .logo-wrapper { 
+        height: 70px !important; 
+        display: inline-block !important; 
+        position: relative !important; 
+        overflow: visible !important;
+    }
+    .main-logo, .logo-wrapper .hover-img { 
+        height: 70px !important; 
+        width: auto !important; 
+        opacity: 1 !important; /* 모바일에서 호버 이미지 겹침 방지 */
+    }
+    .logo-wrapper .hover-img { display: none !important; } /* 모바일은 호버가 없으므로 숨김 */
+
+    /* 4. 네비게이션: 꽉 차게 */
     nav { 
         padding: 10px 0 !important; 
         flex-wrap: wrap; 
         width: 100%;
         box-sizing: border-box;
+        border-bottom: var(--border-style);
     }
     nav a { width: auto !important; margin: 5px 10px !important; font-size: 14px !important; }
 
-    /* 4. 컨테이너 및 내부 구역 정리 */
-    .container { 
+    /* 5. 컨텐츠 영역: 여기서부터 좌우 여백 20px 부여 */
+    .container, .ongs-wrapper, .about-content { 
         display: block !important; 
-        padding: 0 20px !important; /* 글자들은 여백을 가짐 */
+        padding: 0 20px !important; 
         width: 100%;
         box-sizing: border-box;
     }
 
-    /* 지팡이통신 구역 */
-    .journal { 
-        border-right: none !important; /* 오른쪽 선 제거 */
-        border-bottom: var(--border-style); /* 아래쪽 선 추가로 구획 정리 */
+    /* 6. 개별 페이지 레이아웃 조정 */
+    /* 지팡이통신 & 메인 왼쪽 열 */
+    .journal-list, .journal { 
+        border-right: none !important; 
+        border-bottom: var(--border-style); 
         padding: 40px 0 !important; 
         height: auto !important;
         overflow: visible !important;
     }
-
-    /* 뉴옹 구역 */
-    .ongs { 
+    
+    /* 상세 페이지 & 메인 오른쪽 열 & 옹즈 열 */
+    .journal-detail, .ongs, .ong-column { 
         padding: 40px 0 !important; 
+        border-right: none !important;
         height: auto !important;
         overflow: visible !important;
     }
 
-    /* 제목 및 아이템 간격 조정 */
-    h2 { margin-top: 20px; font-size: 20px; }
-    .item { margin-bottom: 40px; }
+    /* 옹즈 페이지 전용: 아이템 간 선 유지 */
+    .ong-item { padding: 40px 0 !important; border-bottom: var(--border-style) !important; }
+    .ong-item:last-child { border-bottom: none !important; }
 }
     </style>
 </head>
