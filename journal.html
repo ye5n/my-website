@@ -40,9 +40,9 @@
 
         .container { display: flex; flex: 1; overflow: hidden; max-width: 1100px; margin: 0 auto; width: 100%; }
 
-        /* 왼쪽: 기사 리스트 */
+        /* 왼쪽: 기사 리스트 (슬림한 스타일) */
         .journal-list { 
-            flex: 1; 
+            flex: 1.2; 
             border-right: var(--border-style); 
             padding: 40px 40px 40px 0; 
             overflow-y: auto;
@@ -52,17 +52,18 @@
 
         .list-item { 
             cursor: pointer; 
-            padding-bottom: 20px; 
-            margin-bottom: 30px;
+            padding-bottom: 25px; 
+            margin-bottom: 40px;
             border-bottom: var(--border-style); 
+            transition: opacity 0.2s ease;
         }
-        .list-item h3 { font-size: 15px; font-weight: 700; margin: 5px 0; line-height: 1.4; word-break: keep-all; }
-        .list-item small { font-size: 11px; color: #666; text-transform: uppercase; }
-        .list-item:hover h3 { text-decoration: underline; }
+        .list-item:hover { opacity: 0.6; }
+        .list-item h3 { font-size: 16px; font-weight: 700; margin: 5px 0; line-height: 1.4; word-break: keep-all; }
+        .list-item small { display: block; font-size: 12px; color: #666; }
 
-        /* 오른쪽: 신문 스타일 상세 페이지 */
+        /* 오른쪽: 상세 페이지 (정갈한 라인 추가) */
         .journal-detail { 
-            flex: 2.2; 
+            flex: 1.8; 
             padding: 40px 0 40px 50px; 
             overflow-y: auto;
             scrollbar-width: none;
@@ -71,45 +72,37 @@
 
         .detail-view { width: 100%; }
         
-        /* 신문 상단 장식 */
-        .newspaper-header {
-            border-top: 3px solid #000; /* 신문 특유의 굵은 상단 선 */
-            border-bottom: 1px solid #000;
-            display: flex;
-            justify-content: space-between;
-            padding: 5px 0;
+        /* 제목 위아래 깔끔한 라인 */
+        .detail-header {
+            border-bottom: var(--border-style);
             margin-bottom: 30px;
+            padding-bottom: 5px;
         }
-        .newspaper-header span { font-size: 12px; font-weight: 700; text-transform: uppercase; }
-
+        
         .detail-view h2 { 
-            font-size: 28px; 
-            font-weight: 800; 
-            margin-bottom: 20px; 
-            line-height: 1.2;
+            font-size: 22px; 
+            font-weight: 700; 
+            margin-bottom: 15px; 
+            line-height: 1.3;
             word-break: keep-all;
-            letter-spacing: -0.02em;
         }
         
         .detail-view .content { 
             font-size: 15px; 
             line-height: 1.8; 
             color: #000;
-            text-align: justify;
-            column-count: 1; /* 나중에 양이 많아지면 2단으로 나눠도 멋집니다 */
         }
         
-        .detail-view .content i { font-style: italic; background-color: #f0f0f0; padding: 0 4px; }
-        .detail-view .content a { color: #000; font-weight: 600; text-decoration: underline; }
+        .detail-view .content i { font-style: italic; }
+        .detail-view .content a { color: #000; text-decoration: underline; text-underline-offset: 3px; }
 
-        /* 하단 마감 선 */
-        .detail-view .footer-date { 
+        /* 하단 날짜 라인 */
+        .detail-footer { 
             margin-top: 40px; 
             padding-top: 10px;
-            border-top: 1px solid #000;
+            border-top: var(--border-style);
             font-size: 13px; 
-            text-align: right;
-            font-weight: 700;
+            text-align: left;
         }
 
         @media screen and (max-width: 768px) {
@@ -117,7 +110,7 @@
             body { padding: 0 20px; }
             .container { display: block; }
             .journal-list { border-right: none; padding-right: 0; }
-            .journal-detail { padding-left: 0; margin-top: 20px; }
+            .journal-detail { padding-left: 0; border-top: var(--border-style); margin-top: 20px; }
         }
     </style>
 </head>
@@ -137,35 +130,32 @@
 </nav>
 
 <div class="container">
-    <div class="journal-list">
+    <div class="journal-list" id="journalList">
         <div class="list-item" onclick="showDetail(0)">
-            <small>VOL. 03</small>
             <h3>집지킴이 옹즈의 '구해줘 홈즈'</h3>
+            <small>2026.02.17</small>
         </div>
         <div class="list-item" onclick="showDetail(1)">
-            <small>VOL. 02</small>
             <h3>훌쩍옹 (또) 훌쩍 떠나다.</h3>
+            <small>2026.02.15</small>
         </div>
         <div class="list-item" onclick="showDetail(2)">
-            <small>VOL. 01</small>
             <h3>&lt;지팡이통신&gt;의 창간</h3>
+            <small>2026.01.01</small>
         </div>
     </div>
 
     <div class="journal-detail" id="journalDetail">
         <div class="detail-view">
-            <div class="newspaper-header">
-                <span>The Jipangyi Times</span>
-                <span>Editorial Section</span>
+            <div class="detail-header">
+                <h2 id="detailTitle">집지킴이 옹즈의 '구해줘 홈즈'</h2>
             </div>
-            
-            <h2 id="detailTitle">집지킴이 옹즈의 '구해줘 홈즈'</h2>
             
             <div class="content" id="detailContent">
                 성주옹, 부뚜막옹, 삼신할미옹은 아주 오래전부터 사람들의 집과 마음 한구석을 묵묵히 지켜온 집지킴이 옹들이다. <i>“집을 지키는 일은 곧 마음을 지키는 일.”</i> 오랜 세월을 건너 대대로 이어져온 그 믿음을 고스란히 품은 26년생 집지킴이 옹즈 삼인방이 이제 새로운 터를 찾아 나섰다.<br><br>지금 이들은 서울숲 앞 <a href="https://www.instagram.com/narrative.object/" target="_blank">네러티브 오브젝트</a>에 머물며 자신들이 새롭게 지키게 될 보금자리를 기다리고 있다. 이들의 여정 속에서 따뜻한 인연과 오래도록 머물 이야기가 피어나기를 바라며, 독자 여러분의 많은 관심과 응원을 부탁드린다.
             </div>
             
-            <div class="footer-date" id="detailDate">2026.02.17</div>
+            <div class="detail-footer" id="detailDate">2026.02.17</div>
         </div>
     </div>
 </div>
@@ -175,19 +165,16 @@
         {
             title: "집지킴이 옹즈의 '구해줘 홈즈'",
             date: "2026.02.17",
-            section: "Editorial Section",
             content: "성주옹, 부뚜막옹, 삼신할미옹은 아주 오래전부터 사람들의 집과 마음 한구석을 묵묵히 지켜온 집지킴이 옹들이다. <i>“집을 지키는 일은 곧 마음을 지키는 일.”</i> 오랜 세월을 건너 대대로 이어져온 그 믿음을 고스란히 품은 26년생 집지킴이 옹즈 삼인방이 이제 새로운 터를 찾아 나섰다.<br><br>지금 이들은 서울숲 앞 <a href='https://www.instagram.com/narrative.object/' target='_blank'>네러티브 오브젝트</a>에 머물며 자신들이 새롭게 지키게 될 보금자리를 기다리고 있다. 이들의 여정 속에서 따뜻한 인연과 오래도록 머물 이야기가 피어나기를 바라며, 독자 여러분의 많은 관심과 응원을 부탁드린다."
         },
         {
             title: "훌쩍옹 (또) 훌쩍 떠나다.",
             date: "2026.02.15",
-            section: "Traveling Section",
             content: "\"바람 냄새가 바뀌었기에 잠시 다녀오겠습니다.\" 짧은 메모 한 장, 비어있는 방석. 짐도 없이 훌쩍, 이번엔 서쪽 골짜기로 향했다는 소문입니다. 훌쩍옹이 오는 길에 묻혀올 고요한 소식들을 기다려주세요.<br><br>어디로 갔는지는 아무도 모르지만, 다시 돌아올 때쯤이면 그의 소맷자락엔 늘 숲의 향기가 배어있곤 합니다."
         },
         {
             title: "<지팡이통신>의 창간",
             date: "2026.01.01",
-            section: "Founding News",
             content: "안녕하세요. 옹즈타운의 신문 &lt;지팡이통신&gt;이 2026년 1월 1일, 첫발을 내딛습니다. 이곳에 앞으로 등장할 ‘뉴페이스 옹즈’의 소식과 함께 왁자지껄한 일상을 담아보려 합니다. 부디 적은 관심과 많은 응원 부탁드립니다. 얍."
         }
     ];
@@ -196,8 +183,6 @@
         document.getElementById('detailTitle').innerHTML = articles[index].title;
         document.getElementById('detailContent').innerHTML = articles[index].content;
         document.getElementById('detailDate').innerText = articles[index].date;
-        // 섹션 이름도 바뀌게 하고 싶다면 추가 가능
-        document.querySelector('.newspaper-header span:last-child').innerText = articles[index].section;
         document.getElementById('journalDetail').scrollTop = 0;
     }
 </script>
