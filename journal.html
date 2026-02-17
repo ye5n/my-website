@@ -76,7 +76,81 @@
         .detail-view a { color: #000; text-decoration: underline; }
 
 /* [모바일 대응 스타일] 옹즈 페이지와 100% 일치하도록 수정 */
-https://github.com/ye5n/my-website/edit/main/journal.html
+@media screen and (max-width: 768px) {
+    /* 1. 전체 구조 설정 */
+    html, body { overflow: auto !important; height: auto !important; }
+    body { padding: 0 !important; font-size: 16px !important; } 
+
+    /* 2. 헤더 & 네비 (index와 동일하게 유지) */
+    header { 
+        padding: 15px 0 !important; 
+        display: flex; 
+        justify-content: center; 
+        border-bottom: var(--border-style);
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .logo-wrapper { height: 70px !important; width: auto !important; }
+    .main-logo { height: 70px !important; width: auto !important; }
+    .logo-wrapper .hover-img { display: none !important; } 
+
+    nav { 
+        padding: 12px 0 !important; 
+        border-bottom: var(--border-style);
+    }
+    nav a { 
+        font-size: 16px !important; 
+        margin: 0 12px !important; 
+        font-weight: 600 !important;
+        width: auto !important;
+    }
+
+    /* 3. 상단 리스트 영역 (2개 높이 고정 + 스크롤) */
+    .container { 
+        display: flex !important; 
+        flex-direction: column !important; /* 위아래 배치 */
+        padding: 0 !important; 
+    }
+
+    .journal-list { 
+        flex: none !important;
+        width: 100% !important;
+        height: 180px !important; /* 리스트 2개 정도가 딱 보이는 높이 */
+        overflow-y: auto !important; /* 리스트 내부 스크롤 활성화 */
+        border-right: none !important;
+        border-bottom: var(--border-style);
+        padding: 10px 20px !important;
+        box-sizing: border-box;
+        background-color: #f9f9f9; /* 리스트 영역임을 알 수 있게 살짝 배경(선택사항) */
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .list-item { padding: 15px 0 !important; }
+    .list-item h3 { font-size: 18px !important; margin-bottom: 5px !important; }
+    .list-item:last-child { border-bottom: none !important; }
+
+    /* 4. 하단 본문 영역 */
+    .journal-detail { 
+        flex: 1 !important;
+        width: 100% !important;
+        padding: 40px 20px !important; 
+        box-sizing: border-box;
+    }
+
+    .detail-view h2 { 
+        font-size: 24px !important; 
+        border-bottom: 3px solid #000 !important; 
+        padding-bottom: 8px !important;
+        margin-bottom: 20px !important;
+    }
+
+    .detail-view .content { 
+        font-size: 17px !important; 
+        line-height: 1.8 !important;
+    }
+
+    .title-separator { display: none !important; }
+}https://github.com/ye5n/my-website/edit/main/journal.html
     </style>
 </head>
 <body>
