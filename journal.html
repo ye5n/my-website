@@ -122,23 +122,53 @@
             nav { padding: 12px 0 !important; border-bottom: var(--border-style); }
             nav a { font-size: 16px !important; margin: 0 12px !important; font-weight: 600 !important; width: auto !important; }
 
-            .container { display: flex !important; flex-direction: column !important; padding: 0 !important; }
+            .container { 
+                display: flex !important; 
+                flex-direction: column !important; 
+                padding: 0 !important; 
+                overflow: visible !important; /* 컨테이너 잘림 방지 */
+            }
+
             .journal-list { 
                 flex: none !important; 
-                width: 100% !important; 
+                width: auto !important; /* 100% 대신 auto로 변경 */
                 height: 200px !important; 
                 border-right: none !important;
                 border-bottom: var(--border-style);
-                padding: 10px 20px !important;
+                padding: 10px 20px !important; /* 좌우 여백 확보 */
                 background-color: #f9f9f9;
+                box-sizing: border-box;
             }
 
-            .list-item.active { box-shadow: none; ; }
+            /* 하단 상세 본문 영역 여백 복구 */
+            .journal-detail { 
+                flex: none !important; 
+                width: auto !important; /* 고정 너비 해제 */
+                padding: 40px 25px 60px 25px !important; /* 상 우 하 좌 여백 넉넉히 */
+                box-sizing: border-box;
+                overflow: visible !important;
+            }
 
-            .journal-detail { flex: 1 !important; width: 100% !important; padding: 40px 20px !important; }
-            .detail-view h2 { font-size: 24px !important; border-bottom: 1px solid #000 !important; padding-bottom: 10px !important; }
-            .detail-view .content { font-size: 17px !important; }
+            .detail-view h2 { 
+                font-size: 24px !important; 
+                border-bottom: 1px solid #000 !important; 
+                padding-bottom: 12px !important; 
+                margin-bottom: 25px !important;
+                word-break: keep-all; /* 제목 단어 잘림 방지 */
+            }
+
+            .detail-view .content { 
+                font-size: 17px !important; 
+                line-height: 1.8 !important;
+                text-align: left !important; /* 모바일은 왼쪽 정렬이 더 깔끔함 */
+            }
+
             .title-separator { display: none !important; }
+            
+            /* 리스트 활성화 밑줄 모바일 최적화 */
+            .list-item:hover h3, .list-item.active h3 {
+                text-underline-offset: 4px;
+            }
         }
     </style>
 </head>
