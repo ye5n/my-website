@@ -76,12 +76,12 @@
         .detail-view a { color: #000; text-decoration: underline; }
 
 /* [모바일 대응 스타일] 옹즈 페이지와 100% 일치하도록 수정 */
-        @media screen and (max-width: 768px) {
-    /* 1. 전체 틀 고정: 스크롤 허용 및 바디 여백 제거 */
+@media screen and (max-width: 768px) {
+    /* 1. 전체 틀 및 바디 여백 제거 */
     html, body { overflow: auto !important; height: auto !important; }
-    body { padding: 0 !important; } /* 상단 선이 화면 끝까지 닿게 함 */
+    body { padding: 0 !important; } 
 
-    /* 2. 헤더: 중앙 정렬 및 선 꽉 차게 */
+    /* 2. 헤더 & 로고 통일 */
     header { 
         padding: 15px 0 !important; 
         display: flex; 
@@ -90,22 +90,11 @@
         width: 100%;
         box-sizing: border-box;
     }
+    .logo-wrapper { height: 70px !important; }
+    .main-logo, .logo-wrapper .hover-img { height: 70px !important; width: auto !important; }
+    .logo-wrapper .hover-img { display: none !important; }
 
-    /* 3. 로고: 70px 높이로 통일 */
-    .logo-wrapper { 
-        height: 70px !important; 
-        display: inline-block !important; 
-        position: relative !important; 
-        overflow: visible !important;
-    }
-    .main-logo, .logo-wrapper .hover-img { 
-        height: 70px !important; 
-        width: auto !important; 
-        opacity: 1 !important; /* 모바일에서 호버 이미지 겹침 방지 */
-    }
-    .logo-wrapper .hover-img { display: none !important; } /* 모바일은 호버가 없으므로 숨김 */
-
-    /* 4. 네비게이션: 꽉 차게 */
+    /* 3. 네비게이션 */
     nav { 
         padding: 10px 0 !important; 
         flex-wrap: wrap; 
@@ -115,35 +104,39 @@
     }
     nav a { width: auto !important; margin: 5px 10px !important; font-size: 14px !important; }
 
-    /* 5. 컨텐츠 영역: 여기서부터 좌우 여백 20px 부여 */
-    .container, .ongs-wrapper, .about-content { 
+    /* 4. 컨테이너 내부 여백 설정 */
+    .container { 
         display: block !important; 
         padding: 0 20px !important; 
         width: 100%;
         box-sizing: border-box;
     }
 
-    /* 6. 개별 페이지 레이아웃 조정 */
-    /* 지팡이통신 & 메인 왼쪽 열 */
-    .journal-list, .journal { 
+    /* 5. 불필요한 선 제거 및 구역 정리 */
+    /* 리스트 구역 */
+    .journal-list { 
         border-right: none !important; 
-        border-bottom: var(--border-style); 
-        padding: 20px 0 !important; 
+        border-bottom: var(--border-style); /* 리스트와 본문 사이를 나누는 선 하나만 남김 */
+        padding: 30px 0 !important; 
         height: auto !important;
         overflow: visible !important;
     }
-    
-    /* 상세 페이지 & 메인 오른쪽 열 & 옹즈 열 */
-    .journal-detail, .ongs, .ong-column { 
-        padding: 20px 0 !important; 
+
+    /* 리스트 내부 아이템 선 정리 */
+    .list-item { padding: 15px 0 !important; }
+    .list-item:last-child { border-bottom: none !important; } /* 리스트 마지막 아이템의 선을 지워 중복 방지 */
+
+    /* 본문 상세 구역 */
+    .journal-detail { 
+        padding: 50px 0 !important; /* 본문 시작 전 넉넉한 여백 */
         border-right: none !important;
         height: auto !important;
         overflow: visible !important;
     }
 
-    /* 옹즈 페이지 전용: 아이템 간 선 유지 */
-    .ong-item { padding: 20px 0 !important; border-bottom: var(--border-style) !important; }
-    .ong-item:last-child { border-bottom: none !important; }
+    /* 본문 내부 타이틀 선 */
+    .detail-view h2 { font-size: 20px; line-height: 1.3; }
+    .title-separator { margin-bottom: 25px; }
 }
     </style>
 </head>
