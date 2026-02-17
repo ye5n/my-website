@@ -75,18 +75,21 @@
         .detail-view .date { font-size: 13px; color: #000; display: block; font-weight: 400; }
         .detail-view a { color: #000; text-decoration: underline; }
 
-        /* [모바일 대응 스타일] 옹즈 페이지와 동일하게 설정 */
+/* [모바일 대응 스타일] 옹즈 페이지와 100% 일치하도록 수정 */
         @media screen and (max-width: 768px) {
             html, body { overflow: auto !important; height: auto !important; }
             body { padding: 0 20px !important; }
             
-            header { padding: 15px 0 !important; display: flex; justify-content: center; }
-            .logo-wrapper { height: 70px !important; overflow: hidden; }
-            .main-logo, .logo-wrapper .hover-img { height: 70px !important; }
+            /* 로고 영역 수정 */
+            header { padding: 15px 0 !important; display: flex; justify-content: center; border-bottom: var(--border-style); }
+            .logo-wrapper { height: 70px !important; display: inline-block !important; position: relative !important; overflow: visible !important; }
+            .main-logo, .logo-wrapper .hover-img { height: 70px !important; width: auto !important; }
             
+            /* 네비게이션 수정 */
             nav { padding: 10px 0 !important; flex-wrap: wrap; }
             nav a { width: auto !important; margin: 5px 10px !important; font-size: 14px !important; }
 
+            /* 컨테이너 세로 배치 */
             .container { display: block !important; overflow: visible !important; }
             
             .journal-list { 
