@@ -35,9 +35,31 @@
             text-align: center;
             padding: 20px 0; 
         }
-        .logo-wrapper { position: relative; display: inline-block; height: 110px; vertical-align: middle; text-decoration: none; }
-        .main-logo, .logo-wrapper .hover-img { height: 110px; width: auto !important; display: block; transition: opacity 0.3s ease; }
-        .logo-wrapper .hover-img { position: absolute; top: 0; left: 50%; transform: translateX(-50%); opacity: 0; }
+        
+        .logo-wrapper { 
+            position: relative; 
+            display: inline-block; 
+            height: 110px; 
+            vertical-align: middle; 
+            text-decoration: none; 
+            max-width: 100%; /* 잘림 방지 */
+        }
+        
+        .main-logo, .logo-wrapper .hover-img { 
+            height: 110px; 
+            width: auto !important; 
+            display: block; 
+            transition: opacity 0.3s ease; 
+        }
+        
+        .logo-wrapper .hover-img { 
+            position: absolute; 
+            top: 0; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            opacity: 0; 
+        }
+        
         .logo-wrapper:hover .default-img { opacity: 0; }
         .logo-wrapper:hover .hover-img { opacity: 1; }
 
@@ -97,41 +119,40 @@
         table td:last-child { border-right: none; }
         .ong-desc { font-size: 14px; line-height: 1.6; word-break: keep-all; margin-top: 10px; }
 
-        /* --- [모바일] 전체 페이지와 동일하게 업데이트 --- */
+        /* --- [모바일 대응] --- */
         @media screen and (max-width: 768px) {
             html, body { 
-                overflow: auto !important; /* 바디 스크롤 허용 */
+                overflow: auto !important; 
                 height: auto !important; 
             }
             body { 
-                padding: 0 20px !important; /* index, about과 동일한 여백 */
+                padding: 0 20px !important; 
             }
+            
             header { 
                 padding: 15px 0 !important; 
-                height: auto !important;
-                box-sizing: border-box !important;
+                width: 100%;
+                box-sizing: border-box;
+                display: flex;
+                justify-content: center;
             }
             .logo-wrapper { 
                 height: 70px !important; 
-                min-height: 70px !important;
+                max-width: 100% !important; 
+                overflow: hidden;
             }
             .main-logo, .logo-wrapper .hover-img { 
                 height: 70px !important; 
                 width: auto !important; 
+                max-width: 100%;
             }
+            .logo-wrapper .hover-img { left: 50%; transform: translateX(-50%); }
             
-            nav { 
-                padding: 10px 0 !important; 
-                flex-wrap: wrap; 
-            }
-            nav a { 
-                width: auto !important; 
-                margin: 5px 10px !important; 
-                font-size: 14px !important; 
-            }
+            nav { padding: 10px 0 !important; flex-wrap: wrap; }
+            nav a { width: auto !important; margin: 5px 10px !important; font-size: 14px !important; }
 
             .ongs-wrapper { 
-                display: block !important; /* 가로 배치 해제 */
+                display: block !important; 
                 overflow: visible !important;
             }
             .ong-column { 
@@ -143,6 +164,8 @@
                 padding: 40px 0 !important; 
             }
             .ong-column:last-child { border-bottom: none; }
+            /* 모바일에서 빈 컬럼 숨기기 */
+            .ong-column:empty { display: none; }
         }
     </style>
 </head>
