@@ -28,9 +28,7 @@
             padding: 0 40px; 
         }
 
-        header { 
-            flex-shrink: 0; border-bottom: var(--border-style); text-align: center; padding: 20px 0; 
-        }
+        header { flex-shrink: 0; border-bottom: var(--border-style); text-align: center; padding: 20px 0; }
         .logo-wrapper { position: relative; display: inline-block; height: 110px; vertical-align: middle; text-decoration: none; max-width: 100%; }
         .main-logo, .logo-wrapper .hover-img { height: 110px; width: auto !important; display: block; transition: opacity 0.3s ease; }
         .logo-wrapper .hover-img { position: absolute; top: 0; left: 50%; transform: translateX(-50%); opacity: 0; }
@@ -44,34 +42,30 @@
         nav a { text-decoration: none; color: black; font-weight: 500; width: 120px; text-align: center; margin: 0 10px; white-space: nowrap; }
         nav a:hover { text-decoration: underline; text-underline-offset: 5px; }
 
-        /* [수정된 레이아웃] 4열 고정 및 자동 줄바꿈 */
-        .ongs-container {
+        /* [핵심] 독립 스크롤 레이아웃 */
+        .ongs-wrapper {
+            display: flex;
             flex: 1;
-            overflow-y: auto; /* 전체 영역 스크롤 */
+            overflow: hidden; 
             width: 100%;
-            scrollbar-width: none;
+        }
+
+        .ong-column {
+            flex: 1;
+            height: 100%;
+            overflow-y: auto; /* 각 열 독립 스크롤 */
+            border-right: var(--border-style);
+            padding: 25px 25px 60px 25px; 
+            box-sizing: border-box;
+            scrollbar-width: none; 
             -ms-overflow-style: none;
         }
-        .ongs-container::-webkit-scrollbar { width: 4px; }
-        .ongs-container::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.1); border-radius: 10px; }
+        .ong-column:last-child { border-right: none; }
+        .ong-column::-webkit-scrollbar { width: 4px; }
+        .ong-column::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0); border-radius: 10px; }
+        .ong-column:hover::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.1); }
 
-        .ongs-grid {
-            display: flex;
-            flex-wrap: wrap; /* 4개 차면 아래로 */
-            width: 100%;
-        }
-
-        .ong-item-wrapper {
-            width: 25%; /* 무조건 4열 고정 (100/4) */
-            box-sizing: border-box;
-            border-right: var(--border-style);
-            border-bottom: var(--border-style);
-            padding: 25px 25px 40px 25px;
-        }
-        
-        /* 오른쪽 끝 아이템은 테두리 제거 (4의 배수번째) */
-        .ong-item-wrapper:nth-child(4n) { border-right: none; }
-
+        .ong-item { margin-bottom: 60px; }
         .item-content-box {
             width: 100%; border: var(--border-style); box-sizing: border-box; line-height: 0; overflow: hidden; margin-bottom: 15px;
         }
@@ -90,23 +84,23 @@
         table td:last-child { border-right: none; }
         .ong-desc { font-size: 14px; line-height: 1.6; word-break: keep-all; margin-top: 10px; }
 
-        /* --- [모바일] --- */
+        /* 모바일 대응 */
         @media screen and (max-width: 768px) {
             html, body { overflow: auto !important; height: auto !important; }
             body { padding: 0 20px !important; }
             header { padding: 15px 0 !important; display: flex; justify-content: center; }
             .logo-wrapper { height: 70px !important; overflow: hidden; }
             .main-logo, .logo-wrapper .hover-img { height: 70px !important; }
-            
             nav { padding: 10px 0 !important; flex-wrap: wrap; }
             nav a { width: auto !important; margin: 5px 10px !important; font-size: 14px !important; }
 
-            .ongs-grid { display: block !important; }
-            .ong-item-wrapper { 
-                width: 100% !important; 
-                border-right: none !important; 
-                padding: 40px 0 !important; 
+            .ongs-wrapper { display: block !important; overflow: visible !important; }
+            .ong-column { 
+                width: 100% !important; height: auto !important; overflow: visible !important; 
+                border-right: none !important; border-bottom: var(--border-style); padding: 40px 0 !important; 
             }
+            .ong-column:last-child { border-bottom: none; }
+            .ong-column:empty { display: none; }
         }
     </style>
 </head>
@@ -125,35 +119,41 @@
     <a href="journal.html">지팡이통신</a>
 </nav>
 
-<div class="ongs-container">
-    <div class="ongs-grid">
-        <div class="ong-item-wrapper">
+<div class="ongs-wrapper">
+    <div class="ong-column">
+        <div class="ong-item">
             <div class="item-content-box">
                 <div class="img-wrap">
-                    <img src="images/seongju_1.webp" class="ongs-img default-img-ong">
-                    <img src="images/seongju_1_hover.webp" class="hover-img-ong">
+                    <img src="images/seongju_1.webp" alt="성주옹" class="ongs-img default-img-ong">
+                    <img src="images/seongju_1_hover.webp" alt="성주옹 호버" class="hover-img-ong">
                 </div>
-                <table>
-                    <tr><td>Name</td><td>Seongju Ong</td></tr>
-                    <tr><td>Type</td><td>Classic</td></tr>
-                </table>
+                <table><tr><td>Name</td><td>Seongju Ong</td></tr><tr><td>Type</td><td>Classic</td></tr></table>
             </div>
-            <p class="ong-desc">성주옹 설명입니다.</p>
+            <p class="ong-desc">성주옹은 이 칸 안에서만 따로 스크롤됩니다.</p>
         </div>
-        <div class="ong-item-wrapper">
-            <div class="item-content-box"><div class="img-wrap"><img src="images/buttumak_1.webp" class="ongs-img"></div><table><tr><td>Name</td><td>Buttumak Ong</td></tr><tr><td>Type</td><td>Kitchen</td></tr></table></div>
+        
+        <div class="ong-item">
+            </div>
+    </div>
+
+    <div class="ong-column">
+        <div class="ong-item">
+            <div class="item-content-box">
+                <div class="img-wrap">
+                    <img src="images/buttumak_1.webp" alt="부뚜막옹" class="ongs-img default-img-ong">
+                    <img src="images/buttumak_1_hover.webp" alt="부뚜막옹 호버" class="hover-img-ong">
+                </div>
+                <table><tr><td>Name</td><td>Buttumak Ong</td></tr><tr><td>Type</td><td>Kitchen</td></tr></table>
+            </div>
+            <p class="ong-desc">부뚜막옹도 여기서만 따로 움직입니다.</p>
         </div>
-        <div class="ong-item-wrapper">
-            <div class="item-content-box"><div class="img-wrap"><img src="images/seongju_1.webp" class="ongs-img"></div><table><tr><td>Name</td><td>Third Ong</td></tr><tr><td>Type</td><td>Forest</td></tr></table></div>
-        </div>
-        <div class="ong-item-wrapper">
-            <div class="item-content-box"><div class="img-wrap"><img src="images/buttumak_1.webp" class="ongs-img"></div><table><tr><td>Name</td><td>Fourth Ong</td></tr><tr><td>Type</td><td>Home</td></tr></table></div>
-        </div>
-        <div class="ong-item-wrapper">
-            <div class="item-content-box"><div class="img-wrap"><img src="images/seongju_1.webp" class="ongs-img"></div><table><tr><td>Name</td><td>Fifth Ong</td></tr><tr><td>Type</td><td>New</td></tr></table></div>
+    </div>
+
+    <div class="ong-column">
         </div>
 
-    </div>
+    <div class="ong-column">
+        </div>
 </div>
 
 </body>
