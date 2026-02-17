@@ -85,29 +85,51 @@
         .journal::-webkit-scrollbar-thumb, .ongs::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0); border-radius: 10px; }
         .journal:hover::-webkit-scrollbar-thumb, .ongs:hover::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.1); }
 
-        .journal { flex: 1.8; border-right: var(--border-style); padding-right: 50px; }
-        .ongs { flex: 1.2; padding-left: 50px; }
+        /* [수정] 지팡이통신과 옹즈를 딱 5:5 비율로 설정 */
+        .journal { flex: 1; border-right: var(--border-style); padding-right: 40px; }
+        .ongs { flex: 1; padding-left: 40px; }
 
-/* 메인 페이지 구역 타이틀 (지팡이통신, 뉴옹) */
-h2 { 
-    font-size: 28px; 
-    font-weight: 700; 
-    margin-top: 20px; 
-    margin-bottom: 35px; 
-    text-transform: uppercase; 
-    letter-spacing: 0em; 
-    border-bottom: 1px solid #000; 
-    padding-bottom: 10px; 
-    display: block; 
-    
-    /* 추가된 부분: 텍스트 중앙 정렬 */
-    text-align: center; 
-}
-        h3 { font-size: 18px; font-weight: 700; margin-top: 10px; margin-bottom: 6px; }
-        .item { margin-bottom: 50px; border-bottom: var(--border-style); padding-bottom: 30px; }
-        .journal a { color: #000; text-decoration: underline; text-underline-offset: 3px; }
+        h2 { 
+            font-size: 28px; 
+            font-weight: 700; 
+            margin-top: 20px; 
+            margin-bottom: 35px; 
+            text-transform: uppercase; 
+            letter-spacing: 0em; 
+            border-bottom: 1px solid #000; 
+            padding-bottom: 10px; 
+            display: block; 
+            text-align: center; 
+        }
 
-        /* 옹즈 링크 스타일 */
+        /* [추가] 지팡이통신 메모 박스 스타일 */
+        .journal-link { text-decoration: none; color: inherit; display: block; }
+        .journal .memo-item { 
+            border: 1px solid #000; 
+            padding: 25px; 
+            margin-bottom: 30px; 
+            background: #fff;
+            transition: background 0.2s ease;
+        }
+        .journal .memo-item:hover { background: #f9f9f9; }
+        
+        .journal .memo-item h3 { font-size: 18px; font-weight: 700; margin: 0 0 12px 0; text-decoration: none; }
+        
+        /* [추가] 본문 두 줄 간추리기 */
+        .journal .memo-item p { 
+            font-size: 14px; 
+            line-height: 1.6; 
+            margin: 0 0 15px 0; 
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            word-break: keep-all;
+        }
+        .journal .memo-item small { font-size: 12px; color: #666; }
+
+        .item { margin-bottom: 50px; } /* 옹즈 아이템 간격 유지 */
+
         .ong-link { text-decoration: none; color: inherit; display: block; }
 
         .item-content-box {
@@ -130,128 +152,45 @@ h2 {
         .img-wrap:hover .default-img-ong { opacity: 0; }
         .img-wrap:hover .hover-img-ong { opacity: 1; }
 
-/* 테이블 전체 스타일 */
-table { 
-    width: 100%; 
-    border-collapse: collapse; 
-    border: none;
-}
+        table { width: 100%; border-collapse: collapse; border: none; }
+        table td { 
+            border-bottom: 1px solid #000;
+            border-right: 1px solid #000;
+            padding: 8px; 
+            font-size: 13px; 
+            line-height: 1.5; 
+            color: black;
+            word-break: keep-all;
+        }
+        table td:first-child { width: 50px; }
+        table tr:last-child td { border-bottom: none; }
+        table td:last-child { border-right: none; }
 
-/* 각 칸(td)의 공통 스타일 */
-table td { 
-    border-bottom: 1px solid #000;
-    border-right: 1px solid #000;
-    padding: 8px; 
-    font-size: 13px; 
-    line-height: 1.5; 
-    color: black;
-    word-break: keep-all;
-}
+        /* 모바일 대응 (기존 설정 유지) */
+        @media screen and (max-width: 768px) {
+            html, body { overflow: auto !important; height: auto !important; }
+            body { padding: 0 !important; font-size: 16px !important; } 
 
-/* [핵심] 왼쪽 열(이름, 성격 등) 너비 고정 영역 */
-table td:first-child { 
-    width: 50px;       /* 이 숫자로 왼쪽 칸 너비를 결정합니다 */
-}
+            header { padding: 15px 0 !important; display: flex; justify-content: center; border-bottom: var(--border-style); width: 100%; box-sizing: border-box; }
+            .logo-wrapper { height: 70px !important; width: auto !important; }
+            .main-logo { height: 70px !important; width: auto !important; }
+            .logo-wrapper .hover-img { display: none !important; } 
 
-/* 외곽 테두리와 겹치지 않게 마감하는 부분 */
-table tr:last-child td { border-bottom: none; }
-table td:last-child { border-right: none; }
+            nav { padding: 12px 0 !important; border-bottom: var(--border-style); }
+            nav a { font-size: 16px !important; margin: 0 12px !important; font-weight: 600 !important; width: auto !important; }
 
-@media screen and (max-width: 768px) {
-    /* 1. 전체 구조 설정 */
-    html, body { overflow: auto !important; height: auto !important; }
-    body { padding: 0 !important; font-size: 16px !important; } 
+            .container { display: block !important; padding: 0 20px !important; width: 100%; box-sizing: border-box; }
+            .journal, .ongs { border-right: none !important; padding: 30px 0 !important; height: auto !important; overflow: visible !important; }
 
-    /* 2. 헤더 & 네비 (index와 동일하게 유지) */
-    header { 
-        padding: 15px 0 !important; 
-        display: flex; 
-        justify-content: center; 
-        border-bottom: var(--border-style);
-        width: 100%;
-        box-sizing: border-box;
-    }
-    .logo-wrapper { height: 70px !important; width: auto !important; }
-    .main-logo { height: 70px !important; width: auto !important; }
-    .logo-wrapper .hover-img { display: none !important; } 
+            h2 { font-size: 26px !important; margin-top: 10px !important; margin-bottom: 25px !important; padding-bottom: 8px !important; text-align: center !important; }
+            h3 { font-size: 20px !important; margin-bottom: 12px !important; }
+            
+            .journal .memo-item p { font-size: 17px !important; }
+            table td { font-size: 15px !important; padding: 10px 8px !important; }
+            table td:first-child { width: 60px !important; }
 
-    nav { 
-        padding: 12px 0 !important; 
-        border-bottom: var(--border-style);
-    }
-    nav a { 
-        font-size: 16px !important; 
-        margin: 0 12px !important; 
-        font-weight: 600 !important;
-        width: auto !important;
-    }
-
-
-    /* 3. 컨텐츠 구역 정리 */
-    .container, .ongs-wrapper, .about-content { 
-        display: block !important; 
-        padding: 0 20px !important; 
-        width: 100%;
-        box-sizing: border-box;
-    }
-
-    .journal, .ongs, .journal-list, .journal-detail, .ong-column { 
-        border-right: none !important; 
-        padding: 30px 0 !important; /* 상하 여백을 20px -> 30px로 늘려 답답함 해소 */
-        height: auto !important;
-        overflow: visible !important;
-    }
-
-    /* 4. [중요] 텍스트 크기 대폭 상향 */
-    
-    /* 섹션 큰 제목 (지팡이통신, 뉴옹) */
-    h2 { 
-        font-size: 26px !important; /* 24px -> 26px */
-        margin-top: 10px !important;
-        margin-bottom: 25px !important; 
-        border-bottom-width: 1px !important; 
-        padding-bottom: 8px !important;
-        letter-spacing: -0.03em !important;
-        text-align: center !important; /* 모바일에서도 중앙 유지 */
-    }
-
-    /* 기사/아이템 제목 */
-    h3 { 
-        font-size: 20px !important; /* 18px -> 20px */
-        line-height: 1.4 !important;
-        margin-bottom: 12px !important;
-    }
-
-    /* 본문 텍스트 (p태그, 표 내용 등) */
-    .journal p, .item p, .about-text p {
-        font-size: 17px !important; /* 15px -> 17px (가장 체감이 큰 변화) */
-        line-height: 1.8 !important;
-        margin-bottom: 20px !important;
-    }
-
-    /* 뉴옹 표(Table) 내부 텍스트 */
-    table td {
-        font-size: 15px !important; /* 13px -> 15px */
-        padding: 10px 8px !important; /* 터치하기 쉽고 보기 편하게 여백 추가 */
-    }
-    table td:first-child {
-        width: 60px !important; /* 글자 커진 만큼 너비 확보 */
-    }
-
-    /* 5. 라인 정리 */
-    .journal { border-bottom: var(--border-style); }
-    .ongs { border-bottom: none !important; }
-    .list-item:last-child, .item:last-child { border-bottom: none !important; }
-
-    /* 날짜 등 부가정보 */
-    small { font-size: 14px !important; }
-}
-
-h2 { 
-        font-size: 24px; /* 모바일에서는 살짝 조절 */
-        margin-bottom: 20px; 
-        border-bottom-width: 1px; /* 모바일은 라인을 살짝 얇게(선택사항) */
-    }}
+            .journal { border-bottom: var(--border-style); }
+        }
     </style>
 </head>
 <body>
@@ -272,23 +211,30 @@ h2 {
 <div class="container">
     <div class="journal">
         <h2>지팡이통신</h2>
-        <div class="item">
-             <h3>집지킴이 옹즈의 '구해줘 홈즈'</h3>
-            <p>성주옹, 부뚜막옹, 삼신할미옹은 아주 오래전부터 사람들의 집과 마음 한구석을 묵묵히 지켜온 집지킴이 옹들이다.
-                <i>“집을 지키는 일은 곧 마음을 지키는 일.”</i> 오랜 세월을 건너 대대로 이어져온 그 믿음을 고스란히 품은 26년생 집지킴이 옹즈 삼인방이 이제 새로운 터를 찾아 나섰다. 지금 이들은 서울숲 앞 <a href="https://www.instagram.com/narrative.object/" target="_blank">네러티브 오브젝트</a>에 머물며 자신들이 새롭게 지키게 될 보금자리를 기다리고 있다.
-                이들의 여정 속에서 따뜻한 인연과 오래도록 머물 이야기가 피어나기를 바라며, 독자 여러분의 많은 관심과 응원을 부탁드린다.</p>
-             <small>2026.02.17</small>
-        </div>
-        <div class="item">
-            <h3>훌쩍옹 (또) 훌쩍 떠나다.</h3>
-            <p>"바람 냄새가 바뀌었기에 잠시 다녀오겠습니다." 짧은 메모 한 장, 비어있는 방석. 짐도 없이 훌쩍, 이번엔 서쪽 골짜기로 향했다는 소문입니다. 훌쩍옹이 오는 길에 묻혀올 고요한 소식들을 기다려주세요.</p>
-            <small>2026.02.15</small>
-        </div>
-        <div class="item">
-             <h3>&lt;지팡이통신&gt;의 창간</h3>
-            <p>안녕하세요. 옹즈타운의 신문 &lt;지팡이통신&gt;이 2026년 1월 1일, 첫발을 내딛습니다. 이곳에 앞으로 등장할 ‘뉴페이스 옹즈’의 소식과 함께 왁자지껄한 일상을 담아보려 합니다. 부디 적은 관심과 많은 응원 부탁드립니다. 얍.</p>
-            <small>2026.01.01</small>
-        </div>
+        
+        <a href="journal.html" class="journal-link">
+            <div class="memo-item">
+                 <h3>집지킴이 옹즈의 '구해줘 홈즈'</h3>
+                 <p>성주옹, 부뚜막옹, 삼신할미옹은 아주 오래전부터 사람들의 집과 마음 한구석을 묵묵히 지켜온 집지킴이 옹들이다. “집을 지키는 일은 곧 마음을 지키는 일.” 오랜 세월을 건너온 이들의 여정을 소개합니다.</p>
+                 <small>2026.02.17</small>
+            </div>
+        </a>
+
+        <a href="journal.html" class="journal-link">
+            <div class="memo-item">
+                <h3>훌쩍옹 (또) 훌쩍 떠나다.</h3>
+                <p>"바람 냄새가 바뀌었기에 잠시 다녀오겠습니다." 짧은 메모 한 장, 비어있는 방석. 짐도 없이 훌쩍, 이번엔 서쪽 골짜기로 향했다는 소문입니다.</p>
+                <small>2026.02.15</small>
+            </div>
+        </a>
+
+        <a href="journal.html" class="journal-link">
+            <div class="memo-item">
+                 <h3>&lt;지팡이통신&gt;의 창간</h3>
+                <p>안녕하세요. 옹즈타운의 신문 &lt;지팡이통신&gt;이 2026년 1월 1일, 첫발을 내딛습니다. 이곳에 앞으로 등장할 ‘뉴페이스 옹즈’의 소식과 일상을 담아보려 합니다.</p>
+                <small>2026.01.01</small>
+            </div>
+        </a>
     </div>
 
     <div class="ongs">
