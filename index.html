@@ -116,12 +116,15 @@
         .img-wrap:hover .default-img-ong { opacity: 0; }
         .img-wrap:hover .hover-img-ong { opacity: 1; }
 
-        /* 테이블 텍스트 11px로 조정 */
-        table { width: 100%; border-collapse: collapse; margin: 0; }
+        table { 
+            width: 100%; 
+            border-collapse: collapse; /* 핵심: 셀 사이의 테두리를 하나로 합침 */
+            margin: 0; 
+            border: none;
+        }
+
         table td { 
-            border: none; 
-            border-bottom: var(--border-style); 
-            border-right: var(--border-style);
+            border: var(--border-style); /* 변수로 설정된 1px solid #000 적용 */
             padding: 8px; 
             font-size: 11px; 
             line-height: 1.4; 
