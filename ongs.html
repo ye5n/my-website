@@ -42,7 +42,6 @@
         nav a { text-decoration: none; color: black; font-weight: 500; width: 120px; text-align: center; margin: 0 10px; white-space: nowrap; }
         nav a:hover { text-decoration: underline; text-underline-offset: 5px; }
 
-        /* [핵심] 독립 스크롤 레이아웃 */
         .ongs-wrapper {
             display: flex;
             flex: 1;
@@ -53,7 +52,7 @@
         .ong-column {
             flex: 1;
             height: 100%;
-            overflow-y: auto; /* 각 열 독립 스크롤 */
+            overflow-y: auto; 
             border-right: var(--border-style);
             padding: 25px 25px 60px 25px; 
             box-sizing: border-box;
@@ -84,7 +83,6 @@
         table td:last-child { border-right: none; }
         .ong-desc { font-size: 14px; line-height: 1.6; word-break: keep-all; margin-top: 10px; }
 
-        /* 모바일 대응 */
         @media screen and (max-width: 768px) {
             html, body { overflow: auto !important; height: auto !important; }
             body { padding: 0 20px !important; }
@@ -100,7 +98,6 @@
                 border-right: none !important; border-bottom: var(--border-style); padding: 40px 0 !important; 
             }
             .ong-column:last-child { border-bottom: none; }
-            .ong-column:empty { display: none; }
         }
     </style>
 </head>
@@ -127,13 +124,21 @@
                     <img src="images/seongju_1.webp" alt="성주옹" class="ongs-img default-img-ong">
                     <img src="images/seongju_1_hover.webp" alt="성주옹 호버" class="hover-img-ong">
                 </div>
-                <table><tr><td>Name</td><td>Seongju Ong</td></tr><tr><td>Type</td><td>Classic</td></tr></table>
+                <table><tr><td>Name</td><td>Seongju Ong (성주옹)</td></tr><tr><td>Material</td><td>Linen, Cotton, Straw</td></tr><tr><td>Date</td><td>2026.02</td></tr></table>
             </div>
             <p class="ong-desc">성주옹은 이 칸 안에서만 따로 스크롤됩니다.</p>
         </div>
         
         <div class="ong-item">
+            <div class="item-content-box">
+                <div class="img-wrap">
+                    <img src="images/ong5.webp" alt="다섯번째옹" class="ongs-img default-img-ong">
+                    <img src="images/ong5_hover.webp" alt="다섯번째옹 호버" class="hover-img-ong">
+                </div>
+                <table><tr><td>Name</td><td>Unknown Ong (5)</td></tr><tr><td>Material</td><td>-</td></tr><tr><td>Date</td><td>2026.02</td></tr></table>
             </div>
+            <p class="ong-desc">다섯 번째 옹즈의 설명입니다.</p>
+        </div>
     </div>
 
     <div class="ong-column">
@@ -143,17 +148,37 @@
                     <img src="images/buttumak_1.webp" alt="부뚜막옹" class="ongs-img default-img-ong">
                     <img src="images/buttumak_1_hover.webp" alt="부뚜막옹 호버" class="hover-img-ong">
                 </div>
-                <table><tr><td>Name</td><td>Buttumak Ong</td></tr><tr><td>Type</td><td>Kitchen</td></tr></table>
+                <table><tr><td>Name</td><td>Buttumak Ong (부뚜막옹)</td></tr><tr><td>Material</td><td>Cotton, Leather</td></tr><tr><td>Date</td><td>2026.02</td></tr></table>
             </div>
             <p class="ong-desc">부뚜막옹도 여기서만 따로 움직입니다.</p>
         </div>
     </div>
 
     <div class="ong-column">
+        <div class="ong-item">
+            <div class="item-content-box">
+                <div class="img-wrap">
+                    <img src="images/samsin_1.webp" alt="삼신할미옹" class="ongs-img default-img-ong">
+                    <img src="images/samsin_1_hover.webp" alt="삼신할미옹 호버" class="hover-img-ong">
+                </div>
+                <table><tr><td>Name</td><td>Samsin Ong (삼신할미옹)</td></tr><tr><td>Material</td><td>Cotton</td></tr><tr><td>Date</td><td>2026.02</td></tr></table>
+            </div>
+            <p class="ong-desc">삼신할미옹 설명입니다.</p>
         </div>
+    </div>
 
     <div class="ong-column">
+        <div class="ong-item">
+            <div class="item-content-box">
+                <div class="img-wrap">
+                    <img src="images/ong4.webp" alt="네번째옹" class="ongs-img default-img-ong">
+                    <img src="images/ong4_hover.webp" alt="네번째옹 호버" class="hover-img-ong">
+                </div>
+                <table><tr><td>Name</td><td>Fourth Ong</td></tr><tr><td>Material</td><td>-</td></tr><tr><td>Date</td><td>2026.02</td></tr></table>
+            </div>
+            <p class="ong-desc">네 번째 옹즈 설명입니다.</p>
         </div>
+    </div>
 </div>
 
 </body>
