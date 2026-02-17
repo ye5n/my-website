@@ -54,7 +54,7 @@
 .list-item { 
     cursor: pointer; 
     padding: 20px 0; 
-    border-bottom: 1px solid #eee; /* 아주 연한 구분선만 유지 */
+    border-bottom: 1px solid #000; /* 아주 연한 구분선만 유지 */
     transition: all 0.2s ease;
 }
 
@@ -63,7 +63,7 @@
 .list-item.active h3 { 
     text-decoration: underline;
     text-underline-offset: 5px; /* 헤더와 동일한 간격 */
-    text-decoration-thickness: 1px; /* 너무 굵지 않은 적당한 선 두께 */
+    text-decoration-thickness: 2px; /* 너무 굵지 않은 적당한 선 두께 */
 }
 
 /* 선택되었을 때 추가적인 강조 (필요 없으시면 빼셔도 됩니다) */
@@ -104,9 +104,9 @@
         
         .title-separator { border-bottom: var(--border-style); margin-bottom: 30px; }
 
-        .detail-view .content { font-size: 15px; line-height: 1.9; text-align: justify; margin-bottom: 40px; color: #333; }
+        .detail-view .content { font-size: 15px; line-height: 1.9; text-align: justify; margin-bottom: 40px; color: #000; }
         
-        .detail-view .date { font-size: 13px; color: #666; display: block; font-weight: 400; border-top: 1px solid #eee; padding-top: 20px; }
+        .detail-view .date { font-size: 13px; color: #000; display: block; font-weight: 400; border-top: 1px solid #000; padding-top: 20px; }
         .detail-view a { color: #000; text-decoration: underline; }
 
         /* 모바일 대응 */
