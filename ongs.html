@@ -81,6 +81,14 @@
         .img-wrap:hover .default-img-ong { opacity: 0; }
         .img-wrap:hover .hover-img-ong { opacity: 1; }
 
+/* 테이블 전체 스타일 */
+table { 
+    width: 100%; 
+    border-collapse: collapse; 
+    border: none;
+}
+
+/* 각 칸(td)의 공통 스타일 */
 table td { 
     border-bottom: 1px solid #000;
     border-right: 1px solid #000;
@@ -91,13 +99,16 @@ table td {
     word-break: keep-all;
 }
 
-/* 왼쪽 열(제목 칸) 너비 고정 */
+/* [핵심] 왼쪽 열(이름, 성격 등) 너비 고정 영역 */
 table td:first-child { 
-    width: 60px; /* 원하는 너비로 조절 가능합니다 */
+    width: 50px;       /* 이 숫자로 왼쪽 칸 너비를 결정합니다 */
+    font-weight: 600;  /* 글자를 조금 더 두껍게 */
 }
 
+/* 외곽 테두리와 겹치지 않게 마감하는 부분 */
 table tr:last-child td { border-bottom: none; }
 table td:last-child { border-right: none; }
+        
 
         .ong-desc { 
             font-size: 15px; /* 기존 크기 유지 */
