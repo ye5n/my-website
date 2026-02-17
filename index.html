@@ -6,7 +6,6 @@
     <title>ongs</title>
     <link rel="icon" href="images/favicon.png?v=1" type="image/png">
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
-
     <style>
         :root {
             --font-family: "Pretendard Variable", Pretendard, sans-serif;
@@ -41,7 +40,6 @@
             height: 110px;
             vertical-align: middle;
             text-decoration: none;
-            /* 추가: 래퍼가 화면을 넘지 않도록 */
             max-width: 100%;
         }
         
@@ -95,6 +93,9 @@
         .item { margin-bottom: 50px; border-bottom: var(--border-style); padding-bottom: 30px; }
         .journal a { color: #000; text-decoration: underline; text-underline-offset: 3px; }
 
+        /* 옹즈 링크 스타일 */
+        .ong-link { text-decoration: none; color: inherit; display: block; }
+
         .item-content-box {
             width: 100%;
             border: var(--border-style);
@@ -115,43 +116,28 @@
         .img-wrap:hover .default-img-ong { opacity: 0; }
         .img-wrap:hover .hover-img-ong { opacity: 1; }
 
-        
+        /* 테이블 텍스트 11px로 조정 */
         table { width: 100%; border-collapse: collapse; margin: 0; }
         table td { 
             border: none; 
             border-bottom: var(--border-style); 
             border-right: var(--border-style);
             padding: 8px; 
-            font-size: 13px; 
+            font-size: 11px; 
             line-height: 1.4; 
             color: black;
+            word-break: keep-all;
         }
         table tr:last-child td { border-bottom: none; }
         table td:last-child { border-right: none; }
 
-        /* --- [모바일 대응] --- */
         @media screen and (max-width: 768px) {
             html, body { height: auto !important; overflow-y: auto !important; }
             body { padding: 0 20px !important; }
-            
-            header { 
-                padding: 15px 0 !important; 
-                width: 100%;
-                box-sizing: border-box;
-            }
-            .logo-wrapper { 
-                height: 70px !important; 
-                max-width: 100% !important; /* 화면을 넘지 않게 고정 */
-                overflow: hidden;
-            }
-            .main-logo, .logo-wrapper .hover-img { 
-                height: 70px !important; 
-                width: auto !important; 
-                max-width: 100%; /* 이미지가 부모를 넘지 않게 */
-            }
-            /* 호버 이미지 위치 재조정 */
+            header { padding: 15px 0 !important; width: 100%; box-sizing: border-box; }
+            .logo-wrapper { height: 70px !important; max-width: 100% !important; overflow: hidden; }
+            .main-logo, .logo-wrapper .hover-img { height: 70px !important; width: auto !important; max-width: 100%; }
             .logo-wrapper .hover-img { left: 50%; transform: translateX(-50%); }
-
             nav { padding: 10px 0 !important; flex-wrap: wrap; }
             nav a { width: auto !important; margin: 5px 10px !important; font-size: 14px !important; }
             .container { display: block !important; height: auto !important; }
@@ -200,43 +186,61 @@
 
     <div class="ongs">
         <h2>뉴옹</h2> 
+        
         <div class="item">
-            <div class="item-content-box">
-                <div class="img-wrap">
-                    <img src="images/seongju_1.webp" alt="성주옹" class="ongs-img default-img-ong">
-                    <img src="images/seongju_1_hover.webp" alt="성주옹 호버" class="hover-img-ong">
+            <a href="ongs.html" class="ong-link">
+                <div class="item-content-box">
+                    <div class="img-wrap">
+                        <img src="images/seongju_1.webp" alt="성주옹" class="ongs-img default-img-ong">
+                        <img src="images/seongju_1_hover.webp" alt="성주옹 호버" class="hover-img-ong">
+                    </div>
+                    <table>
+                        <tr><td>이름</td><td>성주옹</td></tr>
+                        <tr><td>담당</td><td>집</td></tr>
+                        <tr><td>성격</td><td>묵직하고 신뢰감 있는 성격. 말수는 적지만 존재감은 크다.</td></tr>
+                        <tr><td>🩷</td><td>캄캄한 밤, 문 열리는 소리, 집 안에 쌓이는 시간</td></tr>
+                        <tr><td>🚫</td><td>스며드는 불안, 이유 없이 들어오는 나쁜 기운</td></tr>
+                    </table>
                 </div>
-                <table>
-                    <tr><td>이름</td><td>성주옹</td></tr><tr><td>담당</td><td>집</td></tr><tr><td>성격</td><td>묵직하고 신뢰감 있는 성격. 말수는 적지만 존재감은 크다.</td></tr>
-                    <tr><td>🩷</td><td>캄캄한 밤, 문 열리는 소리, 집 안에 쌓이는 시간</td></tr><tr><td>🚫</td><td>스며드는 불안, 이유 없이 들어오는 나쁜 기운</td></tr>
-                </table>
-            </div>
+            </a>
         </div>
+
         <div class="item">
-            <div class="item-content-box">
-                <div class="img-wrap">
-                    <img src="images/buttumak_1.webp" alt="부뚜막옹" class="ongs-img default-img-ong">
-                    <img src="images/buttumak_1_hover.webp" alt="부뚜막옹 호버" class="hover-img-ong">
+            <a href="ongs.html" class="ong-link">
+                <div class="item-content-box">
+                    <div class="img-wrap">
+                        <img src="images/buttumak_1.webp" alt="부뚜막옹" class="ongs-img default-img-ong">
+                        <img src="images/buttumak_1_hover.webp" alt="부뚜막옹 호버" class="hover-img-ong">
+                    </div>
+                    <table>
+                        <tr><td>이름</td><td>부뚜막옹</td></tr>
+                        <tr><td>담당</td><td>맛있는 요리, 안전한 부엌</td></tr>
+                        <tr><td>성격</td><td>소탈하고 정 많은 성격. 야무진 손끝의 소유자.</td></tr>
+                        <tr><td>🩷</td><td>김을 내뿜는 냄비, 잘 익은 무우, 달그락 그릇 소리</td></tr>
+                        <tr><td>🚫</td><td>차가운 불, 비어 있는 밥상, 조용한 부엌</td></tr>
+                    </table>
                 </div>
-                <table>
-                    <tr><td>이름</td><td>부뚜막옹</td></tr><tr><td>담당</td><td>맛있는 요리, 안전한 부엌</td></tr><tr><td>성격</td><td>소탈하고 정 많은 성격. 야무진 손끝의 소유자.</td></tr>
-                    <tr><td>🩷</td><td>김을 내뿜는 냄비, 잘 익은 무우, 달그락 그릇 소리</td></tr><tr><td>🚫</td><td>차가운 불, 비어 있는 밥상, 조용한 부엌</td></tr>
-                </table>
-            </div>
+            </a>
+        </div>
+
+        <div class="item">
+            <a href="ongs.html" class="ong-link">
+                <div class="item-content-box">
+                    <div class="img-wrap">
+                        <img src="images/samsin_1.webp" alt="삼신할미옹" class="ongs-img default-img-ong">
+                        <img src="images/samsin_1_hover.webp" alt="삼신할미옹 호버" class="hover-img-ong">
+                    </div>
+                    <table>
+                        <tr><td>이름</td><td>삼신할미옹</td></tr>
+                        <tr><td>담당</td><td>잠과 꿈</td></tr>
+                        <tr><td>성격</td><td>느릿하고 다정한 성격. 서두르는 법이 없다.</td></tr>
+                        <tr><td>🩷</td><td>폭신한 베개, 고른 숨소리, 새벽 직전의 고요</td></tr>
+                        <tr><td>🚫</td><td>천둥번개, 각종 시끄러운 소음</td></tr>
+                    </table>
+                </div>
+            </a>
         </div>
     </div>
-            <div class="item">
-            <div class="item-content-box">
-                <div class="img-wrap">
-                    <img src="images/samsin_1.webp" alt="삼신할미옹" class="ongs-img default-img-ong">
-                    <img src="images/samsin_1_hover.webp" alt="삼신할미옹 호버" class="hover-img-ong">
-                 </div>
-                <table>
-                    <tr><td>이름</td><td>삼신할미옹</td></tr><tr><td>담당</td><td>잠과 꿈</td></tr><tr><td>성격</td><td>느릿하고 다정한 성격. 서두르는 법이 없다.</td></tr>
-                    <tr><td>🩷</td><td>폭신한 베개, 고른 숨소리, 새벽 직전의 고요</td></tr><tr><td>🚫</td><td>천둥번개, 각종 시끄러운 소음</td></tr>
-                </table>
-            </div>
 </div>
-
 </body>
 </html>
