@@ -40,8 +40,19 @@
             display: flex; justify-content: center; align-items: center;
         }
         nav a { text-decoration: none; color: black; font-weight: 500; width: 120px; text-align: center; margin: 0 10px; white-space: nowrap; }
-        nav a:hover { text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 1px; }
-        nav a.active { text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 1px; }
+
+/* 이 부분을 찾아서 아래와 같이 !important를 붙여보세요 */
+nav a:hover { 
+    text-decoration: underline !important; 
+    text-underline-offset: 5px !important; 
+    text-decoration-thickness: 1px !important; 
+}
+
+nav a.active { 
+    text-decoration: underline !important; 
+    text-underline-offset: 5px !important; 
+    text-decoration-thickness: 1px !important; 
+}
         .ongs-wrapper {
             display: flex;
             flex: 1;
@@ -116,6 +127,7 @@ table td:last-child { border-right: none; }
             margin-top: 12px; 
             padding: 0 5px; /* 양옆 여백을 살짝 주면 가독성이 좋아집니다 */
         }
+        
 @media screen and (max-width: 768px) {
     /* 1. 전체 구조 설정 */
     html, body { overflow: auto !important; height: auto !important; }
@@ -210,7 +222,7 @@ h2 {
         font-size: 24px; /* 모바일에서는 살짝 조절 */
         margin-bottom: 20px; 
         border-bottom-width: 1px; /* 모바일은 라인을 살짝 얇게(선택사항) */
-    }}
+    }
     </style>
 </head>
 <body>
@@ -224,7 +236,7 @@ h2 {
 
 <nav>
     <a href="about.html">소개</a>
-    <a href="ongs.html" style="text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 1px;">옹즈</a>
+    <a href="ongs.html" class="active">옹즈</a>
     <a href="journal.html">지팡이통신</a>
 </nav>
 
