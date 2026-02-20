@@ -123,6 +123,31 @@
             word-break: keep-all;
         }
 
+        footer {
+            flex-shrink: 0; /* 푸터가 줄어들지 않도록 설정 */
+            border-top: var(--border-style);
+            padding: 30px 0;
+            text-align: center;
+            font-size: 13px;
+            color: #666;
+            margin-top: auto; /* 컨텐츠가 적어도 푸터는 항상 바닥에 위치 */
+        }
+        
+        .footer-links {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: black;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        
 /* --- [모바일 대응 스타일] --- */
 @media screen and (max-width: 768px) {
     /* 1. 전체 틀 (index와 동일) */
@@ -175,6 +200,10 @@
         margin-bottom: 30px !important;
         word-break: keep-all; 
     }
+
+     {
+            footer { padding: 40px 20px; }
+        }
 }
     </style>
 </head>
@@ -217,5 +246,14 @@
     </div>
 </div>
 
+    <footer>
+    <div class="footer-links">
+        <a href="about.html">About</a>
+        <a href="mailto:hoboolho@gmail.com">Contact</a>
+        <a href="https://instagram.com/ongs.online" target="_blank">Instagram</a>
+    </div>
+    <p>© 2026 ongs. All rights reserved.</p>
+</footer>
+    
 </body>
 </html>
